@@ -1,0 +1,136 @@
+// Copyright 2023-2024 Google LLC
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package millemiglia;
+import "google/protobuf/duration.proto";
+import "datetime.proto";
+import "latlng.proto";
+
+
+// Range of times between two DateTime. For a pointwise date time, use
+// start == end.
+message DateTimeRange {
+  google.type.DateTime first_date = 1;
+  google.type.DateTime last_date = 2;
+}
+
+// A value along one predefined dimension. The field `value` must be set to the
+// corresponding type of the `dimension`.
+message ValueDimension {
+  int64 value = 1;
+  string dimension = 2;
+}
+
+
+message Instance {
+  string name = 1;
+  LogisticsNetwork network = 2;
+  repeated Shipment shipments = 3;
+}
+
+// Describes the full existing logistics network that can be used.
+
+message LogisticsNetwork {
+  // Cannot be updated.
+  string name = 1;
+
+  repeated Line lines = 2;
+  repeated Vehicle vehicles = 3;
+  repeated Hub hubs = 4;
+  // Distance, weight, pallets, etc., plus scaling (to map floats to integers).
+  repeated ValueDimension dimensions = 5;
+
+  // Time discretization. Decisions are output with this precision in time.
+  // Internally, state is kept with this precision.
+  google.protobuf.Duration time_step = 8;
+
+  // Distance matrix (represented a list of weighted directed edges).
+  repeated DistanceMatrixEntry distance_matrix = 9;
+}
+
+// A line that is being operated at a given frequency.
+message Line {
+  // Cannot be updated.
+  string name = 1;
+
+  // List of hubs that this line calls at, in the order vehicles stop at them.
+  repeated string hub_ids = 2;
+
+  // List of rotations with a name for each.
+  repeated LineRotation next_rotations = 3;
+}
+
+// A vehicle starts operating this line at a particular time.
+message LineRotation {
+  // Cannot be updated.
+  string name = 1;
+  map<string, DateTimeRange> arrival_times = 2;
+  map<string, DateTimeRange> departure_times = 3;
+
+  // Maximum number of vehicles that can be assigned to this rotation.
+  optional int32 maximum_number_vehicles = 6;
+
+  // List of vehicles that could be doing this line rotation (i.e. allow list).
+  // If number_vehicles reduces to one value corresponding to the number of
+  // vehicles, all those vehicles will be assigned to the line rotation.
+  // If no vehicles, all are considered to be available.
+  repeated string vehicles = 7;
+  double fixed_price = 8;
+
+}
+
+// No name, it is stored as a map key within the LogisticsNetwork.
+message Vehicle {
+  // Cannot be updated.
+  string name = 1;
+
+  // Vehicle characteristics.
+  repeated ValueDimension capacities = 2;
+
+  // Cost for using the vehicle.
+  double cost = 3;
+}
+
+// Shipments must be brought from one hub to another one.
+message Hub {
+  // Cannot be updated.
+  string name = 1;
+
+  // Position to compute real-world paths.
+  google.type.LatLng position = 2;
+}
+
+message DistanceMatrixEntry {
+  string source_hub = 1;
+  string destination_hub = 2;
+  repeated ValueDimension weights = 3;
+}
+
+message Shipment {
+  // Cannot be updated.
+  string name = 1;
+  // Ends of the path the shipment must take.
+  string source_hub = 2;
+  string destination_hub = 3;
+  // Departure time.
+  google.type.DateTime departure_time = 4;
+  // *Expected* arrival time (i.e. soft constraint).
+  DateTimeRange arrival_time = 5;
+  // If unset, revenue is computed by the system (depending on whether a new
+  // line is generated for this shipment or not).
+  optional double revenue = 6;
+  // Used with vehicle and hub capacities.
+  repeated ValueDimension size = 7;
+}

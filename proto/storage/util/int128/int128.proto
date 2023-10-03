@@ -10,11 +10,6 @@ syntax = "proto3";
 
 package storage_util;
 
-option java_package = "com.google.storage.util";
-option java_api_version = 2;
-option java_multiple_files = true;
-option cc_api_version = 2;
-
 // The low 64 bits are stored in "low", and the high 64-bits (including the
 // sign) are stored in "high".  In general it shouldn't be necessary to
 // understand these implementation details: use the helper libraries instead,

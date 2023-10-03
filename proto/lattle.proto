@@ -9,13 +9,6 @@ import "google/type/datetime.proto";
 import "google/type/latlng.proto";
 import "storage/util/int128/int128.proto";
 
-option java_package = "com.google.operationsresearch.lattle.v1";
-option java_multiple_files = true;
-option java_outer_classname = "LattleProto";
-option use_java_stubby_library = true;
-
-// go/lattle-dd
-
 // ---------------------
 // - Part 0: utilities -
 // ---------------------

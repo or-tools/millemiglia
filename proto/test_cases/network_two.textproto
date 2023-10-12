@@ -42,6 +42,10 @@ lines: [
               }
             ]
             fixed_price: { separable: { constant_price: 2.0 } }
+            maximum_number_vehicles: {
+              start_value: 1
+              end_value: 1
+            }
           }
         },
         {
@@ -66,6 +70,10 @@ lines: [
               }
             ]
             fixed_price: { separable: { constant_price: 4.0 } }
+            maximum_number_vehicles: {
+              start_value: 1
+              end_value: 1
+            }
           }
         }
       ]
@@ -98,6 +106,10 @@ lines: [
               }
             ]
             fixed_price: { separable: { constant_price: 3.0 } }
+            maximum_number_vehicles: {
+              start_value: 1
+              end_value: 1
+            }
           }
         },
         {
@@ -122,6 +134,10 @@ lines: [
               }
             ]
             fixed_price: { separable: { constant_price: 5.0 } }
+            maximum_number_vehicles: {
+              start_value: 1
+              end_value: 1
+            }
           }
         }
       ]
@@ -168,6 +184,10 @@ lines: [
               }
             ]
             fixed_price: { separable: { constant_price: 10.0 } }
+            maximum_number_vehicles: {
+              start_value: 1
+              end_value: 1
+            }
           }
         },
         {
@@ -206,6 +226,10 @@ lines: [
               }
             ]
             fixed_price: { separable: { constant_price: 25.0 } }
+            maximum_number_vehicles: {
+              start_value: 1
+              end_value: 1
+            }
           }
         }
       ]

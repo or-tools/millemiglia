@@ -18,6 +18,32 @@ routed_parcels: [
         value: 1
       }
     ]
+    arrival_time: {
+      first_date: {
+        year: 2023
+        month: 1
+        day: 1
+        hours: 14
+        minutes: 0
+        seconds: 0
+      }
+      last_date: {
+        year: 2023
+        month: 1
+        day: 1
+        hours: 16
+        minutes: 0
+        seconds: 0
+      }
+    }
+    departure_time: {
+      year: 2023
+      month: 1
+      day: 1
+      hours: 10
+      minutes: 0
+      seconds: 0
+    }
   },
   {
     parcel: "p2"
@@ -91,11 +117,11 @@ used_capacity_in_vehicle: [
     used_capacity: [
       {
         dimension: "pallets"
-        value: 2
+        value: 1
       },
       {
         dimension: "weight"
-        value: 4
+        value: 1
       }
     ]
     source_hub: "h1"
@@ -108,11 +134,11 @@ used_capacity_in_vehicle: [
     used_capacity: [
       {
         dimension: "pallets"
-        value: 0
+        value: 2
       },
       {
         dimension: "weight"
-        value: 4
+        value: 3
       }
     ]
     source_hub: "h2"

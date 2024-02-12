@@ -1,4 +1,0 @@
-# proto-file: util/operations_research/cloud/lattle/lattle.proto
-# proto-message: LogisticsNetworkState
-
-network: "id"

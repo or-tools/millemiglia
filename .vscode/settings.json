@@ -1,0 +1,8 @@
+{
+    "cmake.configureOnOpen": false,
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "iosfwd": "cpp",
+        "ostream": "cpp"
+    }
+}

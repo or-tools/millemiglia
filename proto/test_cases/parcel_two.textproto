@@ -1,4 +1,0 @@
-parcel: "p3"
-source_hub: "h1"
-destination_hub: "h2"
-size: [ { dimension: "pallets" value: 1 }, { dimension: "weight" value: 1 }]

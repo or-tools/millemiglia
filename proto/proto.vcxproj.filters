@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\resource.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\field_behavior.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\datetime.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\latlng.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\int128.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\lattle.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\resource.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\field_behavior.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\datetime.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\latlng.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\int128.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\lattle.pb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\CMakeFiles\f8aa5a6080f06edeb10fcbc8d41da557\resource.pb.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\CMakeFiles\f8aa5a6080f06edeb10fcbc8d41da557\field_behavior.pb.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\CMakeFiles\f8aa5a6080f06edeb10fcbc8d41da557\datetime.pb.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\CMakeFiles\f8aa5a6080f06edeb10fcbc8d41da557\latlng.pb.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\CMakeFiles\f8aa5a6080f06edeb10fcbc8d41da557\int128.pb.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\CMakeFiles\f8aa5a6080f06edeb10fcbc8d41da557\lattle.pb.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mogier\Desktop\PostDoc\middle_mile_problems\mmp_code\proto\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E4E40B52-CC83-3EDD-8670-ABC2D9839BC6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{0AF7ECF1-3705-33DC-9F21-BDA0AB64C52B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{69DB88F7-D244-3E4A-81C7-07F4391536EC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

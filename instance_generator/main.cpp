@@ -63,7 +63,7 @@ int main(int argc, char const* argv[]) {
 		cerr << "Failed to write the logistic network file "<< "\n";
 		exit(EXIT_FAILURE);
 	}
-	fstream output_network("./" + read_network.name() + ".textproto", ios::out);
+	fstream output_network("../" + read_network.name() + ".textproto", ios::out);
 	output_network << out;
 	output_network.close();
 

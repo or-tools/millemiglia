@@ -1,5 +1,4 @@
 #include "InstanceGenerator.h"
-#include "CNetwork-master/source/CNet.cpp"
 
 InstanceGenerator::InstanceGenerator() {
 }
@@ -28,7 +27,7 @@ InstanceGenerator& InstanceGenerator::operator=(const InstanceGenerator& instanc
 
 void InstanceGenerator::generate_logistic_network(const int& hubs_number, const int& time_horizon, 
 	const int& dimension_number, const int& max_length_line, const int& num_vehicles_per_step, const int& max_vehicle_duration,
-	const double& max_vehicle_capacity, const double& vehicle_sampling_inv_temp, const int& intial_numb_fully_connected_nodes,
+	const double& max_vehicle_capacity, const double& vehicle_sampling_inv_temp,
 	const int& new_connections_per_node) const {
 
 	//Build the protobuffer associated with the network
@@ -38,8 +37,8 @@ void InstanceGenerator::generate_logistic_network(const int& hubs_number, const 
 	//add dimensions
 	add_dimensions(logisticsNetwork, dimension_number);
 	
-	//generate the transportation graph by means of the Barabási-Albert algorithm with the implementation of Newman 
-	Graph random_graph = build_random_graph(hubs_number, intial_numb_fully_connected_nodes, new_connections_per_node);
+	//generate the transportation graph by means of the Barabï¿½si-Albert algorithm with the implementation of Newman 
+	Graph random_graph = build_random_graph(hubs_number,new_connections_per_node);
 
 	//Fill the hubs structure in the logistic network object
 	add_hubs(logisticsNetwork, random_graph);
@@ -68,45 +67,41 @@ void InstanceGenerator::generate_logistic_network(const int& hubs_number, const 
 
 }
 
-Graph InstanceGenerator::build_random_graph(const int& hubs_number, const int& intial_numb_fully_connected_nodes, const int& new_connections_per_node) const {
-	CNetwork graph_rand(hubs_number);
-	clock_t start = clock();
-	graph_rand.create_albert_barabasi(hubs_number, intial_numb_fully_connected_nodes, new_connections_per_node, ElRandom::GetSeed());
-	clock_t end = clock();
-	double dur = (float)(end - start) / CLOCKS_PER_SEC;
-
-	assert(hubs_number == graph_rand.get_node_count());
-
-	//build our data structure to hold the random graph
-	Graph graph = Graph(graph_rand.get_node_count());
-	for (int i = 0; i < graph_rand.get_node_count(); i++) {
-		string name = "h_" + to_string(i + 1);
-		graph.add_vertex(name);
+Graph InstanceGenerator::build_random_graph(const int& hubs_number, const int& new_connections_per_node ) const {
+	vector<std::pair<int,int>> edges;
+	vector<int> repeated_nodes;
+	for(int i = 1; i <= new_connections_per_node ; i++){
+		edges.push_back({1,i+1});
+		repeated_nodes.push_back(1);
+		repeated_nodes.push_back(i+1);	
 	}
-
-	for (int i = 0; i < graph_rand.get_link_count(); i++) {
-		string id1 = "h_" + to_string(graph_rand.adjm[i].x + 1);
-		string id2 = "h_" + to_string(graph_rand.adjm[i].y + 1);
-		graph.add_neighbour(id1, id2, "");
-	}
-
-	//cout << graph.mean_degree() << endl;
-
-	/*ofstream mystream;
-	mystream.open("random_graph_" + to_string(hubs_number) + ".txt", ios::trunc);
-	mystream << "hubs number\t"<<hubs_number << endl;
-	mystream << "mean degree\t"<< graph.mean_degree() << endl;
-	mystream << "time generation\t"<< dur << endl;
-	for (int i = 0; i < hubs_number; i++) {
-		for (int j = 0; j < graph.get_neighs_out(i).size(); j++) {
-			mystream << i << " " << graph.get_neighs_out(i).at(j) << endl;
+    
+	int source = new_connections_per_node + 1;
+     
+	 while(source <= hubs_number){
+		// random subset of repeated nodes.
+		vector<int> targets = random_subset(repeated_nodes,new_connections_per_node);
+		for(auto node: targets){
+			edges.push_back({node,source});
+			repeated_nodes.push_back(source);
+			repeated_nodes.push_back(node);
 		}
+		source++;
+	 }
+
+     Graph random_graph(hubs_number);
+	for (int i = 1; i <= hubs_number; i++) {
+		string name = "h_" + to_string(i);
+		random_graph.add_vertex(name);
 	}
-	mystream.close();
 
-	exit(EXIT_SUCCESS);*/
+	for (auto edge:edges) {
+		string id1 = "h_" + to_string(edge.first);
+		string id2 = "h_" + to_string(edge.second);
+		random_graph.add_neighbour(id1, id2, "");
+	}
 
-	return graph;
+	return random_graph;
 }
 
 vector<double> InstanceGenerator::build_arc_weights(const Graph& graph, const double& vehicle_sampling_inv_temp) const {

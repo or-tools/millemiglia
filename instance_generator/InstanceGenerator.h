@@ -69,11 +69,11 @@ public:
 	*	\param unit_capacities					if `True`, all vehicle capacities are set to 1. The argument `max_vehicle_capacity` is ignored in this case
 	*	\param vehicle_sampling_inv_temp		when sampling the vehicles for a given time step, probabilities for the vehicles are given by `softmax(vehicle_sampling_inv_temp* (degree_vehicle_sender + degree_vehicle_receiver))`. 
 	*											This way, vehicles connecting two high-degree nodes are sampled more frequently
-	*	\param network_connectivity				`m` parameter of the extended Barabási-Albert model 
-	*	\param initial_number_connected_nodes	`m0` parameter of the extended Barabási-Albert model
+	*	\param network_connectivity				`m` parameter of the extended Barabï¿½si-Albert model 
+	*	\param initial_number_connected_nodes	`m0` parameter of the extended Barabï¿½si-Albert model
 	* 
 	*	First, generates a (space) graph of depots and connections between them according to
-	*	the extended Barabási-Albert algorithm (https://www.degruyter.com/document/doi/10.1515/9781400841356/html). 
+	*	the extended Barabï¿½si-Albert algorithm (https://www.degruyter.com/document/doi/10.1515/9781400841356/html). 
 	*	The algorithm is found in https://github.com/VictorSeven/CNetwork
 	*	This results in a few highly connected (large degree), while most depots only have a few connections. 
 	*	The time-expanded representation is then generated from the original graph by
@@ -87,19 +87,18 @@ public:
 	*/
 	void generate_logistic_network(const int& hubs_number, const int& time_horizon, const int& dimension_number, const int& max_length_line, const int& num_vehicles_per_step, const int& max_vehicle_duration,
 		const double& max_vehicle_capacity = 100.0 , const double& vehicle_sampling_inv_temp = 0.01, 
-		const int& intial_numb_fully_connected_nodes = 2, const int& new_connections_per_node = 2) const;
+		const int& new_connections_per_node = 2) const;
 
 	/*
-	* \brief build the random graph according to the extended Barabási-Albert algorithm (https://www.degruyter.com/document/doi/10.1515/9781400841356/html). 
+	* \brief build the random graph according to the extended Barabï¿½si-Albert algorithm (https://www.degruyter.com/document/doi/10.1515/9781400841356/html). 
 	* 	The algorithm is found in https://github.com/VictorSeven/CNetwork
 	*	This results in a few highly connected (large degree), while most depots only have a few connections. 
 	*
 	* \param hubs_number : int
-	* \param intial_numb_fully_connected_nodes : int
 	* \param new_connections_per_node : int
 	* \return graph data structure
 	*/
-	Graph build_random_graph(const int& hubs_number, const int& intial_numb_fully_connected_nodes, const int& new_connections_per_node) const;
+	Graph build_random_graph(const int& hubs_number, const int& new_connections_per_node) const;
 
 	/*
 	* \brief build the weights on the arcs of the graph to sample vehicles based on the extremes degree: W_ij = vehicle_sampling_inv_temp * (deg(i)+deg(j)) 

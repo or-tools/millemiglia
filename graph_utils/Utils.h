@@ -123,4 +123,12 @@ static bool is_first_subvector(const vector<T> v1, const vector<T> v2) {
 	return true;
 }
 
+vector<int> random_subset(vector<int> &v,int n){
+  set<int> targets;
+  while((int)targets.size() < n){
+	 int index = ElRandom::Uniform(0, (int)v.size()-1);
+	 targets.insert(v[index]);
+  }
+  return vector<int>(targets.begin(),targets.end());
+}
 #endif //UTILS_H

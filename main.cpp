@@ -30,6 +30,9 @@ int main(int argc, char const* argv[]) {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   google::protobuf::SetLogHandler(&CustomLogHandler);
+
+	cout << "CIAOO\n";
+	return 0;
     // Parse protobuf text part.
     LogisticsNetwork read_network;
 	string network_file = argv[1];

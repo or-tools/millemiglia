@@ -1,8 +1,10 @@
+SET(CMAKE_CXX_COMPILER "g++")
 PROJECT(mmp_code)
 CMAKE_MINIMUM_REQUIRED (VERSION 3.20.0)
 SET(CMAKE_CXX_FLAGS "-g -Wall")
 
 find_package(Protobuf REQUIRED)
+    
 
 #ADD_SUBDIRECTORY(proto/google/type)
 #ADD_SUBDIRECTORY(proto/google/api)

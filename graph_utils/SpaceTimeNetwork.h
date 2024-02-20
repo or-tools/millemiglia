@@ -10,7 +10,6 @@
 #include "VertexST.h"
 #include "ArcST.h"
 #include "Lorry.h"
-#include "DepthFirstSearch.h"
 
 /**
 *	\class SpaceTimeNetwork.
@@ -46,11 +45,6 @@ protected:
 	*	key1 = hub id in graph, key2 = encoded time, value = vertex id in ST network
 	*/
 	unordered_map<int, unordered_map<int, int>> vertex_dictionary;
-
-	/**
-	*	A topological order of the vertices of the space-time network which is a directed acyclic graph
-	*/
-	vector<int> topological_order;
 
 	/**
 	*	Adjacency lists used in the graph algorithms, e.g., dfs, Yen, spp
@@ -165,11 +159,6 @@ public:
 	*/
 	void sort_adjacency_list_out();
 	/**
-	*	\brief Build topological order as in "Cormen, Thomas H., et al. Introduction to algorithms. MIT press, 2022."
-	*		call Depth-First Search and order the vertices by decreasing DFS finish time
-	*/
-	void compute_topological_order();
-	/**
 	*	\brief Get vertices (hub,t) where t >= time 
 	*
 	*	\param hub : int
@@ -224,7 +213,6 @@ public:
 	const VertexST& get_vertex(const int& hub, const int& time) const; 
 	const vector<unordered_map<int, double>>& get_adjacency_lists_graph_algorithms() const;
 	const vector<unordered_map<int, int>>& get_adjacency_lists_arc_position() const;
-	const vector<int>& get_topologiacal_order() const;
 
 	const string toString() const;
 

@@ -19,12 +19,8 @@ SpaceTimeNetwork::SpaceTimeNetwork(const string& network_file, const int& time_h
 	build_lorries(this->network);
 	cout << toString() << endl;
 	cout << "\n\nCOMPUTE ADJACENCY LISTS FOR GRAPH ALGORITHMS --- STARTING\n\n";
-	this->compute_topological_order();
-	cout << "\n\nCOMPUTE ADJACENCY LISTS FOR GRAPH ALGORITHMS --- COMPLETED\n\n";
 	this->initialise_adjacency_lists_graph_algorithms("length");
 	cout << "\n\nCOMPUTE TOPOLOGICAL ORDER --- STARTING\n\n";
-	this->compute_topological_order();
-	cout << "\n\nCOMPUTE TOPOLOGICAL ORDER --- COMPLETED\n\n";
 }
 
 void SpaceTimeNetwork::parse_logistic_network(const string& network_file) {
@@ -54,7 +50,6 @@ SpaceTimeNetwork::SpaceTimeNetwork(const SpaceTimeNetwork& spaceTimeNetwork) {
 	this->vertices = spaceTimeNetwork.vertices;
 	this->arcs = spaceTimeNetwork.arcs;
 	this->vertex_dictionary = spaceTimeNetwork.vertex_dictionary;
-	this->topological_order = spaceTimeNetwork.topological_order;
 	this->lorries = spaceTimeNetwork.lorries;
 	this->network = spaceTimeNetwork.network;
 	this->adjacency_lists_graph_algorithms = spaceTimeNetwork.adjacency_lists_graph_algorithms;
@@ -66,7 +61,6 @@ SpaceTimeNetwork& SpaceTimeNetwork::operator=(const SpaceTimeNetwork& spaceTimeN
 	this->vertices = spaceTimeNetwork.vertices;
 	this->arcs = spaceTimeNetwork.arcs;
 	this->vertex_dictionary = spaceTimeNetwork.vertex_dictionary;
-	this->topological_order = spaceTimeNetwork.topological_order;
 	this->lorries = spaceTimeNetwork.lorries;
 	this->network = spaceTimeNetwork.network;
 	this->adjacency_lists_graph_algorithms = spaceTimeNetwork.adjacency_lists_graph_algorithms;
@@ -201,21 +195,7 @@ void SpaceTimeNetwork::add_to_adjacency_list_in(const ArcST& arc) {
 	this->vertices.at(arc.get_arrival_id()).add_neighbour_in(arc.get_departure_id(), arc.get_id());
 }
 
-void SpaceTimeNetwork::compute_topological_order() {
-	DepthFirstSearch dfs = DepthFirstSearch(this->vertices.size(), this->adjacency_lists_graph_algorithms);
-	dfs.solve_DFS_algorithm();
-	vector<pair<int, int>> sort_aux(this->vertices.size());
-	for (int i = 0; i < this->vertices.size(); i++) {
-		sort_aux.at(i) = make_pair(dfs.get_finish_time().at(i), i);
-	}
-	sort(sort_aux.rbegin(), sort_aux.rend());
-	this->topological_order = vector<int>(this->vertices.size(), -1);
-	for (int i = 0; i < this->topological_order.size(); i++) {
-		int vertex_id = sort_aux.at(i).second;
-		this->topological_order.at(i) = vertex_id;
-		this->vertices.at(vertex_id).set_topological_position(i);
-	}
-}
+
 
 const vector<int> SpaceTimeNetwork::get_hub_time_after_t(const int& hub, const int& time) const {
 	vector<int> v_ids;
@@ -269,9 +249,6 @@ const vector<unordered_map<int, int>>& SpaceTimeNetwork::get_adjacency_lists_arc
 	return this->adjacency_lists_arc_position;
 }
 
-const vector<int>& SpaceTimeNetwork::get_topologiacal_order() const {
-	return this->topological_order;
-}
 
 void SpaceTimeNetwork::add_vertexST(const int& hub, const int& time) {
 	auto dict1 = this->vertex_dictionary.find(hub);

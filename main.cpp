@@ -21,9 +21,11 @@ using namespace std;
 using namespace operations_research::lattle;
 
 namespace {
+/*
 void CustomLogHandler(google::protobuf::LogLevel level, const char* filename, int line, const std::string& message) {
 	std::cerr << "ERROR: " << level << " at " << filename << ":" << line << ": " << message << std::endl;
 	}
+*/
 }
 
 int main(int argc, char const* argv[]) {
@@ -78,7 +80,7 @@ int main(int argc, char const* argv[]) {
 	ElRandom::SetSeed(random_seed);
 	string instanceName = "logisticNetwork_1000_500_300";
 	string description = "";
-	
+
 	InstanceGenerator iGenerator(instanceName, description, random_seed);
 	iGenerator.generate_logistic_network(1000, time_horizon, 1, 3, 10, 5, 100.0, 0.01,10);
 

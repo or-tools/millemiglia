@@ -1,5 +1,7 @@
 #include "Lorry.h"
 
+int Lorry::lastId;
+
 Lorry::Lorry(const string& name, const operations_research::lattle::Vehicle& vehicle) : vehicle(vehicle) {
 	this->id = this->lastId;
 	this->name = this->name;

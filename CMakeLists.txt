@@ -1,16 +1,82 @@
-PROJECT(mmp_code)
+cmake_minimum_required(VERSION 3.20.0)
 
-CMAKE_MINIMUM_REQUIRED (VERSION 3.20.0)
-SET(CMAKE_CXX_FLAGS "-g -Wall")
-file(GLOB_RECURSE sources *.cpp)
-file(GLOB_RECURSE headers *.h)
-find_package(Protobuf REQUIRED)
+project(millemiglia VERSION 0.0.1 LANGUAGES CXX)
+set(PROJECT_NAMESPACE millemiglia)
+message(STATUS "${PROJECT_NAME} version: ${PROJECT_VERSION}")
+#message(STATUS "major: ${PROJECT_VERSION_MAJOR}")
+#message(STATUS "minor: ${PROJECT_VERSION_MINOR}")
+#message(STATUS "patch: ${PROJECT_VERSION_PATCH}")
+
+include(FetchContent)
+
+message(CHECK_START "Fetching Abseil-cpp")
+list(APPEND CMAKE_MESSAGE_INDENT "  ")
+set(ABSL_ENABLE_INSTALL ON)
+set(ABSL_USE_SYSTEM_INCLUDES ON)
+set(ABSL_PROPAGATE_CXX_STD ON)
+set(ABSL_BUILD_TESTING OFF)
+FetchContent_Declare(
+  abseil-cpp
+  GIT_REPOSITORY "https://github.com/abseil/abseil-cpp.git"
+  GIT_TAG "20240116.1"
+  #PATCH_COMMAND git apply --ignore-whitespace "${CMAKE_CURRENT_LIST_DIR}/../../patches/abseil-cpp-20240116.1.patch"
+)
+FetchContent_MakeAvailable(abseil-cpp)
+list(POP_BACK CMAKE_MESSAGE_INDENT)
+message(CHECK_PASS "fetched")
+
+message(CHECK_START "Fetching Protobuf")
+list(APPEND CMAKE_MESSAGE_INDENT "  ")
+set(protobuf_BUILD_TESTS OFF)
+#set(protobuf_BUILD_SHARED_LIBS OFF)
+set(protobuf_BUILD_EXPORT OFF)
+set(protobuf_MSVC_STATIC_RUNTIME OFF)
+FetchContent_Declare(
+  Protobuf
+  GIT_REPOSITORY "https://github.com/protocolbuffers/protobuf.git"
+  GIT_TAG "v25.3"
+  GIT_SUBMODULES ""
+  #PATCH_COMMAND git apply --ignore-whitespace "${CMAKE_CURRENT_LIST_DIR}/../../patches/protobuf-v25.3.patch"
+  OVERRIDE_FIND_PACKAGE
+)
+FetchContent_MakeAvailable(Protobuf)
+list(POP_BACK CMAKE_MESSAGE_INDENT)
+message(CHECK_PASS "fetched")
+
+##################
+## Proto files  ##
+##################
 add_subdirectory(proto)
 
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
-INCLUDE_DIRECTORIES(${Protobuf_INCLUDE_DIRS})
+#############
+## Library ##
+#############
+set(CMAKE_CXX_FLAGS "-g -Wall")
+
+file(GLOB_RECURSE sources
+  instance_generator/*.cpp
+  graph_utils/*.cpp
+)
+file(GLOB_RECURSE headers
+  instance_generator/*.h
+  graph_utils/*.h
+)
 
 add_library(library ${sources} ${headers})
-ADD_EXECUTABLE(main main.cpp)
-TARGET_LINK_LIBRARIES(main library proto ${Protobuf_LIBRARIES})
+set_target_properties(library PROPERTIES
+  CXX_STANDARD_REQUIRED ON
+  CXX_EXTENSIONS OFF
+  POSITION_INDEPENDENT_CODE ON
+  INTERFACE_POSITION_INDEPENDENT_CODE ON
+  INTERFACE_${PROJECT_NAME}_MAJOR_VERSION ${PROJECT_VERSION_MAJOR}
+  COMPATIBLE_INTERFACE_STRING ${PROJECT_NAME}_MAJOR_VERSION
+)
+target_compile_features(library PUBLIC
+  $<IF:$<CXX_COMPILER_ID:MSVC>,cxx_std_20,cxx_std_17>)
+target_link_libraries(library PUBLIC
+  protobuf::libprotobuf
+  millemiglia::millemiglia_proto)
+
+add_executable(main main.cpp)
+target_link_libraries(main PRIVATE library)
 #set_property(TARGET main PROPERTY CXX_STANDARD 20)

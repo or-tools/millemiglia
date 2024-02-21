@@ -4,6 +4,7 @@
 *	\author	Matteo Petris
 *	\date	February 2023
 */
+#pragma  once
 #ifndef UTILS_H
 #define UTILS_H
 
@@ -33,21 +34,21 @@ extern inline double rounderToNDecimals(double x, unsigned int precision);
  * \param second : int
  * \return the encode : int.
  */
-extern inline int time_encoder(const int& year, const int& month, const int& day, const int& hour, const int& minute, const int& second);
+ int time_encoder(const int& year, const int& month, const int& day, const int& hour, const int& minute, const int& second);
 /**
  * \brief given a google::type::DateTime object covert to an integer according to a time discretisation
  *
  * \param time : google::type::DateTime
  * \return the encode : int.
  */
-extern inline int time_encoder(const google::type::DateTime& time);
+ int time_encoder(const google::type::DateTime& time);
 /**
  * \brief given an integer google::type::DateTime object covert to an integer according to a time discretisation
  *
  * \param time_encoded : int
  * \return the decoded time : google::type::DateTime.
  */
-extern inline google::type::DateTime time_decoder(const int& time_encoded);
+ google::type::DateTime time_decoder(const int& time_encoded);
 
 //RANDOM GENERATORS
 /**
@@ -73,6 +74,8 @@ extern inline vector<double> softmax(const vector<double>& x);
  * \return exponential of x : vector of double.
  */
 extern inline vector<double> exponential(const vector<double>& x);
+
+extern inline  vector<int> random_subset(vector<int> &v,int n);
 
 //OPERATIONS WITH VECTORS
 /**
@@ -123,12 +126,5 @@ static bool is_first_subvector(const vector<T> v1, const vector<T> v2) {
 	return true;
 }
 
-vector<int> random_subset(vector<int> &v,int n){
-  set<int> targets;
-  while((int)targets.size() < n){
-	 int index = ElRandom::Uniform(0, (int)v.size()-1);
-	 targets.insert(v[index]);
-  }
-  return vector<int>(targets.begin(),targets.end());
-}
+
 #endif //UTILS_H

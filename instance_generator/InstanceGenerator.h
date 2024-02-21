@@ -1,12 +1,13 @@
 #ifndef INSTANCEGENERATOR_H
 #define INSTANCEGENERATOR_H
 
-#pragma once
 
-#include "Header.h"
-#include "Utils.h"
 
-#include "SpaceTimeNetwork.h"
+#include "../graph_utils/Header.h"
+#include "../graph_utils/Utils.h"
+
+#include "../graph_utils/SpaceTimeNetwork.h"
+
 
 /**
 *	\class InstanceGenerator.

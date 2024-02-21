@@ -84,7 +84,7 @@ inline double rounderToNDecimals(double x, unsigned int precision) {
 
 }
 
-inline int time_encoder(const int& year, const int& month, const int& day, const int& hour, const int& minute, const int& second) {
+ int time_encoder(const int& year, const int& month, const int& day, const int& hour, const int& minute, const int& second) {
 	double tot_time_in_min = minute + hour * 60;
 	double min = static_cast<double>(tot_time_in_min) / ::TIMESTEP;
 	int encoding = -1;
@@ -97,7 +97,7 @@ inline int time_encoder(const int& year, const int& month, const int& day, const
 	return encoding;
 }
 
-inline int time_encoder(const google::type::DateTime& time) {
+ int time_encoder(const google::type::DateTime& time) {
 	double tot_time_in_min = time.minutes() + time.hours() * 60;
 	double min = static_cast<double>(tot_time_in_min) / ::TIMESTEP;
 	int encoding = -1;
@@ -110,7 +110,7 @@ inline int time_encoder(const google::type::DateTime& time) {
 	return encoding;
 }
 
-inline google::type::DateTime time_decoder(const int& time_encoded) {
+ google::type::DateTime time_decoder(const int& time_encoded) {
 	google::type::DateTime time;
 	time.set_year(2023);
 	time.set_month(3);
@@ -154,4 +154,12 @@ inline vector<double> exponential(const vector<double>& x) {
 		expo.at(i) = exp(x.at(i));
 	}
 	return expo;
+}
+inline vector<int> random_subset(vector<int> &v,int n){
+  set<int> targets;
+  while((int)targets.size() < n){
+	 int index = ElRandom::Uniform(0, (int)v.size()-1);
+	 targets.insert(v[index]);
+  }
+  return vector<int>(targets.begin(),targets.end());
 }

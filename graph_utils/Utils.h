@@ -12,16 +12,16 @@
 #include "Elrandom.h"
 
 //METHODS FOR FLOATING POINT NUMBERS
-extern inline bool strictly_less(double x, double y);
-extern inline bool less(double x, double y);
-extern inline bool equal(double x, double y);
-extern inline bool strictly_greater(double x, double y);
-extern inline bool greater(double x, double y);
-extern inline double minimum(double x, double y);
-extern inline double maximum(double x, double y);
-extern inline double computeFractionalPart(double x);
-extern inline double rounder(double x);
-extern inline double rounderToNDecimals(double x, unsigned int precision);
+bool strictly_less(double x, double y);
+inline bool less(double x, double y);
+inline bool equal(double x, double y);
+bool strictly_greater(double x, double y);
+inline bool greater(double x, double y);
+inline double minimum(double x, double y);
+inline double maximum(double x, double y);
+inline double computeFractionalPart(double x);
+inline double rounder(double x);
+inline double rounderToNDecimals(double x, unsigned int precision);
 
 /**
  * \brief given a year, month, day, hour, minute, second covert to an integer according to a time discretisation
@@ -61,7 +61,7 @@ extern inline int randomIntBetween(int _min, int _max, mt19937& generator);
 
 /**
  * \brief compute the softmax function of python. sigma(x)_j = e^(x_j)/ sum_k e^(x_k)
- * 
+ *
  * \param x : vector of double
  * \return softmax of x : vector of double.
  */
@@ -73,20 +73,20 @@ extern inline vector<double> softmax(const vector<double>& x);
  * \param x : vector of double
  * \return exponential of x : vector of double.
  */
-extern inline vector<double> exponential(const vector<double>& x);
+vector<double> exponential(const vector<double>& x);
 
-extern inline  vector<int> random_subset(vector<int> &v,int n);
+vector<int> random_subset(vector<int> &v,int n);
 
 //OPERATIONS WITH VECTORS
 /**
  * \brief extract subvector from a vector
  *
- * \param v : vector 
- * \param v : first_position 
- * \param v : last_position 
+ * \param v : vector
+ * \param v : first_position
+ * \param v : last_position
  * \return subvector of v from first_position to last_position.
  */
-template <typename T>																
+template <typename T>
 static vector<T> extract_subvector(const vector<T> v, const int& first_position, const int& last_position) {
 	vector<T> subvector(v.begin() + first_position, v.begin() + last_position + 1);
 	return subvector;

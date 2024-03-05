@@ -1,0 +1,1761 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "_deps/protobuf-build/libprotobufd.a"
+		}
+	],
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"include",
+			"install",
+			"target_link_libraries",
+			"target_compile_definitions",
+			"protobuf_configure_target",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"build/_deps/protobuf-src/cmake/libprotobuf.cmake",
+			"build/_deps/protobuf-src/CMakeLists.txt",
+			"build/_deps/protobuf-src/cmake/install.cmake",
+			"build/_deps/protobuf-src/cmake/protobuf-configure-target.cmake",
+			"build/_deps/protobuf-src/cmake/utf8_range.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 302,
+				"parent" : 0
+			},
+			{
+				"file" : 0,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 6,
+				"parent" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 353,
+				"parent" : 0
+			},
+			{
+				"file" : 2,
+				"parent" : 4
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 42,
+				"parent" : 5
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 30,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 48,
+				"parent" : 2
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 31,
+				"parent" : 2
+			},
+			{
+				"command" : 4,
+				"file" : 3,
+				"line" : 38,
+				"parent" : 9
+			},
+			{
+				"command" : 4,
+				"file" : 3,
+				"line" : 53,
+				"parent" : 9
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 279,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 297,
+				"parent" : 0
+			},
+			{
+				"file" : 4,
+				"parent" : 13
+			},
+			{
+				"command" : 6,
+				"file" : 4,
+				"line" : 12,
+				"parent" : 14
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -fvisibility=hidden -fvisibility-inlines-hidden"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 10,
+					"define" : "GOOGLE_PROTOBUF_CMAKE_BUILD"
+				},
+				{
+					"backtrace" : 11,
+					"define" : "HAVE_ZLIB"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 12,
+					"path" : "/home/aymanelotfi/Documents/millemiglia/build/_deps/protobuf-build"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/home/aymanelotfi/Documents/millemiglia/build/_deps/protobuf-src/src"
+				},
+				{
+					"backtrace" : 15,
+					"path" : "/home/aymanelotfi/Documents/millemiglia/build/_deps/protobuf-src/third_party/utf8_range"
+				},
+				{
+					"backtrace" : 7,
+					"isSystem" : true,
+					"path" : "/home/aymanelotfi/Documents/millemiglia/build/_deps/abseil-cpp-src"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 7,
+			"id" : "log_severity::@649cb5ab055927a76ab5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "raw_logging_internal::@649cb5ab055927a76ab5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "spinlock_wait::@649cb5ab055927a76ab5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "malloc_internal::@649cb5ab055927a76ab5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "base::@649cb5ab055927a76ab5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "throw_delegate::@649cb5ab055927a76ab5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "strerror::@649cb5ab055927a76ab5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "hashtablez_sampler::@49ad4cc58ca2b33d3cb1"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "raw_hash_set::@49ad4cc58ca2b33d3cb1"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "crc_cpu_detect::@e7b73a99dc329af715ea"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "crc_internal::@e7b73a99dc329af715ea"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "crc32c::@e7b73a99dc329af715ea"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "crc_cord_state::@e7b73a99dc329af715ea"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "stacktrace::@29ce828be0197ec6dd61"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "symbolize::@29ce828be0197ec6dd61"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "examine_stack::@29ce828be0197ec6dd61"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "debugging_internal::@29ce828be0197ec6dd61"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "demangle_internal::@29ce828be0197ec6dd61"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "leak_check::@29ce828be0197ec6dd61"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "flags_program_name::@4e66689cfd0f0cabb9c5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "flags_config::@4e66689cfd0f0cabb9c5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "flags_marshalling::@4e66689cfd0f0cabb9c5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "flags_commandlineflag_internal::@4e66689cfd0f0cabb9c5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "flags_commandlineflag::@4e66689cfd0f0cabb9c5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "flags_private_handle_accessor::@4e66689cfd0f0cabb9c5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "flags_reflection::@4e66689cfd0f0cabb9c5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "flags_internal::@4e66689cfd0f0cabb9c5"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "hash::@e82b4f9cfb0ccfacbdfd"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "city::@e82b4f9cfb0ccfacbdfd"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "low_level_hash::@e82b4f9cfb0ccfacbdfd"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_internal_check_op::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_internal_conditions::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_internal_format::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_internal_globals::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_internal_proto::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_internal_message::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_internal_log_sink_set::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_internal_nullguard::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "die_if_null::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_globals::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_initialize::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_entry::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_sink::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "vlog_config_internal::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "log_internal_fnmatch::@ec0c5076da8ab1df7c81"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "int128::@9d8e9017d0346130c5af"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "exponential_biased::@610112b8222b7e6b2b6f"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "status::@eec4915894d7ef1676bd"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "statusor::@eec4915894d7ef1676bd"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "string_view::@cadd5db28f0587d4097f"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "strings::@cadd5db28f0587d4097f"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "strings_internal::@cadd5db28f0587d4097f"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "str_format_internal::@cadd5db28f0587d4097f"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "cord_internal::@cadd5db28f0587d4097f"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "cordz_functions::@cadd5db28f0587d4097f"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "cordz_handle::@cadd5db28f0587d4097f"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "cordz_info::@cadd5db28f0587d4097f"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "cord::@cadd5db28f0587d4097f"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "graphcycles_internal::@f8dca903cb46e5e9bef2"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "kernel_timeout_internal::@f8dca903cb46e5e9bef2"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "synchronization::@f8dca903cb46e5e9bef2"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "time::@b4524c795b0f97a08e67"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "civil_time::@b4524c795b0f97a08e67"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "time_zone::@b4524c795b0f97a08e67"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "bad_optional_access::@91b7f7e4da4a6a5cf896"
+		},
+		{
+			"backtrace" : 7,
+			"id" : "bad_variant_access::@91b7f7e4da4a6a5cf896"
+		},
+		{
+			"backtrace" : 8,
+			"id" : "utf8_validity::@640996056baeb87769e4"
+		}
+	],
+	"id" : "libprotobuf::@ae0d5a95a4776c73bb4e",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 6,
+				"path" : "lib"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "/usr/local"
+		}
+	},
+	"name" : "libprotobuf",
+	"nameOnDisk" : "libprotobufd.a",
+	"paths" : 
+	{
+		"build" : "_deps/protobuf-build",
+		"source" : "build/_deps/protobuf-src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47,
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63,
+				64,
+				65,
+				66,
+				67,
+				68,
+				69,
+				70,
+				71,
+				72,
+				73,
+				74,
+				75,
+				76
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				77,
+				78,
+				79,
+				80,
+				81,
+				82,
+				83,
+				84,
+				85,
+				86,
+				87,
+				88,
+				89,
+				90,
+				91,
+				92,
+				93,
+				94,
+				95,
+				96,
+				97,
+				98,
+				99,
+				100,
+				101,
+				102,
+				103,
+				104,
+				105,
+				106,
+				107,
+				108,
+				109,
+				110,
+				111,
+				112,
+				113,
+				114,
+				115,
+				116,
+				117,
+				118,
+				119,
+				120,
+				121,
+				122,
+				123,
+				124,
+				125,
+				126,
+				127,
+				128,
+				129,
+				130,
+				131,
+				132,
+				133,
+				134,
+				135,
+				136,
+				137,
+				138,
+				139,
+				140,
+				141,
+				142,
+				143,
+				144,
+				145,
+				146,
+				147,
+				148,
+				149,
+				150,
+				151,
+				152,
+				153,
+				154,
+				155,
+				158,
+				159,
+				160,
+				161,
+				162,
+				163,
+				164,
+				165,
+				166,
+				167,
+				168,
+				169,
+				170,
+				171,
+				172,
+				173,
+				174,
+				175,
+				176,
+				177,
+				178,
+				179,
+				180,
+				181,
+				182,
+				183,
+				184,
+				185,
+				186
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				156,
+				157
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/any.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/api.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/duration.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/empty.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/field_mask.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/source_context.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/struct.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/timestamp.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/type.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/wrappers.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/any.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/any_lite.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/arena.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/arena_align.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/arenastring.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/arenaz_sampler.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/compiler/importer.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/compiler/parser.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/cpp_features.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/descriptor.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/descriptor.pb.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/descriptor_database.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/dynamic_message.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/extension_set.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/extension_set_heavy.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/feature_resolver.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_enum_util.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_bases.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_reflection.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_tctable_full.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_tctable_gen.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_tctable_lite.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_util.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/implicit_weak_message.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/inlined_string_field.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/internal_message_util.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/coded_stream.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/gzip_stream.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/io_win32.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/printer.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/strtod.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/tokenizer.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/zero_copy_sink.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/zero_copy_stream.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/zero_copy_stream_impl.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/zero_copy_stream_impl_lite.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/lexer.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/message_path.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/parser.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/unparser.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/untyped_message.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/writer.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/zero_copy_buffered_stream.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/json.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/map.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/map_field.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/message.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/message_lite.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/parse_context.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/port.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/raw_ptr.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/reflection_mode.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/reflection_ops.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/repeated_field.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/repeated_ptr_field.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/service.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/stubs/common.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/text_format.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/unknown_field_set.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/delimited_message_util.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/field_comparator.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/field_mask_util.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/message_differencer.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/time_util.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/type_resolver_util.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/wire_format.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/wire_format_lite.cc",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/any.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/api.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/duration.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/empty.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/field_mask.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/source_context.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/struct.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/timestamp.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/type.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/wrappers.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/any.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/arena.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/arena_align.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/arena_allocation_policy.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/arena_cleanup.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/arenastring.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/arenaz_sampler.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/compiler/importer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/compiler/parser.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/cpp_edition_defaults.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/cpp_features.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/descriptor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/descriptor.pb.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/descriptor_database.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/descriptor_legacy.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/descriptor_visitor.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/dynamic_message.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/endian.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/explicitly_constructed.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/extension_set.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/extension_set_inl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/feature_resolver.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/field_access_listener.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_enum_reflection.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_enum_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_bases.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_reflection.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_tctable_decl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_tctable_gen.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_tctable_impl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/generated_message_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/has_bits.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/implicit_weak_message.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/inlined_string_field.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/internal_message_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/internal_visibility.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/coded_stream.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/gzip_stream.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/io_win32.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/printer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/strtod.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/tokenizer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/zero_copy_sink.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/zero_copy_stream.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/zero_copy_stream_impl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/io/zero_copy_stream_impl_lite.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/descriptor_traits.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/lexer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/message_path.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/parser.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/parser_traits.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/unparser.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/unparser_traits.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/untyped_message.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/writer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/internal/zero_copy_buffered_stream.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/json/json.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/map.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/map_entry.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/map_field.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/map_field_inl.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/map_field_lite.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/map_type_handler.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/message.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/message_lite.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/metadata.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/metadata_lite.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/parse_context.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/port.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/port_def.inc",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/port_undef.inc",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/raw_ptr.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/reflection.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/reflection_internal.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/reflection_mode.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/reflection_ops.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/repeated_field.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/repeated_ptr_field.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/serial_arena.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/service.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/string_block.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/stubs/callback.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/stubs/common.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/stubs/platform_macros.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/stubs/port.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/stubs/status_macros.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/text_format.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/thread_safe_arena.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/unknown_field_set.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/delimited_message_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/field_comparator.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/field_mask_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/json_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/message_differencer.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/time_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/type_resolver.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/util/type_resolver_util.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/varint_shuffle.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/wire_format.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 3,
+			"path" : "build/_deps/protobuf-src/src/google/protobuf/wire_format_lite.h",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

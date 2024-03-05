@@ -2,17 +2,17 @@ syntax = "proto3";
 
 package operations_research.lattle;
 
-import "google/api/field_behavior.proto";
-import "google/api/resource.proto";
+import "field_behavior.proto";
+import "resource.proto";
 import "google/protobuf/duration.proto";
-import "google/type/datetime.proto";
-import "google/type/latlng.proto";
-import "storage/util/int128/int128.proto";
+import "datetime.proto";
+import "latlng.proto";
+import "int128.proto";
 
 option java_package = "com.google.operationsresearch.lattle.v1";
 option java_multiple_files = true;
 option java_outer_classname = "LattleProto";
-option use_java_stubby_library = true;
+//option use_java_stubby_library = true;
 
 // go/lattle-dd
 

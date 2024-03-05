@@ -150,7 +150,8 @@ void InstanceGenerator::add_hubs(operations_research::lattle::LogisticsNetwork& 
 	for (int i = 0; i < graph.get_vertex_number(); i++) {
 		const Vertex& v = graph.get_vertex(i);
 		operations_research::lattle::Hub h;
-		network.mutable_hubs()->insert({ v.get_name(),h});
+		h.set_name(v.get_name());
+		network.mutable_hubs()->Add(move(h));
 	}
 }
 
@@ -282,16 +283,17 @@ void InstanceGenerator::add_line_rotation(operations_research::lattle::Logistics
 		//add cost + number of vehicles
 		int price = rotations.at(i).back() - rotations.at(i).front();
 		assert(price > 0);
+		rotation.set_name(name);
 		rotation.mutable_fixed_price()->mutable_separable()->set_constant_price(static_cast<double>(price));
 		rotation.mutable_maximum_number_vehicles()->set_start_value(1);
 		rotation.mutable_maximum_number_vehicles()->set_end_value(1);
 
 		//add rotation to line
-		line_proto.mutable_next_rotations()->insert({ name,rotation });
+		line_proto.mutable_next_rotations()->Add(move(rotation));
 
 	}
-
-	network.mutable_lines()->insert({ "l" + to_string(line_numb), line_proto });
+    line_proto.set_name("l" + to_string(line_numb));
+	network.mutable_lines()->Add(move(line_proto));
 
 }
 
@@ -330,36 +332,37 @@ void InstanceGenerator::add_vehicles(operations_research::lattle::LogisticsNetwo
 		value.set_value(capacity);
 		v.mutable_capacities()->Add(move(value));
 		v.mutable_cost()->mutable_separable()->set_constant_price(capacity);
-		network.mutable_vehicles()->insert({ "v" + to_string(l + 1),v });
+		v.set_name("v" + to_string(l + 1));
+		network.mutable_vehicles()->Add(move(v));
 	}
 }
 
-void InstanceGenerator::generate_parcels(const operations_research::lattle::LogisticsNetwork& network, const SpaceTimeNetwork& st_network, 
-	const int& timesteps, const int& parcel_number, const int& mean_path_length, const int& min_parcel_weight, const int& max_parcel_weight, 
-	const double& parcel_weight_shape, const bool& unit_weights, const double& start_inv_temp, const double& dist_inv_temp,
+void InstanceGenerator::generate_shipments(const operations_research::lattle::LogisticsNetwork& network, const SpaceTimeNetwork& st_network, 
+	const int& timesteps, const int& shipment_number, const int& mean_path_length, const int& min_shipment_weight, const int& max_shipment_weight, 
+	const double& shipment_weight_shape, const bool& unit_weights, const double& start_inv_temp, const double& dist_inv_temp,
 	const int& max_tries, const double& cut_capacities) const {
 
-	//cout << "parcel\tsource\tdest\tweight\n";
+	//cout << "shipment\tsource\tdest\tweight\n";
 
-	// Add parcels to the network
-	vector<int> parcel_weights;
+	// Add shipments to the network
+	vector<int> shipment_weights;
 	default_random_engine generator(this->random_seed);
 	uniform_real_distribution<double> distribution(0.0, 1.0);
 	if (unit_weights) {
-		parcel_weights = vector<int>(parcel_number, 1);
+		shipment_weights = vector<int>(shipment_number, 1);
 	}
 	else {
-		parcel_weights = vector<int>(parcel_number, 0);
-		for (int j = 0; j < parcel_number; j++) {
-			while (::strictly_less(parcel_weights.at(j), min_parcel_weight) || ::strictly_greater(parcel_weights.at(j), max_parcel_weight)) {
-				double lomax_draw = ElRandom::Lomax(static_cast<double>(min_parcel_weight), parcel_weight_shape);
-				parcel_weights.at(j) = max(1, static_cast<int>(floor(lomax_draw)));
+		shipment_weights = vector<int>(shipment_number, 0);
+		for (int j = 0; j < shipment_number; j++) {
+			while (::strictly_less(shipment_weights.at(j), min_shipment_weight) || ::strictly_greater(shipment_weights.at(j), max_shipment_weight)) {
+				double lomax_draw = ElRandom::Lomax(static_cast<double>(min_shipment_weight), shipment_weight_shape);
+				shipment_weights.at(j) = max(1, static_cast<int>(floor(lomax_draw)));
 			}
 		}
 	}
-	sort(parcel_weights.rbegin(), parcel_weights.rend());
+	sort(shipment_weights.rbegin(), shipment_weights.rend());
 
-	// Compute weights to assign to the hubs which are used to sample starting hubs for the parcels
+	// Compute weights to assign to the hubs which are used to sample starting hubs for the shipments
 	vector<double> hubs_weights(st_network.get_underlying_graph().get_vertex_number(), -start_inv_temp);
 	for (const auto& vertex : st_network.get_underlying_graph().get_vertices()) {
 		hubs_weights.at(vertex.get_id()) *= static_cast<double>(vertex.get_neighbours_number());
@@ -370,15 +373,15 @@ void InstanceGenerator::generate_parcels(const operations_research::lattle::Logi
 
 	int end_time = timesteps - mean_path_length;
 
-	// Sample paths for all parcels: start and end point for the parcels
-	vector<int> source_hubs(parcel_number, -1);
-	vector<int> destination_hubs(parcel_number, -1);
+	// Sample paths for all shipments: start and end point for the shipments
+	vector<int> source_hubs(shipment_number, -1);
+	vector<int> destination_hubs(shipment_number, -1);
 	default_random_engine generator_time(this->random_seed);
 	default_random_engine generator_next(this->random_seed);
 	default_random_engine generator_stop(this->random_seed);
 	double prob_success = 1.0 / static_cast<double>(mean_path_length);
-	int parcel_counter = 0;
-	for (int j = 0; j < parcel_number; j++) {
+	int shipment_counter = 0;
+	for (int j = 0; j < shipment_number; j++) {
 		bool success = false;
 		int tries = 0;
 
@@ -432,8 +435,8 @@ void InstanceGenerator::generate_parcels(const operations_research::lattle::Logi
 		}
 
 		if (success) {
-			operations_research::lattle::Parcel parcel;
-			parcel.set_parcel("p_" + to_string(parcel_counter));
+			operations_research::lattle::Shipment shipment;
+			shipment.set_name("p_" + to_string(shipment_counter));
 			const VertexST& source = st_network.get_vertices().at(source_hubs.at(j));
 			int source_hub_id = source.get_id_in_graph();
 			const VertexST& destination = st_network.get_vertices().at(destination_hubs.at(j));
@@ -441,27 +444,27 @@ void InstanceGenerator::generate_parcels(const operations_research::lattle::Logi
 			string destination_name = st_network.get_underlying_graph().get_vertex(destination_hub_id).get_name();
 			string source_name = st_network.get_underlying_graph().get_vertex(source_hub_id).get_name();
 			assert(source_name != destination_name);
-			parcel.set_destination_hub(destination_name);
-			parcel.set_source_hub(source_name);
+			shipment.set_destination_hub(destination_name);
+			shipment.set_source_hub(source_name);
 			operations_research::lattle::ValueDimension value;
 			value.set_dimension("weight");
-			value.set_value(parcel_weights.at(j));
-			parcel.mutable_size()->Add(move(value));
-			/*cout << j << "\t" << st_network.get_underlying_graph().get_vertex(source_hub_id).get_name() << "\t" << st_network.get_underlying_graph().get_vertex(destination_hub_id).get_name() << "\t" << parcel_weights.at(j);
+			value.set_value(shipment_weights.at(j));
+			shipment.mutable_size()->Add(move(value));
+			/*cout << j << "\t" << st_network.get_underlying_graph().get_vertex(source_hub_id).get_name() << "\t" << st_network.get_underlying_graph().get_vertex(destination_hub_id).get_name() << "\t" << shipment_weights.at(j);
 			cout << "\n";*/
 
 			//output protobuffer file
 			string out;
-			if (!google::protobuf::TextFormat::PrintToString(parcel, &out)) {
-				cerr << "Failed to write the parcel file " << "parcels" << "\n";
+			if (!google::protobuf::TextFormat::PrintToString(shipment, &out)) {
+				cerr << "Failed to write the shipment file " << "shipments" << "\n";
 				exit(EXIT_FAILURE);
 			}
-			string parcel_file = "..\\test_cases\\parcel_" + to_string(parcel_counter) + ".textproto";
-			fstream output_network(parcel_file, ios::out);
+			string shipment_file = "..\\test_cases\\shipment_" + to_string(shipment_counter) + ".textproto";
+			fstream output_network(shipment_file, ios::out);
 			output_network << out;
 			output_network.close();
 
-			parcel_counter++;
+			shipment_counter++;
 
 		}
 

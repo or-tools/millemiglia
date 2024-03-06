@@ -74,23 +74,17 @@ SpaceTimeNetwork::~SpaceTimeNetwork() {
 void SpaceTimeNetwork::build_underlying_graph(const operations_research::lattle::LogisticsNetwork& network) {
 	this->underlying_graph = Graph(network.hubs_size());
 	//VERTICES
-	for (google::protobuf::Map<string, operations_research::lattle::Hub>::const_iterator hub = network.hubs().begin();
-		hub != network.hubs().end(); hub++) {
-		this->underlying_graph.add_vertex(hub->first);
+	for (auto hub : network.hubs()) {
+		this->underlying_graph.add_vertex(hub.name());
 	}
 	//ARCS
-	for (google::protobuf::Map<string, operations_research::lattle::Hub>::const_iterator hub = network.hubs().begin();
-		hub != network.hubs().end(); hub++) {
-		//cout << "HUB " << hub->first << endl;
-		for (google::protobuf::Map<string, operations_research::lattle::Line>::const_iterator line = network.lines().begin();
-			line != network.lines().end(); line++) {
-			//cout << "\tLINE " << line->first << endl;
-			for (int i = 0; i < line->second.hub_ids().size() - 1; i++) {
-				string start = line->second.hub_ids().at(i);
-				string end = line->second.hub_ids().at(i + 1);
-				//cout << "\t\t" << start << " " << end << endl;
-				if (start == hub->first) {
-					this->underlying_graph.add_neighbour(start, end, line->first);
+	for (auto hub: network.hubs()) {
+		for (auto line: network.lines()) {
+			for (int i = 0; i < line.hub_ids().size() - 1; i++) {
+				string start = line.hub_ids().at(i);
+				string end = line.hub_ids().at(i + 1);
+				if (start == hub.name()) {
+					this->underlying_graph.add_neighbour(start, end, line.name());
 				}
 			}
 		}
@@ -103,38 +97,26 @@ void SpaceTimeNetwork::build_vertices(const int& time_horizon) {
 			add_vertexST(i, t);
 		}
 	}
-	/*for (const auto& line : network.lines()) {
-		for (int i = 0; i < line.second.hub_ids().size() - 1; i++) {
-			string departure_hub = line.second.hub_ids().at(i);
-			string arrival_hub = line.second.hub_ids().at(i + 1);
-			for (const auto& rotations : line.second.next_rotations()) {
-				operations_research::lattle::DateTimeRange dt = rotations.second.departure_times().at(departure_hub);
-				operations_research::lattle::DateTimeRange at = rotations.second.departure_times().at(arrival_hub);
-				add_vertexST(departure_hub, dt, time_horizon);
-				add_vertexST(arrival_hub, at, time_horizon);
-			}
-		}
-	}*/
 }
 
 void SpaceTimeNetwork::build_arcs(const operations_research::lattle::LogisticsNetwork& network, const int& time_horizon) {
 	//Travelling arcs
 	for (const auto& line : network.lines()) {
-		for (int i = 0; i < line.second.hub_ids().size() - 1; i++) {
-			string departure_hub = line.second.hub_ids().at(i);
-			string arrival_hub = line.second.hub_ids().at(i + 1);
+		for (int i = 0; i < line.hub_ids().size() - 1; i++) {
+			string departure_hub = line.hub_ids().at(i);
+			string arrival_hub = line.hub_ids().at(i + 1);
 			//cout << departure_hub << "\t" << arrival_hub << endl;
 			double cost = 0.0;
-			for (const auto& rotations : line.second.next_rotations()) {
-				operations_research::lattle::DateTimeRange dt = rotations.second.departure_times().at(departure_hub);
-				operations_research::lattle::DateTimeRange at = rotations.second.arrival_times().at(arrival_hub);
+			for (const auto& rotations : line.next_rotations()) {
+				operations_research::lattle::DateTimeRange dt = rotations.departure_times().at(departure_hub);
+				operations_research::lattle::DateTimeRange at = rotations.arrival_times().at(arrival_hub);
 				const VertexST& depVertex = get_vertex(departure_hub, dt);
 				const VertexST& arrVertex = get_vertex(arrival_hub, at);
 				int duration = arrVertex.get_time() - depVertex.get_time();
 				if (i == 0) {
-					cost = rotations.second.fixed_price().separable().constant_price();;
+					cost = rotations.fixed_price().separable().constant_price();;
 				}
-				ArcST arc = ArcST(depVertex.get_id(), arrVertex.get_id(), "travelling", line.first, rotations.first, duration, cost);
+				ArcST arc = ArcST(depVertex.get_id(), arrVertex.get_id(), "travelling", line.name(), rotations.name(), duration, cost);
 				this->arcs.push_back(arc);
 				add_to_adjacency_list_in(arc);
 				add_to_adjacency_list_out(arc);
@@ -182,7 +164,7 @@ void SpaceTimeNetwork::sort_adjacency_list_out() {
 
 void SpaceTimeNetwork::build_lorries(const operations_research::lattle::LogisticsNetwork& network) {
 	for (const auto& vehicle : network.vehicles()) {
-		Lorry lorry = Lorry(vehicle.first, vehicle.second);
+		Lorry lorry = Lorry(vehicle.name(), vehicle);
 		this->lorries.push_back(lorry);
 	}
 }

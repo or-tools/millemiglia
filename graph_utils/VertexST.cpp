@@ -1,5 +1,7 @@
 #include "VertexST.h"
 
+int VertexST::lastId;
+
 VertexST::VertexST() {
 	this->id = -1;
 	this->id_in_graph = -1;

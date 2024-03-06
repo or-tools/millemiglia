@@ -1,5 +1,7 @@
 #include "ArcST.h"
 
+int ArcST::lastId;
+
 ArcST::ArcST() {
 	this->id = -1;
 	this->departure_id = -1;
@@ -81,7 +83,7 @@ const double& ArcST::get_cost() const {
 const string ArcST::toString() const {
 	string str;
 	str.append(to_string(this->id) + "\t(" + to_string(this->departure_id) + "," + to_string(this->arrival_id) + ")\t" +
-		this->type + "\t" + to_string(this->travelling_time) + "\t" + to_string(this->cost) 
+		this->type + "\t" + to_string(this->travelling_time) + "\t" + to_string(this->cost)
 		+ "\t(" + this->line + "," + this->rotation + ")" + "\n");
 	return str;
 }

@@ -1,6 +1,6 @@
 #include "Utils.h"
 
-inline bool strictly_less(double x, double y) {
+bool strictly_less(double x, double y) {
 
 	bool result = false;
 	result = ((y - x) > EPSILON) ? true : false;
@@ -24,7 +24,7 @@ inline bool equal(double x, double y) {
 
 };
 
-inline bool strictly_greater(double x, double y) {
+bool strictly_greater(double x, double y) {
 
 	bool result = false;
 	result = ((x - y) > EPSILON) ? true : false;
@@ -148,14 +148,14 @@ inline vector<double> softmax(const vector<double>& x) {
 	return sm;
 }
 
-inline vector<double> exponential(const vector<double>& x) {
+vector<double> exponential(const vector<double>& x) {
 	vector<double> expo(x.size(), -1.0);
 	for (int i = 0; i < x.size(); i++) {
 		expo.at(i) = exp(x.at(i));
 	}
 	return expo;
 }
-inline vector<int> random_subset(vector<int> &v,int n){
+vector<int> random_subset(vector<int> &v,int n){
   set<int> targets;
   while((int)targets.size() < n){
 	 int index = ElRandom::Uniform(0, (int)v.size()-1);

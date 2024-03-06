@@ -22,7 +22,7 @@
 
 #include <google/protobuf/text_format.h>
 #include <google/protobuf/util/json_util.h>
-#include "../proto/lattle.pb.h"
+#include "proto/lattle.pb.h"
 //#include <armadillo>
 
 using namespace std;

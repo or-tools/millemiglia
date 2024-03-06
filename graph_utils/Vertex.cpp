@@ -1,5 +1,7 @@
 #include "Vertex.h"
 
+int Vertex::lastId;
+
 Vertex::Vertex() {
 	this->id = -1;
 	this->name = "";
@@ -116,7 +118,7 @@ const int& Vertex::get_earliest_time() const {
 
 const string Vertex::toString() const {
 	string str;
-	str.append(to_string(this->id) + "\t" + this->name + "\t" + to_string(this->adjacency_list_in.size()) + "\t" + 
+	str.append(to_string(this->id) + "\t" + this->name + "\t" + to_string(this->adjacency_list_in.size()) + "\t" +
 		to_string(this->adjacency_list_out.size()) + "\n");
 	return str;
 }

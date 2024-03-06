@@ -59,7 +59,7 @@ void InstanceGenerator::generate_logistic_network(const int& hubs_number, const 
 		cerr << "Failed to write the logistic network file " << this->name << "\n";
 		exit(EXIT_FAILURE);
 	}
-	fstream output_network("../test_cases/" + this->name + ".textproto", ios::out);
+	fstream output_network("../generated_graphs/" + this->name + ".textproto", ios::out);
 	output_network << out;
 	output_network.close();
 	

@@ -20,14 +20,16 @@ The generated instances will represent a variety of real-world scenarios with di
 - **Rotations**: Each line has a randomly assigned duration between connected hubs.
 ## Using the library
 ### Build
-======================
+
+
+
     $ cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release
     $ cmake --build build -j 8 -v
-======================
 
 
 ### Run
-======================
+
+
+
     $ ./main
-======================
 

@@ -23,8 +23,11 @@ The generated instances will represent a variety of real-world scenarios with di
 ======================
     $ cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release
     $ cmake --build build -j 8 -v
+======================
+
 
 ### Run
 ======================
     $ ./main
+======================
 

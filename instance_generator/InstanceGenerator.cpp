@@ -59,7 +59,7 @@ void InstanceGenerator::generate_logistic_network(const int& hubs_number, const 
 		cerr << "Failed to write the logistic network file " << this->name << "\n";
 		exit(EXIT_FAILURE);
 	}
-	fstream output_network("..\\test_cases\\" + this->name + ".textproto", ios::out);
+	fstream output_network("../test_cases/" + this->name + ".textproto", ios::out);
 	output_network << out;
 	output_network.close();
 	
@@ -341,8 +341,6 @@ void InstanceGenerator::generate_shipments(const operations_research::lattle::Lo
 	const int& timesteps, const int& shipment_number, const int& mean_path_length, const int& min_shipment_weight, const int& max_shipment_weight, 
 	const double& shipment_weight_shape, const bool& unit_weights, const double& start_inv_temp, const double& dist_inv_temp,
 	const int& max_tries, const double& cut_capacities) const {
-
-	//cout << "shipment\tsource\tdest\tweight\n";
 
 	// Add shipments to the network
 	vector<int> shipment_weights;

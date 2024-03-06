@@ -21,15 +21,17 @@ using namespace std;
 using namespace operations_research::lattle;
 
 int main(int argc, char const* argv[]) {
-   int time_horizon = time_encoder(0, 0, 0, 24, 0, 0);
+    //TODO(support argv for all variables)
+	int number_of_nodes = 10;
+	if(argc >= 2){
+		number_of_nodes = atoi(argv[1]);
+	}
+	int time_horizon = time_encoder(0, 0, 0, 24, 0, 0);
 	unsigned int random_seed = ElRandom::GetSeed();
 	ElRandom::SetSeed(random_seed);
-	string instanceName = "logisticNetwork_100_500_300";
+	string instanceName = "logisticNetwork_"+to_string(number_of_nodes);
 	string description = "";
-
 	InstanceGenerator iGenerator(instanceName, description, random_seed);
-	iGenerator.generate_logistic_network(20, time_horizon, 1, 3, 10, 5, 100.0, 0.01,10);
-
-
+	iGenerator.generate_logistic_network(number_of_nodes, time_horizon, 1, 3, 10, 5, 100.0, 0.01,10);
 	return 0;
 }

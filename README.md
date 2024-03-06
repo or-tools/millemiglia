@@ -18,3 +18,13 @@ The generated instances will represent a variety of real-world scenarios with di
 - **Hub Graph**: A directed acyclic graph (DAG) representing hubs is generated using the Barabási-Albert model, mimicking real-world network properties.
 - **Lines**: Lines are constructed as contiguous paths within the hub graph, choosing random neighbors at each step with a length restriction.
 - **Rotations**: Each line has a randomly assigned duration between connected hubs.
+## Using the library
+### Build
+======================
+    $ cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release
+    $ cmake --build build -j 8 -v
+
+### Run
+======================
+    $ ./main
+

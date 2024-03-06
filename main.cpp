@@ -78,11 +78,11 @@ int main(int argc, char const* argv[]) {
 	//unsigned int random_seed = 501844;
 	unsigned int random_seed = ElRandom::GetSeed();
 	ElRandom::SetSeed(random_seed);
-	string instanceName = "logisticNetwork_1000_500_300";
+	string instanceName = "logisticNetwork_100_500_300";
 	string description = "";
 
 	InstanceGenerator iGenerator(instanceName, description, random_seed);
-	iGenerator.generate_logistic_network(1000, time_horizon, 1, 3, 10, 5, 100.0, 0.01,10);
+	iGenerator.generate_logistic_network(20, time_horizon, 1, 3, 10, 5, 100.0, 0.01,10);
 
 
 	return 0;

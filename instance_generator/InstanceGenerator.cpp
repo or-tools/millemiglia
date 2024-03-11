@@ -37,10 +37,10 @@ void InstanceGenerator::generate_logistic_network(const int& hubs_number, const 
 	//add dimensions
 	add_dimensions(logisticsNetwork, dimension_number);
 	
-	//generate the transportation graph by means of the Barab�si-Albert algorithm with the implementation of Newman 
+	//generate the transportation graph by means of the Barab�si-Albert algorithm.
 	Graph random_graph = build_random_graph(hubs_number,new_connections_per_node);
 
-	//Fill the hubs structure in the logistic network object
+	//Fill the hubs structure in the logistic network object.
 	add_hubs(logisticsNetwork, random_graph);
 
 	//vehicle frequencies depend on the importance of an edge(degree of sender + degree of receiver).
@@ -54,11 +54,13 @@ void InstanceGenerator::generate_logistic_network(const int& hubs_number, const 
 	add_vehicles(logisticsNetwork, vehicle_number, max_vehicle_capacity);
 
 	//output protobuffer file
+	google::protobuf::TextFormat::Printer printer;
 	string out;
-	if (!google::protobuf::TextFormat::PrintToString(logisticsNetwork, &out)) {
+	if (!printer.PrintToString(logisticsNetwork, &out)) {
 		cerr << "Failed to write the logistic network file " << this->name << "\n";
 		exit(EXIT_FAILURE);
 	}
+	
 	fstream output_network("../generated_graphs/" + this->name + ".textproto", ios::out);
 	output_network << out;
 	output_network.close();
@@ -207,7 +209,7 @@ int InstanceGenerator::add_line_rotations(operations_research::lattle::Logistics
 						break;
 					}
 					else {
-						duration = ElRandom::Uniform(0, max_vehicle_duration) + 1;
+						duration = ElRandom::Uniform(0, max_vehicle_duration-1) + 1;
 						edge = ElRandom::Discrete(arc_weights_adj_lists.at(last_vertex));
 						new_vertex = graph.get_vertex(last_vertex).get_out_going_by_position(edge);
 					}
@@ -398,16 +400,16 @@ void InstanceGenerator::generate_shipments(const operations_research::lattle::Lo
 			while (true) {
 				const VertexST& v = st_network.get_vertices().at(v_id);
 
-				if (v.get_adjacency_list_out().size() <= 0) {
+				if (!v.get_adjacency_list_out().size()) {
+					break;
+				}
+
+			    if (length >= timesteps / 2.0) {
 					break;
 				}
 
 				uniform_int_distribution<int> distribution_next(0, v.get_adjacency_list_out().size() - 1);
 				int pos = distribution_next(generator_next);
-
-				if (length >= timesteps / 2.0) {
-					break;
-				}
 
 				vector<int> awful;
 				for (const auto& next : v.get_adjacency_list_out()) {

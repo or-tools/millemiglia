@@ -69,9 +69,7 @@ public:
 	*	\param max_vehicle_capacity				maximum scalar capacity of vehicles. The actual capacity is sampled uniformly from [0,`max_vehicle_capacity`)
 	*	\param unit_capacities					if `True`, all vehicle capacities are set to 1. The argument `max_vehicle_capacity` is ignored in this case
 	*	\param vehicle_sampling_inv_temp		when sampling the vehicles for a given time step, probabilities for the vehicles are given by `softmax(vehicle_sampling_inv_temp* (degree_vehicle_sender + degree_vehicle_receiver))`. 
-	*											This way, vehicles connecting two high-degree nodes are sampled more frequently
-	*	\param network_connectivity				`m` parameter of the extended Barab�si-Albert model 
-	*	\param initial_number_connected_nodes	`m0` parameter of the extended Barab�si-Albert model
+	*											This way, vehicles connecting two high-degree nodes are sampled more frequentlyl
 	* 
 	*	First, generates a (space) graph of depots and connections between them according to
 	*	the extended Barab�si-Albert algorithm (https://www.degruyter.com/document/doi/10.1515/9781400841356/html). 
@@ -83,7 +81,7 @@ public:
 	*	(taking care to not exceed the specified total number of time steps). 
 	* 
 	*	In terms of lattle.proto objects.
-	*	A line corresponds to paths either equal to (i-j), FOR EACH arc (i,j) of the graph.
+	*	A line corresponds to paths .
 	*	A rotation corresponds to a sampled vehicle. Remark that we MUST assign at least one vehicle to each rotation.
 	*/
 	void generate_logistic_network(const int& hubs_number, const int& time_horizon, const int& dimension_number, const int& max_length_line, const int& num_vehicles_per_step, const int& max_vehicle_duration,
@@ -91,10 +89,9 @@ public:
 		const int& new_connections_per_node = 2) const;
 
 	/*
-	* \brief build the random graph according to the extended Barab�si-Albert algorithm (https://www.degruyter.com/document/doi/10.1515/9781400841356/html). 
-	* 	The algorithm is found in https://github.com/VictorSeven/CNetwork
+	* \brief build the random graph according to the extended Barab�si-Albert algorithm 
 	*	This results in a few highly connected (large degree), while most depots only have a few connections. 
-	*
+	* The algorithm implementation is similar to the networkx one (https://networkx.org/documentation/stable/_modules/networkx/generators/random_graphs.html#barabasi_albert_graph)
 	* \param hubs_number : int
 	* \param new_connections_per_node : int
 	* \return graph data structure
@@ -113,6 +110,7 @@ public:
 
 	void add_dimensions(operations_research::lattle::LogisticsNetwork& network, const int& dimension_number) const;
 	void add_hubs(operations_research::lattle::LogisticsNetwork& network, const Graph& graph) const;
+	
 	/*
 	* add the line rotations to the logistic network: sample randomly + insertion
 	* 

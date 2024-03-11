@@ -31,5 +31,5 @@ The generated instances will represent a variety of real-world scenarios with di
 
 
 
-    $ ./main
+    $ ./main number_of_nodes
 

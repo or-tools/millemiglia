@@ -20,6 +20,47 @@
 using namespace std;
 using namespace operations_research::lattle;
 
+struct Parameters
+{
+    unsigned int random_seed;		// Random seed. Default value: 0
+
+	int hubs_number;									// Number of hubs, i.e., of vertices in the graph
+	int intial_numb_fully_connected_nodes;				// Parameter of the extended Barabási-Albert algorithm
+	int new_connections_per_node;						// Parameter of the extended Barabási-Albert algorithm
+
+	int time_horizon;									// Length of the time horizon
+	int time_step;										// Time step to discretise the horizon
+
+	int vehicle_number_per_step;						// Number of vehicles leaving every time step
+	int max_vehicle_duration;							// Maximal number of arcs of the space-time network that a vehicle can perform
+	int max_vehicle_capacity;							// Maximal capacity of the vehicles
+	double vehicle_rand_sample;							// Parameter of the softmax distribution to sample the vehicles at each time step 
+	
+	int parcels_number;									// Number of parcels to sample
+	int mean_parcel_path_length;						// Mean number of arcs in the space-time network that a parcel performs to reach its destination
+	int min_parcel_weight;								// Minimal weight of a parcel
+	int max_parcel_weight;								// Maximal weight of a parcel
+	double parcel_weight_sample;						// Parameter of the Lomax distribution to sample parcel weights
+	double parcel_start_sample;							// Parameter of the Boltzmann distribution to sample parcel starting hub
+	int max_tries;										// Maximal number of tries to sample the destination of a parcel
+ Parameters() :random_seed (0),hubs_number(100),
+	intial_numb_fully_connected_nodes(2),
+	new_connections_per_node(2),
+	time_horizon(24),
+	time_step(15),
+	vehicle_number_per_step(10),
+	max_vehicle_duration(5),
+	max_vehicle_capacity(100),
+	vehicle_rand_sample(0.01),
+	parcels_number(50),
+	mean_parcel_path_length(5),
+	min_parcel_weight(1),
+	max_parcel_weight(100),
+	parcel_weight_sample(0.1),
+	parcel_start_sample(0.1),
+	max_tries(10){};
+};
+
 int main(int argc, char const* argv[]) {
     //TODO(support argv for all variables)
 	int number_of_nodes = 10;

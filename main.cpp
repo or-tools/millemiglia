@@ -86,7 +86,7 @@ struct Parameters
 		std::cout << "[-s_sample <double>] sets the parameter in the Boltzmann distribution to sample the starting hub of the parcels. Defaults to 0.1                                                                                 " << std::endl;
 		std::cout << "[-tries <int>] sets the maximal number of tries to sample the destination of the parcels. Defaults to 10                                                                                 " << std::endl;
 
-		std::cout << "Call with: ./main [-flag_param param] ...               " << std::endl;
+		std::cout << "Call with: ./main Instance_Name [-flag_param param] ...               " << std::endl;
 		
 		std::cout << "--------------------------------------------------------------------------------------------------------------------------------" << std::endl;
 		std::cout << std::endl;

@@ -25,7 +25,7 @@ InstanceGenerator& InstanceGenerator::operator=(const InstanceGenerator& instanc
 	return *this;
 }
 
-void InstanceGenerator::generate_logistic_network(const int& hubs_number, const int& time_horizon, 
+void InstanceGenerator::generate_logistic_network(operations_research::lattle::Instance& instance, const int& hubs_number, const int& time_horizon, 
 	const int& dimension_number, const int& max_length_line, const int& num_vehicles_per_step, const int& max_vehicle_duration,
 	const double& max_vehicle_capacity, const double& vehicle_sampling_inv_temp,
 	const int& new_connections_per_node) const {
@@ -37,7 +37,7 @@ void InstanceGenerator::generate_logistic_network(const int& hubs_number, const 
 	//add dimensions
 	add_dimensions(logisticsNetwork, dimension_number);
 	
-	//generate the transportation graph by means of the Barab�si-Albert algorithm.
+	//generate the transportation graph by means of the Barabasi-Albert algorithm.
 	Graph random_graph = build_random_graph(hubs_number,new_connections_per_node);
 
 	//Fill the hubs structure in the logistic network object.
@@ -53,19 +53,7 @@ void InstanceGenerator::generate_logistic_network(const int& hubs_number, const 
 	//Sample vehicle capacities
 	add_vehicles(logisticsNetwork, vehicle_number, max_vehicle_capacity);
 
-	//output protobuffer file
-	google::protobuf::TextFormat::Printer printer;
-	string out;
-	if (!printer.PrintToString(logisticsNetwork, &out)) {
-		cerr << "Failed to write the logistic network file " << this->name << "\n";
-		exit(EXIT_FAILURE);
-	}
-	
-	fstream output_network("../generated_graphs/" + this->name + ".textproto", ios::out);
-	output_network << out;
-	output_network.close();
-	
-	google::protobuf::ShutdownProtobufLibrary();
+	instance.set_allocated_network(&logisticsNetwork);
 
 }
 
@@ -82,7 +70,7 @@ Graph InstanceGenerator::build_random_graph(const int& hubs_number, const int& n
      
 	 while(source <= hubs_number){
 		// random subset of repeated nodes.
-		vector<int> targets = random_subset(repeated_nodes,new_connections_per_node);
+		vector<int> targets = random_subset(repeated_nodes, new_connections_per_node);
 		for(auto node: targets){
 			edges.push_back({node,source});
 			repeated_nodes.push_back(source);
@@ -245,6 +233,110 @@ int InstanceGenerator::add_line_rotations(operations_research::lattle::Logistics
 	return vehicle_number;
 }
 
+vector<int> InstanceGenerator::generate_line(const Graph& graph, const int& max_length_line, const vector<vector<double>>& arc_weights_adj_lists, const vector<double>& expo) const{
+	//generate a path in the random_graph 
+	vector<int> path;
+	unordered_set<int> path_set;
+	//draw max length of the path
+	int path_length = ElRandom::Uniform(1, max_length_line);
+	//initialise path with first edge and randomly pick an orientation
+	int edge = ElRandom::Discrete(expo);
+	int id1 = graph.get_arcs().at(edge).first;
+	int id2 = graph.get_arcs().at(edge).second;
+	path_set.insert(id1);
+	path_set.insert(id2);
+	if (ElRandom::Uniform(0.0, 1.0) < 0.5) {
+		path.push_back(id1);
+		path.push_back(id2);
+	}
+	else {
+		path.push_back(id2);
+		path.push_back(id1);
+	}
+
+	//complete the line up to its length or until there exists an outgoing arc
+	int last_vertex = path.back();
+	bool is_path_augmented = true;
+	while (is_path_augmented && path.size() < path_length && 
+				!graph.get_vertex(last_vertex).get_adjacency_list_out().empty()) {
+		//we allow max tries to draw a next vertex not already in the path and whose duration is feasible
+		int tries = 0;
+		int edge = ElRandom::Discrete(arc_weights_adj_lists.at(last_vertex));
+		int new_vertex = graph.get_vertex(last_vertex).get_out_going_by_position(edge);
+		is_path_augmented = false;
+		do {
+			if (path_set.find(new_vertex) == path_set.end()) {
+				last_vertex = new_vertex;
+				path.push_back(new_vertex);
+				path_set.insert(new_vertex);
+				is_path_augmented = true;
+				break;
+			}
+			else {
+				edge = ElRandom::Discrete(arc_weights_adj_lists.at(last_vertex));
+				new_vertex = graph.get_vertex(last_vertex).get_out_going_by_position(edge);
+			}
+
+			tries++;
+		} while (tries < arc_weights_adj_lists.at(last_vertex).size());
+	}
+	return path;
+}
+
+int InstanceGenerator::add_line_rotations(operations_research::lattle::LogisticsNetwork& network, const Graph& graph, const vector<double>& arc_weights, const vector<vector<double>>& arc_weights_adj_lists,
+	 const int& time_horizon, const int& line_numb, const int& max_length_line, const int& max_numb_rotations_per_line, const int& max_time_duration) const {
+
+	vector<double> expo = exponential(arc_weights);
+	int vehicle_number = 0;
+	//build lines
+	for (int i = 0; i < line_numb; i++) {
+
+		//generate a path in the random_graph 
+		vector<int> line = generate_line(graph, max_length_line, arc_weights_adj_lists, expo);
+		int line_number = i + 1;
+		vector<vector<int>> time_infos;
+		
+		//add rotations associated to the line
+		int max_rotations = ElRandom::Uniform(1, max_numb_rotations_per_line);
+
+		for(int j=0; j<max_rotations; j++){
+
+			operations_research::lattle::LineRotation rotation;
+			string rotation_name = "l" + to_string(i + 1) + "_lr" + to_string(j + 1);
+
+			int tries = 0;
+			vector<int> time_info;
+			bool is_rotation_good = false;
+			while (tries < 50 && !is_rotation_good){
+				is_rotation_good = true;
+				int start_time = ElRandom::Uniform(1, time_horizon);
+				time_info = {start_time};
+				for(int l=0; l<line.size() - 1; l++) {
+					int duration = ElRandom::Uniform(0, max_time_duration) + 1;
+					int time = time_info.back() + duration;
+					if(time < time_horizon){
+						time_info.push_back(time);
+					}else{
+						is_rotation_good = false;
+					}
+				}
+			}
+
+			if(is_rotation_good){
+				time_infos.push_back(time_info);
+				vehicle_number++;
+			}
+
+		}
+
+		//fill rotation proto
+		if(!time_infos.empty()){
+			add_line_rotation(network, graph, line_number, line, time_infos);
+		}
+	}
+	return vehicle_number;
+}
+
 void InstanceGenerator::add_line_rotation(operations_research::lattle::LogisticsNetwork& network, const Graph& graph,
 	const int& line_numb, const vector<int>& line, const vector<vector<int>>& rotations) const {
 
@@ -339,139 +431,119 @@ void InstanceGenerator::add_vehicles(operations_research::lattle::LogisticsNetwo
 	}
 }
 
-void InstanceGenerator::generate_shipments(const operations_research::lattle::LogisticsNetwork& network, const SpaceTimeNetwork& st_network, 
-	const int& timesteps, const int& shipment_number, const int& mean_path_length, const int& min_shipment_weight, const int& max_shipment_weight, 
-	const double& shipment_weight_shape, const bool& unit_weights, const double& start_inv_temp, const double& dist_inv_temp,
+void InstanceGenerator::generate_shipments(operations_research::lattle::Instance& instance, const SpaceTimeNetwork& st_network, 
+	const int& time_horizon, const int& shipment_number, const int& max_path_length, const int& min_shipment_weight, const int& max_shipment_weight, 
+	const double& shipment_weight_shape, const double& start_inv_temp, const double& dist_inv_temp,
 	const int& max_tries, const double& cut_capacities) const {
 
-	// Add shipments to the network
-	vector<int> shipment_weights;
-	default_random_engine generator(this->random_seed);
-	uniform_real_distribution<double> distribution(0.0, 1.0);
-	if (unit_weights) {
-		shipment_weights = vector<int>(shipment_number, 1);
-	}
-	else {
-		shipment_weights = vector<int>(shipment_number, 0);
-		for (int j = 0; j < shipment_number; j++) {
+	// Sample shipments' weight
+	vector<int> shipment_weights(shipment_number, 0);
+	for (int j = 0; j < shipment_number; j++) {
 			while (::strictly_less(shipment_weights.at(j), min_shipment_weight) || ::strictly_greater(shipment_weights.at(j), max_shipment_weight)) {
 				double lomax_draw = ElRandom::Lomax(static_cast<double>(min_shipment_weight), shipment_weight_shape);
 				shipment_weights.at(j) = max(1, static_cast<int>(floor(lomax_draw)));
 			}
 		}
-	}
 	sort(shipment_weights.rbegin(), shipment_weights.rend());
 
 	// Compute weights to assign to the hubs which are used to sample starting hubs for the shipments
-	vector<double> hubs_weights(st_network.get_underlying_graph().get_vertex_number(), -start_inv_temp);
+	vector<double> hubs_weights(st_network.get_underlying_graph().get_vertex_number(), -1);
 	for (const auto& vertex : st_network.get_underlying_graph().get_vertices()) {
-		hubs_weights.at(vertex.get_id()) *= static_cast<double>(vertex.get_neighbours_number());
+		hubs_weights.at(vertex.get_id()) = static_cast<double>(vertex.get_neighbours_number());
 	}
-	vector<double> expo = exponential(hubs_weights);
-	default_random_engine generator_hub(this->random_seed);
-	discrete_distribution<int> distribution_hub(expo.begin(), expo.end());
 
-	int end_time = timesteps - mean_path_length;
+	// Build shipments
+	int number = 0;
+	for (int k = 0; k < shipment_number; k++){
 
-	// Sample paths for all shipments: start and end point for the shipments
-	vector<int> source_hubs(shipment_number, -1);
-	vector<int> destination_hubs(shipment_number, -1);
-	default_random_engine generator_time(this->random_seed);
-	default_random_engine generator_next(this->random_seed);
-	default_random_engine generator_stop(this->random_seed);
-	double prob_success = 1.0 / static_cast<double>(mean_path_length);
-	int shipment_counter = 0;
-	for (int j = 0; j < shipment_number; j++) {
 		bool success = false;
 		int tries = 0;
+		int source_hub_id = -1;
+		int destination_hub_id = -1;
+		int departure_time = -1;
+		int arrival_time = -1;
 
 		while (tries <= max_tries && !success) {
 
-			//select hub
-			int hub = distribution_hub(generator_hub);
-			//select time
-			vector<int> available_vertices = st_network.get_hub_time_before_t(hub, end_time);
-			uniform_int_distribution<int> distribution_time(0, available_vertices.size() - 1);
-			int v_id = available_vertices.at(distribution_time(generator_time));
-			source_hubs.at(j) = v_id;
+			// Sample starting hub
+			source_hub_id = ElRandom::Discrete(hubs_weights);
+			departure_time = ElRandom::Uniform(0, time_horizon);
+			int start_vertex_id = st_network.get_vertex(source_hub_id, departure_time).get_id();
+			int last_vertex = start_vertex_id;
 
-			//build a route
+			// Sample a path in the st_network starting at the (source hub, departure_time) 
 			int length = 1;
 			while (true) {
-				const VertexST& v = st_network.get_vertices().at(v_id);
 
-				if (!v.get_adjacency_list_out().size()) {
+				const VertexST& v = st_network.get_vertices().at(last_vertex);
+				if (v.get_adjacency_list_out().size() == 0) {
 					break;
 				}
 
-			    if (length >= timesteps / 2.0) {
+			    if (length >= max_path_length) {
 					break;
 				}
 
-				uniform_int_distribution<int> distribution_next(0, v.get_adjacency_list_out().size() - 1);
-				int pos = distribution_next(generator_next);
+				int size = v.get_adjacency_list_out().size() - 1;
+				int pos = ElRandom::Uniform(0, size);
+				unordered_map<int, vector<int>>::const_iterator finder = v.get_adjacency_list_out().begin();
+				advance(finder, pos);
+				const VertexST& next_vertex = st_network.get_vertices().at(finder->first);
+				last_vertex = next_vertex.get_id();
 
-				vector<int> awful;
-				for (const auto& next : v.get_adjacency_list_out()) {
-					awful.push_back(next.first);
+				if(v.get_id_in_graph() != next_vertex.get_id_in_graph()){
+					length++;
 				}
 
-				v_id = awful.at(pos);
-				length++;
-				binomial_distribution<int> distribution_stop(length, prob_success);
-				if (distribution_stop(generator_stop) > 0) {
-					const VertexST& arr = st_network.get_vertices().at(v_id);
-					if (arr.get_id_in_graph() != hub) {
+				// Cut the path?
+				double prob_stop = 1.0 / (static_cast<double>(max_path_length - length + 1));
+				bool is_to_stop = ElRandom::Bernoulli(prob_stop);
+				if (is_to_stop) {
+					if (v.get_id_in_graph() != next_vertex.get_id_in_graph()) {
 						success = true;
-						destination_hubs.at(j) = v_id;
+						destination_hub_id = next_vertex.get_id_in_graph();
+						arrival_time = next_vertex.get_time();
 						break;
 					}
 				}
 
 			}
 
+			if(success){
+				number++;
+				string destination_name = st_network.get_underlying_graph().get_vertex(destination_hub_id).get_name();
+				string source_name = st_network.get_underlying_graph().get_vertex(source_hub_id).get_name();
+				add_shipment(instance, number, source_name, destination_name, departure_time, arrival_time, shipment_weights.at(k));
+				break;
+			}
+
 			tries++;
 
-		}
 
-		if (success) {
-			operations_research::lattle::Shipment shipment;
-			shipment.set_name("p_" + to_string(shipment_counter));
-			const VertexST& source = st_network.get_vertices().at(source_hubs.at(j));
-			int source_hub_id = source.get_id_in_graph();
-			const VertexST& destination = st_network.get_vertices().at(destination_hubs.at(j));
-			int destination_hub_id = destination.get_id_in_graph();
-			string destination_name = st_network.get_underlying_graph().get_vertex(destination_hub_id).get_name();
-			string source_name = st_network.get_underlying_graph().get_vertex(source_hub_id).get_name();
-			assert(source_name != destination_name);
-			shipment.set_destination_hub(destination_name);
-			shipment.set_source_hub(source_name);
-			operations_research::lattle::ValueDimension value;
-			value.set_dimension("weight");
-			value.set_value(shipment_weights.at(j));
-			shipment.mutable_size()->Add(move(value));
-			/*cout << j << "\t" << st_network.get_underlying_graph().get_vertex(source_hub_id).get_name() << "\t" << st_network.get_underlying_graph().get_vertex(destination_hub_id).get_name() << "\t" << shipment_weights.at(j);
-			cout << "\n";*/
-
-			//output protobuffer file
-			string out;
-			if (!google::protobuf::TextFormat::PrintToString(shipment, &out)) {
-				cerr << "Failed to write the shipment file " << "shipments" << "\n";
-				exit(EXIT_FAILURE);
-			}
-			string shipment_file = "..\\test_cases\\shipment_" + to_string(shipment_counter) + ".textproto";
-			fstream output_network(shipment_file, ios::out);
-			output_network << out;
-			output_network.close();
-
-			shipment_counter++;
 
 		}
 
-		
 
 	}
 
-	google::protobuf::ShutdownProtobufLibrary();
+}
 
+void InstanceGenerator::add_shipment(operations_research::lattle::Instance& instance, const int& shipment_number, 
+	const string& source_hub, const string& destination_hub, const int& departure_time, const int& arrival_time, const int& weight) const {
+	operations_research::lattle::Shipment shipment;
+	shipment.set_name("p_" + to_string(shipment_number));
+	assert(source_hub != destination_hub);
+	shipment.set_destination_hub(destination_hub);
+	shipment.set_source_hub(source_hub);
+	operations_research::lattle::ValueDimension value;
+	value.set_dimension("weight");
+	value.set_value(weight);
+	shipment.mutable_size()->Add(move(value));
+	google::type::DateTime time_departure = ::time_decoder(departure_time);
+	shipment.set_allocated_departure_time(&time_departure);
+	operations_research::lattle::DateTimeRange arrival_time_range;
+	google::type::DateTime time_arrival = ::time_decoder(arrival_time);
+	add_time_range(arrival_time_range, time_arrival);
+	shipment.set_allocated_arrival_time(&arrival_time_range);
+	instance.mutable_shipments()->Add(move(shipment));
 }

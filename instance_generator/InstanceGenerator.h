@@ -84,7 +84,7 @@ public:
 	*	A line corresponds to paths .
 	*	A rotation corresponds to a sampled vehicle. Remark that we MUST assign at least one vehicle to each rotation.
 	*/
-	void generate_logistic_network(const int& hubs_number, const int& time_horizon, const int& dimension_number, const int& max_length_line, const int& num_vehicles_per_step, const int& max_vehicle_duration,
+	void generate_logistic_network(operations_research::lattle::Instance& instance, const int& hubs_number, const int& time_horizon, const int& dimension_number, const int& max_length_line, const int& num_vehicles_per_step, const int& max_vehicle_duration,
 		const double& max_vehicle_capacity = 100.0 , const double& vehicle_sampling_inv_temp = 0.01, 
 		const int& new_connections_per_node = 2) const;
 
@@ -128,8 +128,12 @@ public:
 	int add_line_rotations(operations_research::lattle::LogisticsNetwork& network, const Graph& graph, const int& max_length_line,
 		const int& time_horizon, const int& num_vehicles_per_step, const int& max_vehicle_duration, 
 		const vector<double>& arc_weights, const vector<vector<double>>& arc_weights_adj_lists) const;
-	void add_line_rotation(operations_research::lattle::LogisticsNetwork& network, const Graph& graph, 
-		const int& line_numb, const vector<int>& line, const vector<vector<int>>& rotations) const;
+	void add_line_rotation(operations_research::lattle::LogisticsNetwork& network, const Graph& graph,
+	const int& line_numb, const vector<int>& line, const vector<vector<int>>& rotations) const;
+	
+	int add_line_rotations(operations_research::lattle::LogisticsNetwork& network, const Graph& graph, const vector<double>& arc_weights, const vector<vector<double>>& arc_weights_adj_lists,
+	 const int& time_horizon, const int& line_numb, const int& max_length_line, const int& max_numb_rotations_per_line, const int& max_time_duration) const;
+	vector<int> generate_line(const Graph& graph, const int& max_length_line, const vector<vector<double>>& arc_weights_adj_lists, const vector<double>& expo) const;	
 	
 	
 	void add_distance_matrix_entry(operations_research::lattle::LogisticsNetwork& network, const string& x, const string& y) const;
@@ -196,10 +200,13 @@ public:
 	*	as well a dictionary mapping each shipment id to a list of nodes (in
 	*	(location, time) format) representing a solution route for that shipment.
 	*/
-	void generate_shipments(const operations_research::lattle::LogisticsNetwork& network, const SpaceTimeNetwork& st_network, const int& shipment_number,
-		const int& timesteps, const int& mean_path_length, const int& min_shipment_weight = 1, const int& max_shipment_weight = 100,
-		const double& shipment_weight_shape = 0.1, const bool& unit_weights = false, const double& start_inv_temp = 0.1, const double& dist_inv_temp = 0.1,
+	void generate_shipments(operations_research::lattle::Instance& instance, const SpaceTimeNetwork& st_network, const int& shipment_number,
+		const int& time_horizon, const int& max_path_length, const int& min_shipment_weight = 1, const int& max_shipment_weight = 100,
+		const double& shipment_weight_shape = 0.1, const double& start_inv_temp = 0.1, const double& dist_inv_temp = 0.1,
 		const int& max_tries = 50, const double& cut_capacities = 0.0) const;
+
+	void add_shipment(operations_research::lattle::Instance& instance, const int& shipment_number, 
+	const string& source_hub, const string& destination_hub, const int& departure_time, const int& arrival_time, const int& weight) const;
 
 };
 

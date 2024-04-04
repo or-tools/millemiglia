@@ -95,7 +95,7 @@ int main(int argc, char const* argv[]) {
     //TODO(support argv for all variables)
 	Parameters p ;
 	string instanceName ="";
-	if (argc % 2 != 0 || argc > 35 || argc < 3) {		
+	/*if (argc % 2 != 0 || argc > 35 || argc < 3) {		
 			std::cout << "----- NUMBER OF COMMANDLINE ARGUMENTS IS INCORRECT: " << argc << std::endl;
 			display_help(); throw std::string("Incorrect line of command");
 		}
@@ -141,13 +141,32 @@ int main(int argc, char const* argv[]) {
 					display_help(); throw std::string("Incorrect line of command");
 				}
 			}
-		}
+		}*/
+
 	int time_horizon = time_encoder(0, 0, 0, 24, 0, 0);
 	unsigned int random_seed = ElRandom::GetSeed();
 	ElRandom::SetSeed(random_seed);
-	instanceName = "logisticNetwork_"+to_string(p.hubs_number);
+	instanceName = "instance_"+to_string(p.hubs_number);
 	string description = "";
+
+	operations_research::lattle::Instance instance;
+	instance.set_name(instanceName);
 	InstanceGenerator iGenerator(instanceName, description, random_seed);
-	iGenerator.generate_logistic_network(p.hubs_number, time_horizon, 1, 3, 10, 5, 100.0, 0.01,10);
+	iGenerator.generate_logistic_network(instance, p.hubs_number, time_horizon, 1, 3, 10, 5, 100.0, 0.01, 10);
+
+	//output protobuffer file
+	google::protobuf::TextFormat::Printer printer;
+	string out;
+	if (!printer.PrintToString(instance, &out)) {
+		cerr << "Failed to write the instance file " << instanceName << "\n";
+		exit(EXIT_FAILURE);
+	}
+	
+	fstream output_instance("../generated_graphs/" + instanceName + ".textproto", ios::out);
+	output_instance << out;
+	output_instance.close();
+	
+	google::protobuf::ShutdownProtobufLibrary();
+
 	return 0;
 }

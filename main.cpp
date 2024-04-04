@@ -157,15 +157,14 @@ int main(int argc, char const* argv[]) {
 	//output protobuffer file
 	google::protobuf::TextFormat::Printer printer;
 	string out;
+
 	if (!printer.PrintToString(instance, &out)) {
 		cerr << "Failed to write the instance file " << instanceName << "\n";
 		exit(EXIT_FAILURE);
 	}
-	
 	fstream output_instance("../generated_graphs/" + instanceName + ".textproto", ios::out);
 	output_instance << out;
 	output_instance.close();
-	
 	google::protobuf::ShutdownProtobufLibrary();
 
 	return 0;

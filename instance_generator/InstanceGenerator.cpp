@@ -46,15 +46,18 @@ void InstanceGenerator::generate_logistic_network(operations_research::lattle::I
 	//vehicle frequencies depend on the importance of an edge(degree of sender + degree of receiver).
 	vector<double> arc_weights = build_arc_weights(random_graph, vehicle_sampling_inv_temp);
 	vector<vector<double>> arc_weights_adj_lists = build_arc_weights_per_adjacency_lists(random_graph, arc_weights);
-
+	
 	//fill line_rotation structure in the logistic network object
-	int vehicle_number = add_line_rotations(logisticsNetwork, random_graph, max_length_line, time_horizon, num_vehicles_per_step, max_vehicle_duration, arc_weights, arc_weights_adj_lists);
+	//int vehicle_number = add_line_rotations(logisticsNetwork, random_graph, max_length_line, time_horizon, num_vehicles_per_step, max_vehicle_duration, arc_weights, arc_weights_adj_lists);
+	int line_numb = 15;
+	int max_numb_rotations_per_line = 10;
+	int max_time_duration = 5; 
+	int vehicle_number = add_line_rotations(logisticsNetwork, random_graph, arc_weights, arc_weights_adj_lists, time_horizon, line_numb, max_length_line, max_numb_rotations_per_line, max_time_duration);
 	
 	//Sample vehicle capacities
 	add_vehicles(logisticsNetwork, vehicle_number, max_vehicle_capacity);
-
+cout<<"ciao\n";
 	instance.set_allocated_network(&logisticsNetwork);
-
 }
 
 Graph InstanceGenerator::build_random_graph(const int& hubs_number, const int& new_connections_per_node ) const {
@@ -346,11 +349,12 @@ void InstanceGenerator::add_line_rotation(operations_research::lattle::Logistics
 		string name = graph.get_vertex(line.at(i)).get_name();
 		line_proto.add_hub_ids(name);
 	}
-
+	
 	//add rotations to line
 	for (int i = 0; i < rotations.size(); i++) {
 		operations_research::lattle::LineRotation rotation;
 		string name = "l" + to_string(line_numb) + "_lr" + to_string(i + 1);
+		//cout<<name<<"\n\t";
 
 		for (int j = 0; j < rotations.at(i).size() - 1; j++) {
 
@@ -358,6 +362,7 @@ void InstanceGenerator::add_line_rotation(operations_research::lattle::Logistics
 			string end_hub = graph.get_vertex(line.at(j + 1)).get_name();
 			int start_time = rotations.at(i).at(j);
 			int end_time = rotations.at(i).at(j + 1);
+			//cout<<start_time<<" "<<end_time<<endl;
 			assert(start_time < end_time);
 
 			//add departure 
@@ -373,6 +378,8 @@ void InstanceGenerator::add_line_rotation(operations_research::lattle::Logistics
 			rotation.mutable_arrival_times()->insert({ end_hub, arrival_time_range });
 
 		}
+
+		//cout<<"\n";
 
 		//add cost + number of vehicles
 		int price = rotations.at(i).back() - rotations.at(i).front();

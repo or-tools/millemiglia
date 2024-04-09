@@ -145,15 +145,18 @@ int main(int argc, char const* argv[]) {
 
 	int time_horizon = time_encoder(0, 0, 0, 24, 0, 0);
 	unsigned int random_seed = ElRandom::GetSeed();
-	ElRandom::SetSeed(random_seed);
+	ElRandom::SetSeed(620878630);
 	instanceName = "instance_"+to_string(p.hubs_number);
 	string description = "";
+	cout<<"RANDOM SEED "<<ElRandom::GetSeed()<<endl;
 
 	operations_research::lattle::Instance instance;
 	instance.set_name(instanceName);
 	InstanceGenerator iGenerator(instanceName, description, random_seed);
-	iGenerator.generate_logistic_network(instance, p.hubs_number, time_horizon, 1, 3, 10, 5, 100.0, 0.01, 10);
-
+	iGenerator.generate_logistic_network(instance, p.hubs_number, 0.5, time_horizon, 1, 10, 2, 3, 3, 5, 100.0, 0.01, 10);
+	iGenerator.generate_shipments(instance, 5, time_horizon, 5);
+	cout<<"end\n";
+	
 	//output protobuffer file
 	google::protobuf::TextFormat::Printer printer;
 	string out;

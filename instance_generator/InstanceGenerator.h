@@ -59,6 +59,8 @@ public:
 	 */
 	~InstanceGenerator();
 
+
+
 	/**
 	*	\brief build the logistic network and print the .textproto
 	* 
@@ -84,9 +86,10 @@ public:
 	*	A line corresponds to paths .
 	*	A rotation corresponds to a sampled vehicle. Remark that we MUST assign at least one vehicle to each rotation.
 	*/
-	void generate_logistic_network(operations_research::lattle::Instance& instance, const int& hubs_number, const int& time_horizon, const int& dimension_number, const int& max_length_line, const int& num_vehicles_per_step, const int& max_vehicle_duration,
-		const double& max_vehicle_capacity = 100.0 , const double& vehicle_sampling_inv_temp = 0.01, 
-		const int& new_connections_per_node = 2) const;
+	void generate_logistic_network(operations_research::lattle::Instance& instance, const int& hubs_number, const double& density, const int& time_horizon, 
+	const int& dimension_number, const int& line_numb, const int& max_length_line, const int& max_numb_rotations_per_line, 
+	const int& num_vehicles_per_step, const int& max_time_duration, const double& max_vehicle_capacity = 100.0, 
+	const double& vehicle_sampling_inv_temp = 0.01, const int& new_connections_per_node = 2) const;
 
 	/*
 	* \brief build the random graph according to the extended Barab�si-Albert algorithm 
@@ -200,13 +203,16 @@ public:
 	*	as well a dictionary mapping each shipment id to a list of nodes (in
 	*	(location, time) format) representing a solution route for that shipment.
 	*/
-	void generate_shipments(operations_research::lattle::Instance& instance, const SpaceTimeNetwork& st_network, const int& shipment_number,
+	void generate_shipments(operations_research::lattle::Instance& instance, const int& shipment_number,
 		const int& time_horizon, const int& max_path_length, const int& min_shipment_weight = 1, const int& max_shipment_weight = 100,
 		const double& shipment_weight_shape = 0.1, const double& start_inv_temp = 0.1, const double& dist_inv_temp = 0.1,
-		const int& max_tries = 50, const double& cut_capacities = 0.0) const;
+		const int& max_tries = 50) const;
 
 	void add_shipment(operations_research::lattle::Instance& instance, const int& shipment_number, 
 	const string& source_hub, const string& destination_hub, const int& departure_time, const int& arrival_time, const int& weight) const;
+
+	void add_departure_time(operations_research::lattle::Shipment& shipment, const google::type::DateTime& time_departure) const;
+	void add_arrival_time(operations_research::lattle::Shipment& shipment, const google::type::DateTime& time_arrival) const;
 
 };
 

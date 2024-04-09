@@ -25,39 +25,35 @@ InstanceGenerator& InstanceGenerator::operator=(const InstanceGenerator& instanc
 	return *this;
 }
 
-void InstanceGenerator::generate_logistic_network(operations_research::lattle::Instance& instance, const int& hubs_number, const int& time_horizon, 
-	const int& dimension_number, const int& max_length_line, const int& num_vehicles_per_step, const int& max_vehicle_duration,
+void InstanceGenerator::generate_logistic_network(operations_research::lattle::Instance& instance, const int& hubs_number, const double& density, const int& time_horizon, 
+	const int& dimension_number, const int& line_numb, const int& max_length_line, const int& max_numb_rotations_per_line, const int& num_vehicles_per_step, const int& max_time_duration,
 	const double& max_vehicle_capacity, const double& vehicle_sampling_inv_temp,
 	const int& new_connections_per_node) const {
 
-	//Build the protobuffer associated with the network
-	operations_research::lattle::LogisticsNetwork logisticsNetwork;
-	logisticsNetwork.set_name(this->name);
+	//logisticsNetwork.set_name(this->name);
+	string network_name = "network_" + to_string(hubs_number);
+	instance.mutable_network()->set_name(network_name);
 
 	//add dimensions
-	add_dimensions(logisticsNetwork, dimension_number);
+	add_dimensions(*instance.mutable_network(), dimension_number);
 	
 	//generate the transportation graph by means of the Barabasi-Albert algorithm.
-	Graph random_graph = build_random_graph(hubs_number,new_connections_per_node);
+	Graph random_graph = build_random_graph(hubs_number, new_connections_per_node);
 
 	//Fill the hubs structure in the logistic network object.
-	add_hubs(logisticsNetwork, random_graph);
+	add_hubs(*instance.mutable_network(), random_graph);
 
 	//vehicle frequencies depend on the importance of an edge(degree of sender + degree of receiver).
 	vector<double> arc_weights = build_arc_weights(random_graph, vehicle_sampling_inv_temp);
 	vector<vector<double>> arc_weights_adj_lists = build_arc_weights_per_adjacency_lists(random_graph, arc_weights);
 	
 	//fill line_rotation structure in the logistic network object
-	//int vehicle_number = add_line_rotations(logisticsNetwork, random_graph, max_length_line, time_horizon, num_vehicles_per_step, max_vehicle_duration, arc_weights, arc_weights_adj_lists);
-	int line_numb = 15;
-	int max_numb_rotations_per_line = 10;
-	int max_time_duration = 5; 
-	int vehicle_number = add_line_rotations(logisticsNetwork, random_graph, arc_weights, arc_weights_adj_lists, time_horizon, line_numb, max_length_line, max_numb_rotations_per_line, max_time_duration);
-	
+	//int vehicle_number = add_line_rotations(logisticsNetwork, random_graph, max_length_line, time_horizon, num_vehicles_per_step, max_time_duration, arc_weights, arc_weights_adj_lists);
+	int vehicle_number = add_line_rotations(*instance.mutable_network(), random_graph, arc_weights, arc_weights_adj_lists, time_horizon, line_numb, max_length_line, max_numb_rotations_per_line, max_time_duration);
+
 	//Sample vehicle capacities
-	add_vehicles(logisticsNetwork, vehicle_number, max_vehicle_capacity);
-cout<<"ciao\n";
-	instance.set_allocated_network(&logisticsNetwork);
+	add_vehicles(*instance.mutable_network(), vehicle_number, max_vehicle_capacity);
+
 }
 
 Graph InstanceGenerator::build_random_graph(const int& hubs_number, const int& new_connections_per_node ) const {
@@ -296,6 +292,9 @@ int InstanceGenerator::add_line_rotations(operations_research::lattle::Logistics
 
 		//generate a path in the random_graph 
 		vector<int> line = generate_line(graph, max_length_line, arc_weights_adj_lists, expo);
+
+		//hash map
+
 		int line_number = i + 1;
 		vector<vector<int>> time_infos;
 		
@@ -438,10 +437,12 @@ void InstanceGenerator::add_vehicles(operations_research::lattle::LogisticsNetwo
 	}
 }
 
-void InstanceGenerator::generate_shipments(operations_research::lattle::Instance& instance, const SpaceTimeNetwork& st_network, 
-	const int& time_horizon, const int& shipment_number, const int& max_path_length, const int& min_shipment_weight, const int& max_shipment_weight, 
+void InstanceGenerator::generate_shipments(operations_research::lattle::Instance& instance, const int& shipment_number,
+		const int& time_horizon, const int& max_path_length, const int& min_shipment_weight, const int& max_shipment_weight, 
 	const double& shipment_weight_shape, const double& start_inv_temp, const double& dist_inv_temp,
-	const int& max_tries, const double& cut_capacities) const {
+	const int& max_tries) const {
+
+	SpaceTimeNetwork st_network = SpaceTimeNetwork(instance.network(), time_horizon);
 
 	// Sample shipments' weight
 	vector<int> shipment_weights(shipment_number, 0);
@@ -454,9 +455,10 @@ void InstanceGenerator::generate_shipments(operations_research::lattle::Instance
 	sort(shipment_weights.rbegin(), shipment_weights.rend());
 
 	// Compute weights to assign to the hubs which are used to sample starting hubs for the shipments
-	vector<double> hubs_weights(st_network.get_underlying_graph().get_vertex_number(), -1);
+	int complete_size = st_network.get_underlying_graph().get_vertex_number() + 1;
+	vector<double> hubs_weights(st_network.get_underlying_graph().get_vertex_number(), 0.0);
 	for (const auto& vertex : st_network.get_underlying_graph().get_vertices()) {
-		hubs_weights.at(vertex.get_id()) = static_cast<double>(vertex.get_neighbours_number());
+		hubs_weights.at(vertex.get_id()) -= static_cast<double>(vertex.get_neighbours_number());
 	}
 
 	// Build shipments
@@ -474,7 +476,7 @@ void InstanceGenerator::generate_shipments(operations_research::lattle::Instance
 
 			// Sample starting hub
 			source_hub_id = ElRandom::Discrete(hubs_weights);
-			departure_time = ElRandom::Uniform(0, time_horizon);
+			departure_time = ElRandom::Uniform(0, time_horizon - 1);
 			int start_vertex_id = st_network.get_vertex(source_hub_id, departure_time).get_id();
 			int last_vertex = start_vertex_id;
 
@@ -520,6 +522,7 @@ void InstanceGenerator::generate_shipments(operations_research::lattle::Instance
 				number++;
 				string destination_name = st_network.get_underlying_graph().get_vertex(destination_hub_id).get_name();
 				string source_name = st_network.get_underlying_graph().get_vertex(source_hub_id).get_name();
+				cout<<source_name<<"\t"<<destination_name<<"\t"<<departure_time<<"\t"<<arrival_time<<"\t"<<shipment_weights.at(k)<<endl;
 				add_shipment(instance, number, source_name, destination_name, departure_time, arrival_time, shipment_weights.at(k));
 				break;
 			}
@@ -538,7 +541,7 @@ void InstanceGenerator::generate_shipments(operations_research::lattle::Instance
 void InstanceGenerator::add_shipment(operations_research::lattle::Instance& instance, const int& shipment_number, 
 	const string& source_hub, const string& destination_hub, const int& departure_time, const int& arrival_time, const int& weight) const {
 	operations_research::lattle::Shipment shipment;
-	shipment.set_name("p_" + to_string(shipment_number));
+	shipment.set_name("s_" + to_string(shipment_number));
 	assert(source_hub != destination_hub);
 	shipment.set_destination_hub(destination_hub);
 	shipment.set_source_hub(source_hub);
@@ -547,10 +550,33 @@ void InstanceGenerator::add_shipment(operations_research::lattle::Instance& inst
 	value.set_value(weight);
 	shipment.mutable_size()->Add(move(value));
 	google::type::DateTime time_departure = ::time_decoder(departure_time);
-	shipment.set_allocated_departure_time(&time_departure);
+	add_departure_time(shipment, time_departure);
 	operations_research::lattle::DateTimeRange arrival_time_range;
 	google::type::DateTime time_arrival = ::time_decoder(arrival_time);
-	add_time_range(arrival_time_range, time_arrival);
-	shipment.set_allocated_arrival_time(&arrival_time_range);
+	add_arrival_time(shipment, time_arrival);
 	instance.mutable_shipments()->Add(move(shipment));
+}
+
+void InstanceGenerator::add_departure_time(operations_research::lattle::Shipment& shipment, const google::type::DateTime& time_departure) const {
+	shipment.mutable_departure_time()->set_year(time_departure.year());
+	shipment.mutable_departure_time()->set_month(time_departure.month());
+	shipment.mutable_departure_time()->set_day(time_departure.day());
+	shipment.mutable_departure_time()->set_hours(time_departure.hours());
+	shipment.mutable_departure_time()->set_minutes(time_departure.minutes());
+	shipment.mutable_departure_time()->set_seconds(time_departure.seconds());
+}
+
+void InstanceGenerator::add_arrival_time(operations_research::lattle::Shipment& shipment, const google::type::DateTime& time_arrival) const {
+	shipment.mutable_arrival_time()->mutable_first_date()->set_year(time_arrival.year());
+	shipment.mutable_arrival_time()->mutable_first_date()->set_month(time_arrival.month());
+	shipment.mutable_arrival_time()->mutable_first_date()->set_day(time_arrival.day());
+	shipment.mutable_arrival_time()->mutable_first_date()->set_hours(time_arrival.hours());
+	shipment.mutable_arrival_time()->mutable_first_date()->set_minutes(time_arrival.minutes());
+	shipment.mutable_arrival_time()->mutable_first_date()->set_seconds(time_arrival.seconds());
+	shipment.mutable_arrival_time()->mutable_last_date()->set_year(time_arrival.year());
+	shipment.mutable_arrival_time()->mutable_last_date()->set_month(time_arrival.month());
+	shipment.mutable_arrival_time()->mutable_last_date()->set_day(time_arrival.day());
+	shipment.mutable_arrival_time()->mutable_last_date()->set_hours(time_arrival.hours());
+	shipment.mutable_arrival_time()->mutable_last_date()->set_minutes(time_arrival.minutes());
+	shipment.mutable_arrival_time()->mutable_last_date()->set_seconds(time_arrival.seconds());
 }

@@ -68,8 +68,8 @@ Graph InstanceGenerator::build_random_graph(const int& hubs_number, const double
 	int source = new_connections_per_node + 1;
 	double complete_graph = static_cast<double>(hubs_number*(hubs_number-1));
     double current_density = static_cast<double>(2.0*edges.size())/complete_graph;
-
 	//do { 
+		
 		while(source <= hubs_number){
 			// random subset of repeated nodes.
 			vector<int> targets = random_subset(repeated_nodes, new_connections_per_node);
@@ -81,7 +81,7 @@ Graph InstanceGenerator::build_random_graph(const int& hubs_number, const double
 			source++;
 			current_density = static_cast<double>(2.0*edges.size())/complete_graph;
 		}
-		//cout<<"curr "<<current_density<<"\t"<<rnd_graph_density<<endl;
+		//cout<<"curr "<<current_density<<"\t"<<rnd_graph_density << "\t" << edges.size() <<endl;
 	//} while(current_density <= rnd_graph_density);
 
     Graph random_graph(hubs_number);

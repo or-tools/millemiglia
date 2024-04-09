@@ -1,0 +1,88 @@
+\doxysection{Elrandom.\+h}
+\hypertarget{Elrandom_8h_source}{}\label{Elrandom_8h_source}\index{Elrandom.h@{Elrandom.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_ELRANDOM\_HH}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_ELRANDOM\_HH}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Header_8h}{Header.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//EasyLocal\ Random\ (elrandom.hh)}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classElRandom}{ElRandom}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ template\ <typename\ T,\ typename\ std::enable\_if<std::is\_integral<T>::value>::type*\ =\ \textcolor{keyword}{nullptr}>}
+\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{static}\ T\ \mbox{\hyperlink{classElRandom_adbf36d300c3da6256a7bed51fa08f656}{Uniform}}(T\ a,\ T\ b)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ std::uniform\_int\_distribution<T>\ d(a,\ b);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{return}\ d(GetInstance().g);}
+\DoxyCodeLine{00020\ \ \ \}}
+\DoxyCodeLine{00021\ \ \ }
+\DoxyCodeLine{00026\ \ \ template\ <typename\ T,\ typename\ std::enable\_if<std::is\_floating\_point<T>::value>::type*\ =\ \textcolor{keyword}{nullptr}>}
+\DoxyCodeLine{00027\ \ \ \textcolor{keyword}{static}\ T\ \mbox{\hyperlink{classElRandom_adbf36d300c3da6256a7bed51fa08f656}{Uniform}}(T\ a,\ T\ b)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ std::uniform\_real\_distribution<T>\ d(a,\ b);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ d(GetInstance().g);}
+\DoxyCodeLine{00030\ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00037\ \ \ template\ <typename\ T,\ typename\ std::enable\_if<std::is\_floating\_point<T>::value>::type*\ =\ \textcolor{keyword}{nullptr}>}
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{static}\ T\ \mbox{\hyperlink{classElRandom_a81236c2ab191473a80c8fb3b2761459e}{Lomax}}(T\ scale,\ T\ shape)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ assert(scale\ >\ \mbox{\hyperlink{Header_8h_a6f9399eaf2efb1b12e797b77909df9ac}{EPSILON}}\ \&\&\ shape\ >\ \mbox{\hyperlink{Header_8h_a6f9399eaf2efb1b12e797b77909df9ac}{EPSILON}});}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ std::uniform\_real\_distribution<T>\ d(0.0,\ 1.0\ -\/\ \mbox{\hyperlink{Header_8h_a6f9399eaf2efb1b12e797b77909df9ac}{EPSILON}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ base\ =\ 1.0\ -\/\ d(GetInstance().g);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ exponent\ =\ 1.0\ /\ shape;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ lomax\_number\ =\ ((1.0\ /\ pow(base,\ exponent))\ -\/\ 1)\ *\ scale;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lomax\_number;}
+\DoxyCodeLine{00045\ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classElRandom_a24b4cc2a43a7ba1a1615a5744db8a3c2}{Discrete}}(\textcolor{keyword}{const}\ vector<T>\&\ weights)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ std::discrete\_distribution<int>\ d(weights.begin(),\ weights.end());}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ d(GetInstance().g);}
+\DoxyCodeLine{00055\ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{comment}{//template\ <typename\ T>}}
+\DoxyCodeLine{00063\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classElRandom_a69d81ae886c48b280bba55c4d4c5171b}{Binomial}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ t,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ p)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ std::binomial\_distribution<int>\ d(t,p);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ d(GetInstance().g);}
+\DoxyCodeLine{00066\ \ \ \}}
+\DoxyCodeLine{00067\ \ \ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classElRandom_a8ceb416218aaf528690fcab9b5defb2e}{SetSeed}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ seed)}
+\DoxyCodeLine{00070\ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{classElRandom}{ElRandom}}\&\ r\ =\ GetInstance();}
+\DoxyCodeLine{00072\ \ \ \ \ r.g.seed(seed);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{return}\ r.seed\ =\ seed;}
+\DoxyCodeLine{00074\ \ \ \}}
+\DoxyCodeLine{00075\ \ \ }
+\DoxyCodeLine{00076\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ GetSeed()}
+\DoxyCodeLine{00077\ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{return}\ GetInstance().seed;}
+\DoxyCodeLine{00079\ \ \ \}}
+\DoxyCodeLine{00080\ \ \ }
+\DoxyCodeLine{00081\ \ \ }
+\DoxyCodeLine{00082\ \ \ \textcolor{keyword}{static}\ std::mt19937\&\ GetGenerator()}
+\DoxyCodeLine{00083\ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{return}\ GetInstance().g;}
+\DoxyCodeLine{00085\ \ \ \}}
+\DoxyCodeLine{00086\ \ \ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classElRandom}{ElRandom}}\&\ GetInstance()\ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classElRandom}{ElRandom}}\ instance;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{00091\ \ \ \}}
+\DoxyCodeLine{00092\ \ \ }
+\DoxyCodeLine{00093\ \ \ \mbox{\hyperlink{classElRandom}{ElRandom}}()}
+\DoxyCodeLine{00094\ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ std::random\_device\ dev;}
+\DoxyCodeLine{00096\ \ \ \ \ seed\ =\ dev();}
+\DoxyCodeLine{00097\ \ \ \ \ g.seed(seed);}
+\DoxyCodeLine{00098\ \ \ \}}
+\DoxyCodeLine{00099\ \ \ }
+\DoxyCodeLine{00100\ \ \ std::mt19937\ g;}
+\DoxyCodeLine{00101\ \ \ }
+\DoxyCodeLine{00102\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ seed;}
+\DoxyCodeLine{00103\ \};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,143 @@
+\doxysection{Graph Class Reference}
+\hypertarget{classGraph}{}\label{classGraph}\index{Graph@{Graph}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGraph_ae4c72b8ac4d693c49800a4c7e273654f}\label{classGraph_ae4c72b8ac4d693c49800a4c7e273654f} 
+{\bfseries Graph} ()
+\begin{DoxyCompactList}\small\item\em Constructor by default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGraph_ab01d8d0b51b92cc499116005a87968b8}{Graph}} (const int \&hub\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Constructor by data. \end{DoxyCompactList}\item 
+\Hypertarget{classGraph_af67de98565b93f81f3766649b567e662}\label{classGraph_af67de98565b93f81f3766649b567e662} 
+{\bfseries Graph} (const \mbox{\hyperlink{classGraph}{Graph}} \&graph)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classGraph_a3b4cb8c62a842803d891d3eb83077d43}\label{classGraph_a3b4cb8c62a842803d891d3eb83077d43} 
+\mbox{\hyperlink{classGraph}{Graph}} \& {\bfseries operator=} (const \mbox{\hyperlink{classGraph}{Graph}} \&graph)
+\begin{DoxyCompactList}\small\item\em Operator assignment. \end{DoxyCompactList}\item 
+\Hypertarget{classGraph_a902c5b3eacb66d60752525ab23297a95}\label{classGraph_a902c5b3eacb66d60752525ab23297a95} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Graph} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a752e4dc473ec04b2487d7643467ad95a}{add\+\_\+vertex}} (const string \&name)
+\begin{DoxyCompactList}\small\item\em add a vertex \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a0766e227105b6328834f96d9debde57f}{add\+\_\+neighbour}} (const string \&key, const string \&neighbour, const string \&line)
+\begin{DoxyCompactList}\small\item\em add a neighbour to key both (key,neighbour) and (neighbour,key) \end{DoxyCompactList}\item 
+\Hypertarget{classGraph_af71454671157a1cf3e61adb195597dbe}\label{classGraph_af71454671157a1cf3e61adb195597dbe} 
+const vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $>$ \& {\bfseries get\+\_\+vertices} () const
+\item 
+\Hypertarget{classGraph_aa3a5dee2d40bb10089b1ca1f6db016f0}\label{classGraph_aa3a5dee2d40bb10089b1ca1f6db016f0} 
+const int {\bfseries get\+\_\+vertex\+\_\+number} () const
+\item 
+\Hypertarget{classGraph_a11c10a65e2192a48964d378487e300b7}\label{classGraph_a11c10a65e2192a48964d378487e300b7} 
+const \mbox{\hyperlink{classVertex}{Vertex}} \& {\bfseries get\+\_\+vertex} (const int \&id) const
+\item 
+\Hypertarget{classGraph_a9f60b01f368867cdaad2394f91ff9068}\label{classGraph_a9f60b01f368867cdaad2394f91ff9068} 
+const \mbox{\hyperlink{classVertex}{Vertex}} \& {\bfseries get\+\_\+vertex} (const string \&name) const
+\item 
+\Hypertarget{classGraph_a67bdce44f4a4045006c4858b879e6343}\label{classGraph_a67bdce44f4a4045006c4858b879e6343} 
+const vector$<$ pair$<$ int, int $>$ $>$ \& {\bfseries get\+\_\+arcs} () const
+\item 
+\Hypertarget{classGraph_aa8a005c6d67a7dd057683631ee494869}\label{classGraph_aa8a005c6d67a7dd057683631ee494869} 
+const int {\bfseries get\+\_\+arc\+\_\+position} (const int \&id1, const int \&id2) const
+\item 
+\Hypertarget{classGraph_a278c6578dce0c11c6993c9eb25164253}\label{classGraph_a278c6578dce0c11c6993c9eb25164253} 
+const string {\bfseries to\+String} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $>$ \mbox{\hyperlink{classGraph_ad35511b41e5c763258a11ff94c2339f6}{vertices}}
+\item 
+unordered\+\_\+map$<$ string, int $>$ \mbox{\hyperlink{classGraph_ae41bb580c7af1886a57ccae771a7d79b}{vertex\+\_\+dictionary}}
+\item 
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{classGraph_ac7bdf20c2f2129b4d2855aae4675a95a}{arcs}}
+\item 
+vector$<$ unordered\+\_\+map$<$ int, int $>$ $>$ \mbox{\hyperlink{classGraph_ae8d8dcc9b7ef5c33d0b50f847ae1890b}{arcs\+\_\+dictionary}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGraph_ab01d8d0b51b92cc499116005a87968b8}\label{classGraph_ab01d8d0b51b92cc499116005a87968b8} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{const int \&}]{hub\+\_\+number }\end{DoxyParamCaption})}
+
+
+
+Constructor by data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & of hubs \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGraph_a0766e227105b6328834f96d9debde57f}\label{classGraph_a0766e227105b6328834f96d9debde57f} 
+\index{Graph@{Graph}!add\_neighbour@{add\_neighbour}}
+\index{add\_neighbour@{add\_neighbour}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{add\_neighbour()}{add\_neighbour()}}
+{\footnotesize\ttfamily void Graph\+::add\+\_\+neighbour (\begin{DoxyParamCaption}\item[{const string \&}]{key,  }\item[{const string \&}]{neighbour,  }\item[{const string \&}]{line }\end{DoxyParamCaption})}
+
+
+
+add a neighbour to key both (key,neighbour) and (neighbour,key) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & \\
+\hline
+{\em neighbour} & \\
+\hline
+{\em line} & in the network protocol buffer that uses arc (key, neighbour) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGraph_a752e4dc473ec04b2487d7643467ad95a}\label{classGraph_a752e4dc473ec04b2487d7643467ad95a} 
+\index{Graph@{Graph}!add\_vertex@{add\_vertex}}
+\index{add\_vertex@{add\_vertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{add\_vertex()}{add\_vertex()}}
+{\footnotesize\ttfamily void Graph\+::add\+\_\+vertex (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+add a vertex 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hub} & name \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classGraph_ac7bdf20c2f2129b4d2855aae4675a95a}\label{classGraph_ac7bdf20c2f2129b4d2855aae4675a95a} 
+\index{Graph@{Graph}!arcs@{arcs}}
+\index{arcs@{arcs}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{arcs}{arcs}}
+{\footnotesize\ttfamily vector$<$pair$<$int, int$>$ $>$ Graph\+::arcs\hspace{0.3cm}{\ttfamily [protected]}}
+
+number of arcs \Hypertarget{classGraph_ae8d8dcc9b7ef5c33d0b50f847ae1890b}\label{classGraph_ae8d8dcc9b7ef5c33d0b50f847ae1890b} 
+\index{Graph@{Graph}!arcs\_dictionary@{arcs\_dictionary}}
+\index{arcs\_dictionary@{arcs\_dictionary}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{arcs\_dictionary}{arcs\_dictionary}}
+{\footnotesize\ttfamily vector$<$unordered\+\_\+map$<$int, int$>$ $>$ Graph\+::arcs\+\_\+dictionary\hspace{0.3cm}{\ttfamily [protected]}}
+
+key = name, value = id \Hypertarget{classGraph_ae41bb580c7af1886a57ccae771a7d79b}\label{classGraph_ae41bb580c7af1886a57ccae771a7d79b} 
+\index{Graph@{Graph}!vertex\_dictionary@{vertex\_dictionary}}
+\index{vertex\_dictionary@{vertex\_dictionary}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{vertex\_dictionary}{vertex\_dictionary}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$string, int$>$ Graph\+::vertex\+\_\+dictionary\hspace{0.3cm}{\ttfamily [protected]}}
+
+key = name, value = id \Hypertarget{classGraph_ad35511b41e5c763258a11ff94c2339f6}\label{classGraph_ad35511b41e5c763258a11ff94c2339f6} 
+\index{Graph@{Graph}!vertices@{vertices}}
+\index{vertices@{vertices}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classVertex}{Vertex}}$>$ Graph\+::vertices\hspace{0.3cm}{\ttfamily [protected]}}
+
+each vertex correspond to a hub 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}

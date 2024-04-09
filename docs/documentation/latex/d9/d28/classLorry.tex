@@ -1,0 +1,169 @@
+\doxysection{Lorry Class Reference}
+\hypertarget{classLorry}{}\label{classLorry}\index{Lorry@{Lorry}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLorry_a64ca8ecea0dfdd67c36f2c7f4fb3bdae}{Lorry}} (const string \&name, const operations\+\_\+research\+::lattle\+::\+Vehicle \&\mbox{\hyperlink{classLorry_acfe4521f67263f614b6298fbb5cf0f15}{vehicle}})
+\begin{DoxyCompactList}\small\item\em Constructor by data. \end{DoxyCompactList}\item 
+\Hypertarget{classLorry_ae7a3b578e6ec5e22c6fe21ea72979ea1}\label{classLorry_ae7a3b578e6ec5e22c6fe21ea72979ea1} 
+{\bfseries Lorry} (const \mbox{\hyperlink{classLorry}{Lorry}} \&lorry)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classLorry_a760c9960fe6a9ccef8ffbc3452eac46b}\label{classLorry_a760c9960fe6a9ccef8ffbc3452eac46b} 
+\mbox{\hyperlink{classLorry}{Lorry}} \& {\bfseries operator=} (const \mbox{\hyperlink{classLorry}{Lorry}} \&lorry)
+\begin{DoxyCompactList}\small\item\em Operator assignment. \end{DoxyCompactList}\item 
+\Hypertarget{classLorry_adc8413326a13d0445e7f6196c92d2433}\label{classLorry_adc8413326a13d0445e7f6196c92d2433} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Lorry} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLorry_a2581d518e6f89c3e2968a508ca5cf0f2}{add\+\_\+commodity}} (const int \&commodity\+\_\+id, const vector$<$ int $>$ \&sizes, const int \&arc)
+\begin{DoxyCompactList}\small\item\em add a commodity in the vehicle, modify residual capacity \end{DoxyCompactList}\item 
+\Hypertarget{classLorry_a0cd938485e8879bc32112237f376a506}\label{classLorry_a0cd938485e8879bc32112237f376a506} 
+const int \& {\bfseries get\+\_\+id} () const
+\item 
+\Hypertarget{classLorry_a79a14483a6b35baae5f22e31ed14574d}\label{classLorry_a79a14483a6b35baae5f22e31ed14574d} 
+const string \& {\bfseries get\+\_\+name} () const
+\item 
+\Hypertarget{classLorry_a226e6175ec84f3575cdb5e25031dee3b}\label{classLorry_a226e6175ec84f3575cdb5e25031dee3b} 
+const operations\+\_\+research\+::lattle\+::\+Vehicle \& {\bfseries get\+\_\+proto\+\_\+vehicle} () const
+\item 
+\Hypertarget{classLorry_a9bbc0bc68896a02669b16cc6976dc8b4}\label{classLorry_a9bbc0bc68896a02669b16cc6976dc8b4} 
+const vector$<$ int $>$ \& {\bfseries get\+\_\+path} () const
+\item 
+\Hypertarget{classLorry_a8fcd3686deac9494f594c7428c67a5cd}\label{classLorry_a8fcd3686deac9494f594c7428c67a5cd} 
+const vector$<$ int $>$ \& {\bfseries get\+\_\+capacities} () const
+\item 
+\Hypertarget{classLorry_ac2f8b027ff1f2a0bba5469de869b0743}\label{classLorry_ac2f8b027ff1f2a0bba5469de869b0743} 
+const int \& {\bfseries get\+\_\+current\+\_\+position} () const
+\item 
+\Hypertarget{classLorry_a646f8818e4cd1f06ad94fe2c34aae9ef}\label{classLorry_a646f8818e4cd1f06ad94fe2c34aae9ef} 
+const unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \& {\bfseries get\+\_\+loaded\+\_\+commodities} () const
+\item 
+\Hypertarget{classLorry_a93da04446f839b4caad13ac62b9a00f6}\label{classLorry_a93da04446f839b4caad13ac62b9a00f6} 
+const unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \& {\bfseries get\+\_\+loads\+\_\+per\+\_\+arc} () const
+\item 
+\Hypertarget{classLorry_a265f540b00a5a2c99c6fa24623408144}\label{classLorry_a265f540b00a5a2c99c6fa24623408144} 
+void {\bfseries set\+\_\+current\+\_\+position} (const int \&pos)
+\item 
+\Hypertarget{classLorry_a928fdb63b0388a12d217ed80d928c752}\label{classLorry_a928fdb63b0388a12d217ed80d928c752} 
+const string {\bfseries to\+String} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLorry_a28d20ef91109fb66747dccbe89a3472d}\label{classLorry_a28d20ef91109fb66747dccbe89a3472d} 
+static void {\bfseries restart\+\_\+id\+\_\+counter} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLorry_ac530126720e6870e34c61b1fc22e42e4}\label{classLorry_ac530126720e6870e34c61b1fc22e42e4} 
+int {\bfseries id}
+\item 
+\Hypertarget{classLorry_a445af812a3fc54649b76f8d6b90cf974}\label{classLorry_a445af812a3fc54649b76f8d6b90cf974} 
+string {\bfseries name}
+\item 
+const operations\+\_\+research\+::lattle\+::\+Vehicle \& \mbox{\hyperlink{classLorry_acfe4521f67263f614b6298fbb5cf0f15}{vehicle}}
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{classLorry_aa8c053fa4bbdac0eca5406a3baf3f2f3}{path}}
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{classLorry_a438232d32f8753bd4f23e13feee84ea7}{capacities}}
+\item 
+int \mbox{\hyperlink{classLorry_a97d9b5ad1a3bfae693ed88d9b04f99cb}{current\+\_\+position}}
+\item 
+unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \mbox{\hyperlink{classLorry_aae540aba48a50b3f9046dc7d223d0728}{loaded\+\_\+commodities}}
+\item 
+unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \mbox{\hyperlink{classLorry_af3e1f81e5bfd535c0903f588ed998faf}{loads\+\_\+per\+\_\+arc}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classLorry_aa3407da2cbb7ac2ee4c2db5b73b35090}{last\+Id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classLorry_a64ca8ecea0dfdd67c36f2c7f4fb3bdae}\label{classLorry_a64ca8ecea0dfdd67c36f2c7f4fb3bdae} 
+\index{Lorry@{Lorry}!Lorry@{Lorry}}
+\index{Lorry@{Lorry}!Lorry@{Lorry}}
+\doxysubsubsection{\texorpdfstring{Lorry()}{Lorry()}}
+{\footnotesize\ttfamily Lorry\+::\+Lorry (\begin{DoxyParamCaption}\item[{const string \&}]{name,  }\item[{const operations\+\_\+research\+::lattle\+::\+Vehicle \&}]{vehicle }\end{DoxyParamCaption})}
+
+
+
+Constructor by data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & of hubs \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLorry_a2581d518e6f89c3e2968a508ca5cf0f2}\label{classLorry_a2581d518e6f89c3e2968a508ca5cf0f2} 
+\index{Lorry@{Lorry}!add\_commodity@{add\_commodity}}
+\index{add\_commodity@{add\_commodity}!Lorry@{Lorry}}
+\doxysubsubsection{\texorpdfstring{add\_commodity()}{add\_commodity()}}
+{\footnotesize\ttfamily void Lorry\+::add\+\_\+commodity (\begin{DoxyParamCaption}\item[{const int \&}]{commodity\+\_\+id,  }\item[{const vector$<$ int $>$ \&}]{sizes,  }\item[{const int \&}]{arc }\end{DoxyParamCaption})}
+
+
+
+add a commodity in the vehicle, modify residual capacity 
+
+
+\begin{DoxyParams}{Parameters}
+{\em commodity} & \+: Commodity \\
+\hline
+{\em arc} & \+: int \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLorry_a438232d32f8753bd4f23e13feee84ea7}\label{classLorry_a438232d32f8753bd4f23e13feee84ea7} 
+\index{Lorry@{Lorry}!capacities@{capacities}}
+\index{capacities@{capacities}!Lorry@{Lorry}}
+\doxysubsubsection{\texorpdfstring{capacities}{capacities}}
+{\footnotesize\ttfamily vector$<$int$>$ Lorry\+::capacities\hspace{0.3cm}{\ttfamily [protected]}}
+
+capacities \Hypertarget{classLorry_a97d9b5ad1a3bfae693ed88d9b04f99cb}\label{classLorry_a97d9b5ad1a3bfae693ed88d9b04f99cb} 
+\index{Lorry@{Lorry}!current\_position@{current\_position}}
+\index{current\_position@{current\_position}!Lorry@{Lorry}}
+\doxysubsubsection{\texorpdfstring{current\_position}{current\_position}}
+{\footnotesize\ttfamily int Lorry\+::current\+\_\+position\hspace{0.3cm}{\ttfamily [protected]}}
+
+vehicle current position in the st\+\_\+network \Hypertarget{classLorry_aa3407da2cbb7ac2ee4c2db5b73b35090}\label{classLorry_aa3407da2cbb7ac2ee4c2db5b73b35090} 
+\index{Lorry@{Lorry}!lastId@{lastId}}
+\index{lastId@{lastId}!Lorry@{Lorry}}
+\doxysubsubsection{\texorpdfstring{lastId}{lastId}}
+{\footnotesize\ttfamily int Lorry\+::last\+Id\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+vertex counter to assign unique id \Hypertarget{classLorry_aae540aba48a50b3f9046dc7d223d0728}\label{classLorry_aae540aba48a50b3f9046dc7d223d0728} 
+\index{Lorry@{Lorry}!loaded\_commodities@{loaded\_commodities}}
+\index{loaded\_commodities@{loaded\_commodities}!Lorry@{Lorry}}
+\doxysubsubsection{\texorpdfstring{loaded\_commodities}{loaded\_commodities}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$int, vector$<$int$>$ $>$ Lorry\+::loaded\+\_\+commodities\hspace{0.3cm}{\ttfamily [protected]}}
+
+loaded\+\_\+commodities\+: for each arc in path, the commodities on that arc \Hypertarget{classLorry_af3e1f81e5bfd535c0903f588ed998faf}\label{classLorry_af3e1f81e5bfd535c0903f588ed998faf} 
+\index{Lorry@{Lorry}!loads\_per\_arc@{loads\_per\_arc}}
+\index{loads\_per\_arc@{loads\_per\_arc}!Lorry@{Lorry}}
+\doxysubsubsection{\texorpdfstring{loads\_per\_arc}{loads\_per\_arc}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$int, vector$<$int$>$ $>$ Lorry\+::loads\+\_\+per\+\_\+arc\hspace{0.3cm}{\ttfamily [protected]}}
+
+residual capacity\+: for each arc in path, the residual capacities of the vehicle on that arc \Hypertarget{classLorry_aa8c053fa4bbdac0eca5406a3baf3f2f3}\label{classLorry_aa8c053fa4bbdac0eca5406a3baf3f2f3} 
+\index{Lorry@{Lorry}!path@{path}}
+\index{path@{path}!Lorry@{Lorry}}
+\doxysubsubsection{\texorpdfstring{path}{path}}
+{\footnotesize\ttfamily vector$<$int$>$ Lorry\+::path\hspace{0.3cm}{\ttfamily [protected]}}
+
+path\+: arcs in the st\+\_\+network traversed by the vehicle \Hypertarget{classLorry_acfe4521f67263f614b6298fbb5cf0f15}\label{classLorry_acfe4521f67263f614b6298fbb5cf0f15} 
+\index{Lorry@{Lorry}!vehicle@{vehicle}}
+\index{vehicle@{vehicle}!Lorry@{Lorry}}
+\doxysubsubsection{\texorpdfstring{vehicle}{vehicle}}
+{\footnotesize\ttfamily const operations\+\_\+research\+::lattle\+::\+Vehicle\& Lorry\+::vehicle\hspace{0.3cm}{\ttfamily [protected]}}
+
+vehicle object 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Lorry.\+h\item 
+Lorry.\+cpp\end{DoxyCompactItemize}

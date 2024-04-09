@@ -1,0 +1,63 @@
+\doxysection{Arc\+ST.\+h}
+\hypertarget{ArcST_8h_source}{}\label{ArcST_8h_source}\index{ArcST.h@{ArcST.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ARCST\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ARCST\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Header_8h}{Header.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Utils_8h}{Utils.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classArcST}{ArcST}}\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classArcST_a6e7a6ee455c614ad2044bff0e9210567}{id}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classArcST_ae69a63220b29a69b23fa36c6a11e0f7b}{departure\_id}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classArcST_ad858f2d5bf262c66c53d3a2916ebf151}{arrival\_id}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classArcST_a35bcedc3e92c194a2cd925c0a4508ef2}{type}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classArcST_add54365f4ba7ba6404b18896ea6eb1cd}{cost}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classArcST_a10712f7fe1810113de11b7207403bac0}{travelling\_time}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classArcST_a208461f3035574917e0ca1826f64364b}{line}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classArcST_ae6dba7ae715f376f61c1fbb6472a56d8}{rotation}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classArcST_a52a89b24f947e6017f315bb849ca02d2}{lastId}};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{classArcST_a0a820096852697daf304a2e4d6414269}{ArcST}}();}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{classArcST_a0a820096852697daf304a2e4d6414269}{ArcST}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \mbox{\hyperlink{classArcST_ae69a63220b29a69b23fa36c6a11e0f7b}{departure\_id}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \mbox{\hyperlink{classArcST_ad858f2d5bf262c66c53d3a2916ebf151}{arrival\_id}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classArcST_a35bcedc3e92c194a2cd925c0a4508ef2}{type}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classArcST_a208461f3035574917e0ca1826f64364b}{line}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classArcST_ae6dba7ae715f376f61c1fbb6472a56d8}{rotation}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \mbox{\hyperlink{classArcST_a10712f7fe1810113de11b7207403bac0}{travelling\_time}}\ =\ 0.0,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ \mbox{\hyperlink{classArcST_add54365f4ba7ba6404b18896ea6eb1cd}{cost}}\ =\ 0.0);}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{classArcST_a0a820096852697daf304a2e4d6414269}{ArcST}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classArcST}{ArcST}}\&\ arc);}
+\DoxyCodeLine{00089\ \ \ \ \ \mbox{\hyperlink{classArcST}{ArcST}}\&\ \mbox{\hyperlink{classArcST_a0ef594e919fbd0ea0759ebb8ec28634e}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classArcST}{ArcST}}\&\ arc);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{classArcST_a1537602ba8c4a7328832af05f2718735}{\string~ArcST}}();}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ restart\_id\_counter()\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classArcST_a52a89b24f947e6017f315bb849ca02d2}{lastId}}\ =\ 0;}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_id()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_departure\_id()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_arrival\_id()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ get\_type()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ get\_line()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ get\_rotation()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_travelling\_time()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ get\_cost()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ toString()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !GRAPH\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,68 @@
+\doxysection{Utils.\+h}
+\hypertarget{Utils_8h_source}{}\label{Utils_8h_source}\index{Utils.h@{Utils.h}}
+\mbox{\hyperlink{Utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ \ once}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ UTILS\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ UTILS\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Header_8h}{Header.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Elrandom.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{comment}{//METHODS\ FOR\ FLOATING\ POINT\ NUMBERS}}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{bool}\ strictly\_less(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00016\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ less(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00017\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ equal(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{bool}\ strictly\_greater(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00019\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ greater(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00020\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ minimum(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00021\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ maximum(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{00022\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ computeFractionalPart(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00023\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ rounder(\textcolor{keywordtype}{double}\ x);}
+\DoxyCodeLine{00024\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{double}\ rounderToNDecimals(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ precision);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00037\ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{Utils_8h_a0d293d446db969e958d80c998a061388}{time\_encoder}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ year,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ month,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ day,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ hour,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ minute,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ second);}
+\DoxyCodeLine{00044\ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{Utils_8h_a0d293d446db969e958d80c998a061388}{time\_encoder}}(\textcolor{keyword}{const}\ google::type::DateTime\&\ time);}
+\DoxyCodeLine{00051\ \ google::type::DateTime\ \mbox{\hyperlink{Utils_8h_a7d80f255d601b54e4199280e5f63791f}{time\_decoder}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time\_encoded);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{//RANDOM\ GENERATORS}}
+\DoxyCodeLine{00060\ \textcolor{keyword}{extern}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{Utils_8h_aeafc9d249f802518bed72c683ae48bed}{randomIntBetween}}(\textcolor{keywordtype}{int}\ \_min,\ \textcolor{keywordtype}{int}\ \_max,\ mt19937\&\ generator);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{extern}\ \textcolor{keyword}{inline}\ vector<double>\ \mbox{\hyperlink{Utils_8h_a55ddc59d765db5cfe58e3862fab79e2c}{softmax}}(\textcolor{keyword}{const}\ vector<double>\&\ x);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ vector<double>\ \mbox{\hyperlink{Utils_8h_ab3dff4a6bf9a0f66af4ced83ee86d4c4}{exponential}}(\textcolor{keyword}{const}\ vector<double>\&\ x);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ vector<int>\ random\_subset(vector<int>\ \&v,\textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{comment}{//OPERATIONS\ WITH\ VECTORS}}
+\DoxyCodeLine{00089\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00090\ \textcolor{keyword}{static}\ vector<T>\ extract\_subvector(\textcolor{keyword}{const}\ vector<T>\ v,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ first\_position,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ last\_position)\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ vector<T>\ subvector(v.begin()\ +\ first\_position,\ v.begin()\ +\ last\_position\ +\ 1);}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{return}\ subvector;}
+\DoxyCodeLine{00093\ \}}
+\DoxyCodeLine{00101\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00102\ \textcolor{keyword}{static}\ vector<T>\ concatenate\_vectors(\textcolor{keyword}{const}\ vector<T>\ v1,\ \textcolor{keyword}{const}\ vector<T>\ v2)\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ vector<T>\ concatenate;}
+\DoxyCodeLine{00104\ \ \ \ \ concatenate.reserve(v1.size()\ +\ v2.size());}
+\DoxyCodeLine{00105\ \ \ \ \ concatenate.insert(concatenate.end(),\ v1.begin(),\ v1.end());}
+\DoxyCodeLine{00106\ \ \ \ \ concatenate.insert(concatenate.end(),\ v2.begin(),\ v2.end());}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{return}\ concatenate;}
+\DoxyCodeLine{00108\ \}}
+\DoxyCodeLine{00116\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00117\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ is\_first\_subvector(\textcolor{keyword}{const}\ vector<T>\ v1,\ \textcolor{keyword}{const}\ vector<T>\ v2)\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordflow}{if}\ (v2.size()\ <\ v1.size())\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ v1.size();\ i++)\ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (v2.at(i)\ !=\ v1.at(i))\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00127\ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//UTILS\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,189 @@
+\doxysection{Utils.\+h File Reference}
+\hypertarget{Utils_8h}{}\label{Utils_8h}\index{Utils.h@{Utils.h}}
+
+
+Contains useful functions needed in the code.  
+
+
+{\ttfamily \#include "{}Header.\+h"{}}\newline
+{\ttfamily \#include "{}Elrandom.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{Utils_8h_a89fe773098238bd7bb7959a2b9f1725a}\label{Utils_8h_a89fe773098238bd7bb7959a2b9f1725a} 
+bool {\bfseries strictly\+\_\+less} (double x, double y)
+\item 
+\Hypertarget{Utils_8h_aa8b41b4843c4672e553bbc90dc45f094}\label{Utils_8h_aa8b41b4843c4672e553bbc90dc45f094} 
+bool {\bfseries less} (double x, double y)
+\item 
+\Hypertarget{Utils_8h_a72eddd3867edd4e40926a0a8760d8070}\label{Utils_8h_a72eddd3867edd4e40926a0a8760d8070} 
+bool {\bfseries equal} (double x, double y)
+\item 
+\Hypertarget{Utils_8h_a9c7c2d75d039b65b5ff4d031c225239c}\label{Utils_8h_a9c7c2d75d039b65b5ff4d031c225239c} 
+bool {\bfseries strictly\+\_\+greater} (double x, double y)
+\item 
+\Hypertarget{Utils_8h_a1d1483279bf86ab1f470d4ad7c72b34e}\label{Utils_8h_a1d1483279bf86ab1f470d4ad7c72b34e} 
+bool {\bfseries greater} (double x, double y)
+\item 
+\Hypertarget{Utils_8h_a02d154d806c9de40791c5d21287f1cab}\label{Utils_8h_a02d154d806c9de40791c5d21287f1cab} 
+double {\bfseries minimum} (double x, double y)
+\item 
+\Hypertarget{Utils_8h_a51214cb9ee4af97f1d7a93f62b3ad966}\label{Utils_8h_a51214cb9ee4af97f1d7a93f62b3ad966} 
+double {\bfseries maximum} (double x, double y)
+\item 
+\Hypertarget{Utils_8h_abe6ff5d4caec46df03cbd92eafd161ad}\label{Utils_8h_abe6ff5d4caec46df03cbd92eafd161ad} 
+double {\bfseries compute\+Fractional\+Part} (double x)
+\item 
+\Hypertarget{Utils_8h_ad9017e98daf111f9e0c0e728d489a347}\label{Utils_8h_ad9017e98daf111f9e0c0e728d489a347} 
+double {\bfseries rounder} (double x)
+\item 
+\Hypertarget{Utils_8h_acf0a5bac8c8e3466d7d0a9e5c130d373}\label{Utils_8h_acf0a5bac8c8e3466d7d0a9e5c130d373} 
+double {\bfseries rounder\+To\+NDecimals} (double x, unsigned int precision)
+\item 
+int \mbox{\hyperlink{Utils_8h_a0d293d446db969e958d80c998a061388}{time\+\_\+encoder}} (const int \&year, const int \&month, const int \&day, const int \&hour, const int \&minute, const int \&second)
+\begin{DoxyCompactList}\small\item\em given a year, month, day, hour, minute, second covert to an integer according to a time discretisation \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Utils_8h_a3c7d9cf2f9f63e780d65ab1c679740c4}{time\+\_\+encoder}} (const google\+::type\+::\+Date\+Time \&time)
+\begin{DoxyCompactList}\small\item\em given a google\+::type\+::\+Date\+Time object covert to an integer according to a time discretisation \end{DoxyCompactList}\item 
+google\+::type\+::\+Date\+Time \mbox{\hyperlink{Utils_8h_a7d80f255d601b54e4199280e5f63791f}{time\+\_\+decoder}} (const int \&time\+\_\+encoded)
+\begin{DoxyCompactList}\small\item\em given an integer google\+::type\+::\+Date\+Time object covert to an integer according to a time discretisation \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{Utils_8h_aeafc9d249f802518bed72c683ae48bed}{random\+Int\+Between}} (int \+\_\+min, int \+\_\+max, mt19937 \&generator)
+\begin{DoxyCompactList}\small\item\em Pick randomly an integer in the interval\mbox{[}\+\_\+min, \+\_\+max\mbox{]} by uniform distribution. \end{DoxyCompactList}\item 
+vector$<$ double $>$ \mbox{\hyperlink{Utils_8h_a55ddc59d765db5cfe58e3862fab79e2c}{softmax}} (const vector$<$ double $>$ \&x)
+\begin{DoxyCompactList}\small\item\em compute the softmax function of python. sigma(x)\+\_\+j = e\texorpdfstring{$^\wedge$}{\string^}(x\+\_\+j)/ sum\+\_\+k e\texorpdfstring{$^\wedge$}{\string^}(x\+\_\+k) \end{DoxyCompactList}\item 
+vector$<$ double $>$ \mbox{\hyperlink{Utils_8h_ab3dff4a6bf9a0f66af4ced83ee86d4c4}{exponential}} (const vector$<$ double $>$ \&x)
+\begin{DoxyCompactList}\small\item\em compute the "{}exponential"{} of the vector. sigma(x)\+\_\+j = e\texorpdfstring{$^\wedge$}{\string^}(x\+\_\+j) \end{DoxyCompactList}\item 
+\Hypertarget{Utils_8h_aa7033e64d90636cb37f4fd9e27183c20}\label{Utils_8h_aa7033e64d90636cb37f4fd9e27183c20} 
+vector$<$ int $>$ {\bfseries random\+\_\+subset} (vector$<$ int $>$ \&v, int n)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains useful functions needed in the code. 
+
+\begin{DoxyAuthor}{Author}
+Matteo Petris 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+February 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Utils_8h_ab3dff4a6bf9a0f66af4ced83ee86d4c4}\label{Utils_8h_ab3dff4a6bf9a0f66af4ced83ee86d4c4} 
+\index{Utils.h@{Utils.h}!exponential@{exponential}}
+\index{exponential@{exponential}!Utils.h@{Utils.h}}
+\doxysubsubsection{\texorpdfstring{exponential()}{exponential()}}
+{\footnotesize\ttfamily vector$<$ double $>$ exponential (\begin{DoxyParamCaption}\item[{const vector$<$ double $>$ \&}]{x }\end{DoxyParamCaption})}
+
+
+
+compute the "{}exponential"{} of the vector. sigma(x)\+\_\+j = e\texorpdfstring{$^\wedge$}{\string^}(x\+\_\+j) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \+: vector of double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+exponential of x \+: vector of double. 
+\end{DoxyReturn}
+\Hypertarget{Utils_8h_aeafc9d249f802518bed72c683ae48bed}\label{Utils_8h_aeafc9d249f802518bed72c683ae48bed} 
+\index{Utils.h@{Utils.h}!randomIntBetween@{randomIntBetween}}
+\index{randomIntBetween@{randomIntBetween}!Utils.h@{Utils.h}}
+\doxysubsubsection{\texorpdfstring{randomIntBetween()}{randomIntBetween()}}
+{\footnotesize\ttfamily int random\+Int\+Between (\begin{DoxyParamCaption}\item[{int}]{\+\_\+min,  }\item[{int}]{\+\_\+max,  }\item[{mt19937 \&}]{generator }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}, {\ttfamily [inline]}}
+
+
+
+Pick randomly an integer in the interval\mbox{[}\+\_\+min, \+\_\+max\mbox{]} by uniform distribution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em generator} & \+: mt19937 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The random integer \+: int. 
+\end{DoxyReturn}
+\Hypertarget{Utils_8h_a55ddc59d765db5cfe58e3862fab79e2c}\label{Utils_8h_a55ddc59d765db5cfe58e3862fab79e2c} 
+\index{Utils.h@{Utils.h}!softmax@{softmax}}
+\index{softmax@{softmax}!Utils.h@{Utils.h}}
+\doxysubsubsection{\texorpdfstring{softmax()}{softmax()}}
+{\footnotesize\ttfamily vector$<$ double $>$ softmax (\begin{DoxyParamCaption}\item[{const vector$<$ double $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [extern]}, {\ttfamily [inline]}}
+
+
+
+compute the softmax function of python. sigma(x)\+\_\+j = e\texorpdfstring{$^\wedge$}{\string^}(x\+\_\+j)/ sum\+\_\+k e\texorpdfstring{$^\wedge$}{\string^}(x\+\_\+k) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \+: vector of double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+softmax of x \+: vector of double. 
+\end{DoxyReturn}
+\Hypertarget{Utils_8h_a7d80f255d601b54e4199280e5f63791f}\label{Utils_8h_a7d80f255d601b54e4199280e5f63791f} 
+\index{Utils.h@{Utils.h}!time\_decoder@{time\_decoder}}
+\index{time\_decoder@{time\_decoder}!Utils.h@{Utils.h}}
+\doxysubsubsection{\texorpdfstring{time\_decoder()}{time\_decoder()}}
+{\footnotesize\ttfamily google\+::type\+::\+Date\+Time time\+\_\+decoder (\begin{DoxyParamCaption}\item[{const int \&}]{time\+\_\+encoded }\end{DoxyParamCaption})}
+
+
+
+given an integer google\+::type\+::\+Date\+Time object covert to an integer according to a time discretisation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+\_\+encoded} & \+: int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the decoded time \+: google\+::type\+::\+Date\+Time. 
+\end{DoxyReturn}
+\Hypertarget{Utils_8h_a3c7d9cf2f9f63e780d65ab1c679740c4}\label{Utils_8h_a3c7d9cf2f9f63e780d65ab1c679740c4} 
+\index{Utils.h@{Utils.h}!time\_encoder@{time\_encoder}}
+\index{time\_encoder@{time\_encoder}!Utils.h@{Utils.h}}
+\doxysubsubsection{\texorpdfstring{time\_encoder()}{time\_encoder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int time\+\_\+encoder (\begin{DoxyParamCaption}\item[{const google\+::type\+::\+Date\+Time \&}]{time }\end{DoxyParamCaption})}
+
+
+
+given a google\+::type\+::\+Date\+Time object covert to an integer according to a time discretisation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & \+: google\+::type\+::\+Date\+Time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the encode \+: int. 
+\end{DoxyReturn}
+\Hypertarget{Utils_8h_a0d293d446db969e958d80c998a061388}\label{Utils_8h_a0d293d446db969e958d80c998a061388} 
+\index{Utils.h@{Utils.h}!time\_encoder@{time\_encoder}}
+\index{time\_encoder@{time\_encoder}!Utils.h@{Utils.h}}
+\doxysubsubsection{\texorpdfstring{time\_encoder()}{time\_encoder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int time\+\_\+encoder (\begin{DoxyParamCaption}\item[{const int \&}]{year,  }\item[{const int \&}]{month,  }\item[{const int \&}]{day,  }\item[{const int \&}]{hour,  }\item[{const int \&}]{minute,  }\item[{const int \&}]{second }\end{DoxyParamCaption})}
+
+
+
+given a year, month, day, hour, minute, second covert to an integer according to a time discretisation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em year} & \+: int \\
+\hline
+{\em month} & \+: int \\
+\hline
+{\em day} & \+: int \\
+\hline
+{\em hour} & \+: int \\
+\hline
+{\em minute} & \+: int \\
+\hline
+{\em second} & \+: int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the encode \+: int. 
+\end{DoxyReturn}

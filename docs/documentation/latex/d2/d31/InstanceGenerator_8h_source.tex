@@ -1,0 +1,155 @@
+\doxysection{Instance\+Generator.\+h}
+\hypertarget{InstanceGenerator_8h_source}{}\label{InstanceGenerator_8h_source}\index{InstanceGenerator.h@{InstanceGenerator.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ INSTANCEGENERATOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ INSTANCEGENERATOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}../graph\_utils/Header.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../graph\_utils/Utils.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}../graph\_utils/SpaceTimeNetwork.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classInstanceGenerator}{InstanceGenerator}}\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classInstanceGenerator_ab6da2aff700266c85027f548ca2753e3}{name}};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classInstanceGenerator_a7f035d5366b9c22e218f0f0c0b6a0a16}{description}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classInstanceGenerator_aecfa153e9b36a36a64ff12d17c2a7d3b}{random\_seed}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{classInstanceGenerator_aa70d8393b4790e6b3fb2d9a287a54eb9}{InstanceGenerator}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classInstanceGenerator_aa70d8393b4790e6b3fb2d9a287a54eb9}{InstanceGenerator}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classInstanceGenerator_ab6da2aff700266c85027f548ca2753e3}{name}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classInstanceGenerator_a7f035d5366b9c22e218f0f0c0b6a0a16}{description}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\&\ \mbox{\hyperlink{classInstanceGenerator_aecfa153e9b36a36a64ff12d17c2a7d3b}{random\_seed}});}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classInstanceGenerator_aa70d8393b4790e6b3fb2d9a287a54eb9}{InstanceGenerator}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classInstanceGenerator}{InstanceGenerator}}\&\ instanceGenerator);}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{classInstanceGenerator}{InstanceGenerator}}\&\ \mbox{\hyperlink{classInstanceGenerator_a1bd41a5f22eecf1838ef449e414b5465}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classInstanceGenerator}{InstanceGenerator}}\&\ instanceGenerator);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{classInstanceGenerator_ae75e822cbeddf63d43135615e0e16d34}{\string~InstanceGenerator}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classInstanceGenerator_a7a9f0efa5de536dc22122d356e1d77e5}{generate\_logistic\_network}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ hubs\_number,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time\_horizon,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ dimension\_number,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ max\_length\_line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ num\_vehicles\_per\_step,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ max\_vehicle\_duration,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ max\_vehicle\_capacity\ =\ 100.0\ ,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ vehicle\_sampling\_inv\_temp\ =\ 0.01,\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ new\_connections\_per\_node\ =\ 2)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief\ build\ the\ random\ graph\ according\ to\ the\ extended\ Barab{\ucr}si-\/Albert\ algorithm\ }}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ \ *\ \ \ This\ results\ in\ a\ few\ highly\ connected\ (large\ degree),\ while\ most\ depots\ only\ have\ a\ few\ connections.\ }}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ \ *\ The\ algorithm\ implementation\ is\ similar\ to\ the\ networkx\ one\ (https://networkx.org/documentation/stable/\_modules/networkx/generators/random\_graphs.html\#barabasi\_albert\_graph)}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ hubs\_number\ :\ int}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ new\_connections\_per\_node\ :\ int}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)return\ graph\ data\ structure}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\ build\_random\_graph(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ hubs\_number,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ new\_connections\_per\_node)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief\ build\ the\ weights\ on\ the\ arcs\ of\ the\ graph\ to\ sample\ vehicles\ based\ on\ the\ extremes\ degree:\ W\_ij\ =\ vehicle\_sampling\_inv\_temp\ *\ (deg(i)+deg(j))\ }}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ random\ graph\ :\ Graph\ }}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ vehicle\_sampling\_inv\_temp\ :\ see\ generate\_logistic\_network\ doc}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)return\ weights\ :\ vector<double>}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00108\ \ \ \ \ vector<double>\ build\_arc\_weights(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ graph,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ vehicle\_sampling\_inv\_temp)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00109\ \ \ \ \ vector<vector<double>>\ build\_arc\_weights\_per\_adjacency\_lists(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ graph,\ \textcolor{keyword}{const}\ vector<double>\&\ arc\_weights)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_dimensions(operations\_research::lattle::LogisticsNetwork\&\ network,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ dimension\_number)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_hubs(operations\_research::lattle::LogisticsNetwork\&\ network,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ graph)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00113\ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00115\ \textcolor{comment}{\ \ \ \ *\ add\ the\ line\ rotations\ to\ the\ logistic\ network:\ sample\ randomly\ +\ insertion}}
+\DoxyCodeLine{00116\ \textcolor{comment}{\ \ \ \ *\ }}
+\DoxyCodeLine{00117\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ network}}
+\DoxyCodeLine{00118\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ graph}}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ max\_length\_line}}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ time\_horizon\ :\ int}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ num\_vehicles\_per\_step\ :\ int}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ arcs\_number\_graph\ :\ int}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ arc\_weights\ }}
+\DoxyCodeLine{00124\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)param\ arc\_weights\_adj\_lists\ }}
+\DoxyCodeLine{00125\ \textcolor{comment}{\ \ \ \ *\ }}
+\DoxyCodeLine{00126\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)return\ number\ of\ vehicles\ }}
+\DoxyCodeLine{00127\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{int}\ add\_line\_rotations(operations\_research::lattle::LogisticsNetwork\&\ network,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ graph,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ max\_length\_line,}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time\_horizon,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ num\_vehicles\_per\_step,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ max\_vehicle\_duration,\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ vector<double>\&\ arc\_weights,\ \textcolor{keyword}{const}\ vector<vector<double>>\&\ arc\_weights\_adj\_lists)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_line\_rotation(operations\_research::lattle::LogisticsNetwork\&\ network,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ graph,\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ line\_numb,\ \textcolor{keyword}{const}\ vector<int>\&\ line,\ \textcolor{keyword}{const}\ vector<vector<int>>\&\ rotations)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00133\ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_distance\_matrix\_entry(operations\_research::lattle::LogisticsNetwork\&\ network,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ y)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_time\_range(operations\_research::lattle::DateTimeRange\&\ range,\ \textcolor{keyword}{const}\ google::type::DateTime\&\ time)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_vehicles(operations\_research::lattle::LogisticsNetwork\&\ network,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ vehicle\_number,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ max\_vehicle\_capacity)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00140\ \textcolor{comment}{\ \ \ \ *\ \(\backslash\)brief\ Adds\ random\ shipments\ to\ a\ time-\/expanded\ transportation\ network.}}
+\DoxyCodeLine{00141\ \textcolor{comment}{}}
+\DoxyCodeLine{00142\ \textcolor{comment}{\ \ \ \ *\ The\ network\ may\ be\ created\ using\ \`{}make\_random\_network`,\ whose\ outputs\ can\ be}}
+\DoxyCodeLine{00143\ \textcolor{comment}{\ \ \ \ *\ passed\ as\ \`{}state,\ network,\ distances`.\ This\ function\ adds\ shipments\ to\ the}}
+\DoxyCodeLine{00144\ \textcolor{comment}{\ \ \ \ *\ network\ by\ first\ sampling\ a\ shipment\ weight\ (from\ a\ truncated\ Pareto}}
+\DoxyCodeLine{00145\ \textcolor{comment}{\ \ \ \ *\ distribution\ [1]),\ a\ start\ node\ from\ the\ time\ expanded\ network,\ and\ then}}
+\DoxyCodeLine{00146\ \textcolor{comment}{\ \ \ \ *\ sampling\ trucks\ to\ make\ a\ shipment\ route.\ Routes\ end\ probabilistically\ after}}
+\DoxyCodeLine{00147\ \textcolor{comment}{\ \ \ \ *\ each\ truck\ to\ give\ an\ average\ route\ length\ of\ \`{}mean\_route\_length`.\ The}}
+\DoxyCodeLine{00148\ \textcolor{comment}{\ \ \ \ *\ time-\/expanded\ network\ (`state`)\ should\ normally\ be\ pruned\ (using}}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ \ \ \ *\ \`{}prune\_network`\ with\ \`{}prune\_shipments=False`)\ before\ adding\ shipments\ with\ this}}
+\DoxyCodeLine{00150\ \textcolor{comment}{\ \ \ \ *\ function.\ This\ method\ ensures\ that\ the\ network\ is\ completely\ solvable.}}
+\DoxyCodeLine{00151\ \textcolor{comment}{\ \ \ \ *}}
+\DoxyCodeLine{00152\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ rng:\ Random\ number\ generator.}}
+\DoxyCodeLine{00153\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ network:\ the\ logistic\ network\ where\ to\ add\ the\ shipments}}
+\DoxyCodeLine{00154\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ distances:\ Resistance\ distance\ matrix\ of\ \`{}network`,\ as\ returned\ by}}
+\DoxyCodeLine{00155\ \textcolor{comment}{\ \ \ \ *\ \ \ \`{}make\_random\_network`.\ This\ is\ used\ for\ sampling\ trucks\ in\ such\ a\ way\ that}}
+\DoxyCodeLine{00156\ \textcolor{comment}{\ \ \ \ *\ \ \ \ they\ are\ more\ likely\ to\ bring\ the\ shipment\ further\ from\ their\ start\ hub.\ How}}
+\DoxyCodeLine{00157\ \textcolor{comment}{\ \ \ \ *\ \ \ much\ this\ is\ taken\ into\ account\ is\ conrolled\ by\ the\ \`{}dist\_inv\_temp`\ parameter.}}
+\DoxyCodeLine{00158\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ num\_shipments:\ Number\ of\ shipments\ to\ be\ included\ in\ the\ network.}}
+\DoxyCodeLine{00159\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ mean\_route\_length:\ Average\ length\ of\ a\ shipment\ route\ (in\ time\ steps).\ After}}
+\DoxyCodeLine{00160\ \textcolor{comment}{\ \ \ \ *\ \ \ \ each\ time\ step\ of\ a\ shipment\ route,\ it\ is\ randomly\ decided\ whether\ to}}
+\DoxyCodeLine{00161\ \textcolor{comment}{\ \ \ \ *\ \ \ terminate\ the\ route,\ with\ probability\ 1\ /\ \`{}mean\_route\_length`.\ This\ way,\ a}}
+\DoxyCodeLine{00162\ \textcolor{comment}{\ \ \ \ *\ \ \ shipment\ route\ lasts\ \`{}sum((1\ -\/\ 1\ /\ mean\_route\_length)**k)`\ time\ steps\ in}}
+\DoxyCodeLine{00163\ \textcolor{comment}{\ \ \ \ *\ \ \ expectation.\ This\ geometric\ sum\ approaches\ \`{}mean\_route\_length`\ as\ the}}
+\DoxyCodeLine{00164\ \textcolor{comment}{\ \ \ \ *\ \ \ number\ of\ time\ steps\ in\ \`{}state`\ becomes\ larger.}}
+\DoxyCodeLine{00165\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ min\_shipment\_weight:\ The\ scale\ (`m`)\ parameter\ of\ the\ Pareto\ distribution\ [1]}}
+\DoxyCodeLine{00166\ \textcolor{comment}{\ \ \ \ *\ \ \ \ from\ which\ shipment\ weights\ are\ sampled.}}
+\DoxyCodeLine{00167\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ max\_shipment\_weight:\ The\ maximum\ weight\ of\ shipments.\ The\ shipment\ weights\ are}}
+\DoxyCodeLine{00168\ \textcolor{comment}{\ \ \ \ *\ \ \ sampled\ from\ a\ truncated\ Pareto\ distribution\ using\ rejection\ sampling\ to}}
+\DoxyCodeLine{00169\ \textcolor{comment}{\ \ \ \ *\ \ \ keep\ weights\ below\ \`{}max\_shipment\_weight`.}}
+\DoxyCodeLine{00170\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ shipment\_weight\_shape:\ The\ shape\ (`a`)\ parameter\ of\ the\ Pareto\ distribution}}
+\DoxyCodeLine{00171\ \textcolor{comment}{\ \ \ \ *\ \ \ [1]\ from\ which\ shipment\ weights\ are\ sampled.}}
+\DoxyCodeLine{00172\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ unit\_weights:\ If\ \`{}True`,\ all\ shipment\ weights\ are\ set\ to\ 1\ instead\ of\ being}}
+\DoxyCodeLine{00173\ \textcolor{comment}{\ \ \ \ *\ \ \ sampled\ from\ a\ Pareto\ distribution.}}
+\DoxyCodeLine{00174\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ start\_inv\_temp:\ The\ start\ node\ hub\ is\ sampled\ from\ a\ Boltzmann\ distribution}}
+\DoxyCodeLine{00175\ \textcolor{comment}{\ \ \ \ *\ \ \ with\ exponent\ \`{}-\/start\_inv\_temp\ *\ degree(hub)`\ to\ preferably\ start\ at\ hubs}}
+\DoxyCodeLine{00176\ \textcolor{comment}{\ \ \ \ *\ \ \ \ with\ lower\ degree.}}
+\DoxyCodeLine{00177\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ dist\_inv\_temp:\ When\ sampling\ shipment\ routes\ it\ is\ often\ posssible\ to\ choose}}
+\DoxyCodeLine{00178\ \textcolor{comment}{\ \ \ \ *\ \ \ \ between\ multiple\ trucks.\ In\ these\ cases,\ the\ truck\ is\ chosen\ among\ the}}
+\DoxyCodeLine{00179\ \textcolor{comment}{\ \ \ \ *\ \ \ available\ trucks\ by\ sampling\ from\ a\ Boltzmann\ distribution\ with\ exponent}}
+\DoxyCodeLine{00180\ \textcolor{comment}{\ \ \ \ *\ \ \ \`{}dist\_inv\_temp\ *\ dist\_from\_start`\ (where\ the\ distance\ to\ the\ start\ node\ is}}
+\DoxyCodeLine{00181\ \textcolor{comment}{\ \ \ \ *\ \ \ measured\ in\ terms\ of\ resistance\ distance,\ i.e.\ \`{}distances`).\ This}}
+\DoxyCodeLine{00182\ \textcolor{comment}{\ \ \ \ *\ \ \ encourages\ shipments\ to\ go\ further\ from\ their\ start\ nodes.}}
+\DoxyCodeLine{00183\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ max\_tries:\ If,\ after\ a\ shipment\ route\ has\ been\ sampled,\ this\ shipment\ route}}
+\DoxyCodeLine{00184\ \textcolor{comment}{\ \ \ \ *\ \ \ doesn't\ actually\ use\ any\ real\ trucks\ (instead,\ the\ shipment\ just\ stays\ at}}
+\DoxyCodeLine{00185\ \textcolor{comment}{\ \ \ \ *\ \ \ its\ start\ hub),\ we\ try\ again.\ This\ is\ done\ for\ a\ maximum\ of\ \`{}max\_tries`}}
+\DoxyCodeLine{00186\ \textcolor{comment}{\ \ \ \ *\ \ \ times\ (after\ which\ a\ 'staying'\ shipment\ route\ will\ simply\ be\ accepted).\ The}}
+\DoxyCodeLine{00187\ \textcolor{comment}{\ \ \ \ *\ \ \ shipment\ weight\ is\ reduced\ by\ 10\%\ each\ try\ to\ make\ it\ easier\ to\ place\ the}}
+\DoxyCodeLine{00188\ \textcolor{comment}{\ \ \ \ *\ \ \ shipment.}}
+\DoxyCodeLine{00189\ \textcolor{comment}{\ \ \ \ *\ \ \ \(\backslash\)param\ cut\_capacities:\ After\ all\ shipments\ have\ been\ placed\ in\ the\ network,\ there\ is}}
+\DoxyCodeLine{00190\ \textcolor{comment}{\ \ \ \ *\ \ \ normally\ still\ capacity\ left\ in\ some\ trucks.\ \`{}cut\_capacities`\ is\ a\ number}}
+\DoxyCodeLine{00191\ \textcolor{comment}{\ \ \ \ *\ \ \ between\ 0\ and\ 1\ that\ specifies\ how\ much\ of\ this\ excess\ capacity\ should\ be}}
+\DoxyCodeLine{00192\ \textcolor{comment}{\ \ \ \ *\ \ \ removed\ (by\ reducing\ the\ trucks'\ capacities).\ Thus,\ 1\ means\ all\ excess}}
+\DoxyCodeLine{00193\ \textcolor{comment}{\ \ \ \ *\ \ \ capacity\ is\ cut\ and\ 0\ means\ no\ capacity\ is\ cut.}}
+\DoxyCodeLine{00194\ \textcolor{comment}{\ \ \ \ *\ \ \ }}
+\DoxyCodeLine{00195\ \textcolor{comment}{\ \ \ \ *\ \ \ The\ new\ state\ (time-\/expanded\ network),\ now\ with\ \`{}num\_shipments`\ shipments\ added,}}
+\DoxyCodeLine{00196\ \textcolor{comment}{\ \ \ \ *\ \ \ as\ well\ a\ dictionary\ mapping\ each\ shipment\ id\ to\ a\ list\ of\ nodes\ (in}}
+\DoxyCodeLine{00197\ \textcolor{comment}{\ \ \ \ *\ \ \ (location,\ time)\ format)\ representing\ a\ solution\ route\ for\ that\ shipment.}}
+\DoxyCodeLine{00198\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordtype}{void}\ generate\_shipments(\textcolor{keyword}{const}\ operations\_research::lattle::LogisticsNetwork\&\ network,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSpaceTimeNetwork}{SpaceTimeNetwork}}\&\ st\_network,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ shipment\_number,}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ timesteps,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ mean\_path\_length,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ min\_shipment\_weight\ =\ 1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ max\_shipment\_weight\ =\ 100,}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ shipment\_weight\_shape\ =\ 0.1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\&\ unit\_weights\ =\ \textcolor{keyword}{false},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ start\_inv\_temp\ =\ 0.1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ dist\_inv\_temp\ =\ 0.1,}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ max\_tries\ =\ 50,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\&\ cut\_capacities\ =\ 0.0)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \};}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !INSTANCEGENERATOR\_H}}
+
+\end{DoxyCode}

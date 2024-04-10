@@ -1,0 +1,51 @@
+\doxysection{Graph.\+h}
+\hypertarget{Graph_8h_source}{}\label{Graph_8h_source}\index{Graph.h@{Graph.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRAPH\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GRAPH\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Header_8h}{Header.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Utils_8h}{Utils.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Vertex.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGraph}{Graph}}\ \{}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \ \ \ \ vector<Vertex>\ \mbox{\hyperlink{classGraph_ad35511b41e5c763258a11ff94c2339f6}{vertices}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \ \ unordered\_map<string,\ int>\ \mbox{\hyperlink{classGraph_ae41bb580c7af1886a57ccae771a7d79b}{vertex\_dictionary}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \ \ vector<pair<int,\ int>>\ \mbox{\hyperlink{classGraph_ac7bdf20c2f2129b4d2855aae4675a95a}{arcs}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ vector<unordered\_map<int,\ int>>\ \mbox{\hyperlink{classGraph_ae8d8dcc9b7ef5c33d0b50f847ae1890b}{arcs\_dictionary}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{classGraph_ae4c72b8ac4d693c49800a4c7e273654f}{Graph}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{classGraph_ae4c72b8ac4d693c49800a4c7e273654f}{Graph}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ hub\_number);}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classGraph_ae4c72b8ac4d693c49800a4c7e273654f}{Graph}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ graph);}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\&\ \mbox{\hyperlink{classGraph_a3b4cb8c62a842803d891d3eb83077d43}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ graph);}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{classGraph_a902c5b3eacb66d60752525ab23297a95}{\string~Graph}}();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a752e4dc473ec04b2487d7643467ad95a}{add\_vertex}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name);}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classGraph_a0766e227105b6328834f96d9debde57f}{add\_neighbour}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ key,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ neighbour,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ line);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{const}\ vector<Vertex>\&\ get\_vertices()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ get\_vertex\_number()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classVertex}{Vertex}}\&\ get\_vertex(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \textcolor{keywordtype}{id})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classVertex}{Vertex}}\&\ get\_vertex(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{const}\ vector<pair<int,\ int>>\&\ get\_arcs()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ get\_arc\_position(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ id1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ id2)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ toString()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !GRAPH\_H}}
+
+\end{DoxyCode}

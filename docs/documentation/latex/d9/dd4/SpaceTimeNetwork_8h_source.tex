@@ -1,0 +1,85 @@
+\doxysection{Space\+Time\+Network.\+h}
+\hypertarget{SpaceTimeNetwork_8h_source}{}\label{SpaceTimeNetwork_8h_source}\index{SpaceTimeNetwork.h@{SpaceTimeNetwork.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SpaceTimeNetwork\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SpaceTimeNetwork\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Header_8h}{Header.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Utils_8h}{Utils.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Graph.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}VertexST.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}ArcST.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Lorry.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSpaceTimeNetwork}{SpaceTimeNetwork}}\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ operations\_research::lattle::LogisticsNetwork\ \mbox{\hyperlink{classSpaceTimeNetwork_abcb6c751dd58a566742c263a055ff949}{network}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classGraph}{Graph}}\ \mbox{\hyperlink{classSpaceTimeNetwork_a1a120f7f8f4199594fe286ee11261327}{underlying\_graph}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ vector<VertexST>\ \mbox{\hyperlink{classSpaceTimeNetwork_aaf34aaf5753c9d88de3555cbad074e8c}{vertices}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ vector<ArcST>\ \mbox{\hyperlink{classSpaceTimeNetwork_ab872acbce9045461ef13a5f2bfdc8c83}{arcs}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ unordered\_map<int,\ unordered\_map<int,\ int>>\ \mbox{\hyperlink{classSpaceTimeNetwork_ad3ee035f71197d92316c49b6920f759d}{vertex\_dictionary}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00055\ \ \ \ \ vector<unordered\_map<int,double>>\ \mbox{\hyperlink{classSpaceTimeNetwork_a2c622c046cf1ba99f08f91204fa19483}{adjacency\_lists\_graph\_algorithms}};}
+\DoxyCodeLine{00059\ \ \ \ \ vector<unordered\_map<int,\ int>>\ \mbox{\hyperlink{classSpaceTimeNetwork_a7e1a25302d2b052bbf785d18981a2773}{adjacency\_lists\_arc\_position}};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ vector<Lorry>\ \mbox{\hyperlink{classSpaceTimeNetwork_acc41101823caf0e04f211682d55b86a4}{lorries}};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{classSpaceTimeNetwork_a6a9cc4ddc1746d21c1f392ba59293a35}{SpaceTimeNetwork}}();}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{classSpaceTimeNetwork_a6a9cc4ddc1746d21c1f392ba59293a35}{SpaceTimeNetwork}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ network\_file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time\_horizon);}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classSpaceTimeNetwork_a6a9cc4ddc1746d21c1f392ba59293a35}{SpaceTimeNetwork}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSpaceTimeNetwork}{SpaceTimeNetwork}}\&\ spaceTimeNetwork);}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{classSpaceTimeNetwork}{SpaceTimeNetwork}}\&\ \mbox{\hyperlink{classSpaceTimeNetwork_a6e09b16e2262f0c910b613def421df14}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSpaceTimeNetwork}{SpaceTimeNetwork}}\&\ spaceTimeNetwork);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{classSpaceTimeNetwork_aa205a386a5fe7e5b3914099d70309b3c}{\string~SpaceTimeNetwork}}();}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_a7412a30a208b1c7ebd5740c84657a8b5}{parse\_logistic\_network}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ network\_file);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_a43881b54c31d1cd35e681b907411521b}{build\_underlying\_graph}}(\textcolor{keyword}{const}\ operations\_research::lattle::LogisticsNetwork\&\ \mbox{\hyperlink{classSpaceTimeNetwork_abcb6c751dd58a566742c263a055ff949}{network}});}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_aff4f6d33c59c57e0e721ab16ed74a08b}{build\_vertices}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time\_horizon);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_aee72dbfb3401dc843c196da82facf2e2}{build\_arcs}}(\textcolor{keyword}{const}\ operations\_research::lattle::LogisticsNetwork\&\ \mbox{\hyperlink{classSpaceTimeNetwork_abcb6c751dd58a566742c263a055ff949}{network}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time\_horizon);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_a01738f0ada56cd66361019633fb7cae3}{build\_lorries}}(\textcolor{keyword}{const}\ operations\_research::lattle::LogisticsNetwork\&\ \mbox{\hyperlink{classSpaceTimeNetwork_abcb6c751dd58a566742c263a055ff949}{network}});}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_a6898f73576a8bf427b9de60fce60086a}{add\_vertexST}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ hub,\ \textcolor{keyword}{const}\ operations\_research::lattle::DateTimeRange\&\ time,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time\_horizon);}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_a6898f73576a8bf427b9de60fce60086a}{add\_vertexST}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ hub,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time);}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_a5f9d95ad7f0b75e24831f8e7b9546d42}{add\_to\_adjacency\_list\_out}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classArcST}{ArcST}}\&\ arc);}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_a4c507a731913dc1728c39eefbe37c64f}{add\_to\_adjacency\_list\_in}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classArcST}{ArcST}}\&\ arc);}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_a553deac254df35228777207509a3fb21}{sort\_adjacency\_list\_out}}();}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keyword}{const}\ vector<int>\ \mbox{\hyperlink{classSpaceTimeNetwork_a81bdf84166f1bc158f595401849bbe27}{get\_hub\_time\_after\_t}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ hub,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{const}\ vector<int>\ \mbox{\hyperlink{classSpaceTimeNetwork_a86a9c27a781e527c2e694f923af28e65}{get\_hub\_time\_before\_t}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ hub,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_aba70e123a9b95b4e6782d185d93406f9}{initialise\_adjacency\_lists\_arc\_position}}();}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_a912fc06a5c9aace8fe1216f2d0119b5f}{initialise\_adjacency\_lists\_graph\_algorithms}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ type);}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_ad50eba5a894decb94fd3224f8396b439}{restore\_adjacency\_lists\_graph\_value}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ type,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ u,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ v);}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSpaceTimeNetwork_ad91e97a42e73b188a93091229ee5b8ec}{modify\_adjacency\_lists\_graph\_value}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ type,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ u,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ v,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ position\_in\_adj\_list);}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keyword}{const}\ operations\_research::lattle::LogisticsNetwork\&\ get\_network()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGraph}{Graph}}\&\ get\_underlying\_graph()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{const}\ vector<VertexST>\&\ get\_vertices()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keyword}{const}\ vector<ArcST>\&\ get\_arcs()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classVertexST}{VertexST}}\&\ get\_vertex(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ hub,\ \textcolor{keyword}{const}\ operations\_research::lattle::DateTimeRange\&\ time)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classVertexST}{VertexST}}\&\ get\_vertex(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ hub,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ time)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keyword}{const}\ vector<unordered\_map<int,\ double>>\&\ get\_adjacency\_lists\_graph\_algorithms()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keyword}{const}\ vector<unordered\_map<int,\ int>>\&\ get\_adjacency\_lists\_arc\_position()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ toString()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !SpaceTimeNetwork\_H}}
+
+\end{DoxyCode}

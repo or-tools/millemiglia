@@ -1,0 +1,105 @@
+\doxysection{El\+Random Class Reference}
+\hypertarget{classElRandom}{}\label{classElRandom}\index{ElRandom@{ElRandom}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+integral$<$ T $>$\+::value $>$\+::type \texorpdfstring{$\ast$}{*}  = nullptr$>$ }\\static T \mbox{\hyperlink{classElRandom_adbf36d300c3da6256a7bed51fa08f656}{Uniform}} (T a, T b)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+floating\+\_\+point$<$ T $>$\+::value $>$\+::type \texorpdfstring{$\ast$}{*}  = nullptr$>$ }\\static T \mbox{\hyperlink{classElRandom_adbf36d300c3da6256a7bed51fa08f656}{Uniform}} (T a, T b)
+\item 
+{\footnotesize template$<$typename T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+floating\+\_\+point$<$ T $>$\+::value $>$\+::type \texorpdfstring{$\ast$}{*}  = nullptr$>$ }\\static T \mbox{\hyperlink{classElRandom_a81236c2ab191473a80c8fb3b2761459e}{Lomax}} (T scale, T shape)
+\item 
+{\footnotesize template$<$typename T $>$ }\\static int \mbox{\hyperlink{classElRandom_a24b4cc2a43a7ba1a1615a5744db8a3c2}{Discrete}} (const vector$<$ T $>$ \&weights)
+\item 
+static int \mbox{\hyperlink{classElRandom_a69d81ae886c48b280bba55c4d4c5171b}{Binomial}} (const int \&t, const double \&p)
+\item 
+static unsigned int \mbox{\hyperlink{classElRandom_a8ceb416218aaf528690fcab9b5defb2e}{Set\+Seed}} (unsigned int seed)
+\item 
+\Hypertarget{classElRandom_ad5132bd22ac28aad6cd8bf39b3034cf7}\label{classElRandom_ad5132bd22ac28aad6cd8bf39b3034cf7} 
+static unsigned int {\bfseries Get\+Seed} ()
+\item 
+\Hypertarget{classElRandom_a1c85fb2be7ed46acc605281ad84b5a1f}\label{classElRandom_a1c85fb2be7ed46acc605281ad84b5a1f} 
+static std\+::mt19937 \& {\bfseries Get\+Generator} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classElRandom_a69d81ae886c48b280bba55c4d4c5171b}\label{classElRandom_a69d81ae886c48b280bba55c4d4c5171b} 
+\index{ElRandom@{ElRandom}!Binomial@{Binomial}}
+\index{Binomial@{Binomial}!ElRandom@{ElRandom}}
+\doxysubsubsection{\texorpdfstring{Binomial()}{Binomial()}}
+{\footnotesize\ttfamily static int El\+Random\+::\+Binomial (\begin{DoxyParamCaption}\item[{const int \&}]{t,  }\item[{const double \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Generates a random integer according to the binomial distribution according to probability of success p in the range \mbox{[}0,t\mbox{]} P(i\texorpdfstring{$\vert$}{|}t,p) = (t i) p\texorpdfstring{$^\wedge$}{\string^}i(1-\/p)\texorpdfstring{$^\wedge$}{\string^}\{t-\/i\} 
+\begin{DoxyParams}{Parameters}
+{\em p} & \\
+\hline
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classElRandom_a24b4cc2a43a7ba1a1615a5744db8a3c2}\label{classElRandom_a24b4cc2a43a7ba1a1615a5744db8a3c2} 
+\index{ElRandom@{ElRandom}!Discrete@{Discrete}}
+\index{Discrete@{Discrete}!ElRandom@{ElRandom}}
+\doxysubsubsection{\texorpdfstring{Discrete()}{Discrete()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+static int El\+Random\+::\+Discrete (\begin{DoxyParamCaption}\item[{const vector$<$ T $>$ \&}]{weights }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Generates a random integer according to the discrete distribution according to the weights W in parameter P(i\texorpdfstring{$\vert$}{|}\+W\+\_\+0,...,W\+\_\+\{n-\/1\}) = W\+\_\+i/sum\+\_\+\{k=0,...,n-\/1\} W\+\_\+k, for each i=0,...,n-\/1; n is the size of W 
+\begin{DoxyParams}{Parameters}
+{\em weights} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classElRandom_a81236c2ab191473a80c8fb3b2761459e}\label{classElRandom_a81236c2ab191473a80c8fb3b2761459e} 
+\index{ElRandom@{ElRandom}!Lomax@{Lomax}}
+\index{Lomax@{Lomax}!ElRandom@{ElRandom}}
+\doxysubsubsection{\texorpdfstring{Lomax()}{Lomax()}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+floating\+\_\+point$<$ T $>$\+::value $>$\+::type \texorpdfstring{$\ast$}{*}  = nullptr$>$ \\
+static T El\+Random\+::\+Lomax (\begin{DoxyParamCaption}\item[{T}]{scale,  }\item[{T}]{shape }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Generates a random float according to the Lomax distribution, whose density function is X = lambda \texorpdfstring{$\ast$}{*} ((1/(1-\/U)\texorpdfstring{$^\wedge$}{\string^}(1/alpha)) -\/ 1), where U is a uniformly distributed random variable in \mbox{[}0,1) 
+\begin{DoxyParams}{Parameters}
+{\em lambda} & \texorpdfstring{$>$}{>} 0 \+: double scale factor \\
+\hline
+{\em alpha} & \texorpdfstring{$>$}{>} 0 \+: double shape ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classElRandom_a8ceb416218aaf528690fcab9b5defb2e}\label{classElRandom_a8ceb416218aaf528690fcab9b5defb2e} 
+\index{ElRandom@{ElRandom}!SetSeed@{SetSeed}}
+\index{SetSeed@{SetSeed}!ElRandom@{ElRandom}}
+\doxysubsubsection{\texorpdfstring{SetSeed()}{SetSeed()}}
+{\footnotesize\ttfamily static unsigned int El\+Random\+::\+Set\+Seed (\begin{DoxyParamCaption}\item[{unsigned int}]{seed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Sets a new seed for the random engine. \Hypertarget{classElRandom_adbf36d300c3da6256a7bed51fa08f656}\label{classElRandom_adbf36d300c3da6256a7bed51fa08f656} 
+\index{ElRandom@{ElRandom}!Uniform@{Uniform}}
+\index{Uniform@{Uniform}!ElRandom@{ElRandom}}
+\doxysubsubsection{\texorpdfstring{Uniform()}{Uniform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+integral$<$ T $>$\+::value $>$\+::type \texorpdfstring{$\ast$}{*}  = nullptr$>$ \\
+static T El\+Random\+::\+Uniform (\begin{DoxyParamCaption}\item[{T}]{a,  }\item[{T}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Generates an uniform random integer in \mbox{[}a, b\mbox{]}. 
+\begin{DoxyParams}{Parameters}
+{\em a} & lower bound \\
+\hline
+{\em b} & upper bound \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classElRandom_adbf36d300c3da6256a7bed51fa08f656}\label{classElRandom_adbf36d300c3da6256a7bed51fa08f656} 
+\index{ElRandom@{ElRandom}!Uniform@{Uniform}}
+\index{Uniform@{Uniform}!ElRandom@{ElRandom}}
+\doxysubsubsection{\texorpdfstring{Uniform()}{Uniform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+floating\+\_\+point$<$ T $>$\+::value $>$\+::type \texorpdfstring{$\ast$}{*}  = nullptr$>$ \\
+static T El\+Random\+::\+Uniform (\begin{DoxyParamCaption}\item[{T}]{a,  }\item[{T}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Generates an uniform random float in \mbox{[}a, b\mbox{]}. 
+\begin{DoxyParams}{Parameters}
+{\em a} & lower bound \\
+\hline
+{\em b} & upper bound \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Elrandom.\+h\end{DoxyCompactItemize}

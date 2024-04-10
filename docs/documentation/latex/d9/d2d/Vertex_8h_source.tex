@@ -1,0 +1,68 @@
+\doxysection{Vertex.\+h}
+\hypertarget{Vertex_8h_source}{}\label{Vertex_8h_source}\index{Vertex.h@{Vertex.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VERTEX\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VERTEX\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Header_8h}{Header.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Utils_8h}{Utils.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVertex}{Vertex}}\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVertex_a2e69697726190f50c7fc040fb1ddac7a}{id}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{classVertex_ac7798941755cd11208af3fb26eb8bc14}{name}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ unordered\_map<int,\ vector<string>>\ \mbox{\hyperlink{classVertex_ad344496fbca8e8ffbbf407c79c7db592}{adjacency\_list\_out}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ unordered\_map<int,\ vector<string>>\ \mbox{\hyperlink{classVertex_ae1d4644c7e6160c6ab0bb192a5f07c58}{adjacency\_list\_in}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVertex_a6eac5cccf53e3d621164796b7032b3ca}{earliest\_time}};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVertex_a166c9da2ca098be13e866b6d61ffc87b}{latest\_time}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVertex_ad09cb10d75c8f035d946c337ffa45a6d}{lastId}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classVertex_a97488994a2482d70da74e1b91d40e169}{Vertex}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{classVertex_a97488994a2482d70da74e1b91d40e169}{Vertex}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{classVertex_ac7798941755cd11208af3fb26eb8bc14}{name}});}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{classVertex_a97488994a2482d70da74e1b91d40e169}{Vertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVertex}{Vertex}}\&\ vertex);}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classVertex}{Vertex}}\&\ \mbox{\hyperlink{classVertex_a8e5dcb94d237fa4963abf039e0e5184c}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVertex}{Vertex}}\&\ vertex);}
+\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{classVertex_ad7a0ce588b7f688dc4488a0f567d9155}{\string~Vertex}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVertex_a036132d4fa4142846e24d615f64980fa}{add\_neighbour\_in}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ line);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVertex_ae51ba8031285ea219ab7016d3d3b09d4}{add\_neighbour\_out}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ line);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVertex_a66425e35dec813a400e703cc9e6e844e}{is\_neighbour\_out}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \textcolor{keywordtype}{id})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classVertex_a11f33e46f06052fa4265aa08bb9870c9}{is\_neighbour\_in}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \textcolor{keywordtype}{id})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ restart\_id\_counter()\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertex_ad09cb10d75c8f035d946c337ffa45a6d}{lastId}}\ =\ 0;}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_id()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ get\_name()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{const}\ unordered\_map<int,\ vector<string>>\&\ get\_adjacency\_list\_out()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{const}\ unordered\_map<int,\ vector<string>>\&\ get\_adjacency\_list\_in()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ get\_out\_going\_by\_position(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ pos)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ get\_neighbours\_number()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{const}\ vector<string>\&\ get\_lines\_out(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \textcolor{keywordtype}{id})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{const}\ vector<string>\&\ get\_lines\_in(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \textcolor{keywordtype}{id})\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_latest\_time()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_earliest\_time()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ toString()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !GRAPH\_H}}
+
+\end{DoxyCode}

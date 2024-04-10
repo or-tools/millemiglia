@@ -1,0 +1,68 @@
+\doxysection{Vertex\+ST.\+h}
+\hypertarget{VertexST_8h_source}{}\label{VertexST_8h_source}\index{VertexST.h@{VertexST.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VERTEXST\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VERTEXST\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Header_8h}{Header.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Utils_8h}{Utils.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVertexST}{VertexST}}\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVertexST_af6b42c251fbca5c410d4ecf131be319f}{id}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVertexST_a7e6a1de6591ad74ec2954f206bc6cdf1}{id\_in\_graph}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVertexST_aada4d017ec27944854c98bfad025b5b1}{time}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVertexST_ad31ad4c8a06ee540f17d0c58777e470d}{topological\_position}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ unordered\_map<int,\ vector<int>>\ \mbox{\hyperlink{classVertexST_aa8a13f6e457172152b558f5a4b9670da}{adjacency\_list\_out}};}
+\DoxyCodeLine{00046\ \ \ \ \ unordered\_map<int,\ vector<int>>\ \mbox{\hyperlink{classVertexST_ac340bf7257f286dc9402935079d70ef7}{adjacency\_list\_out\_cost}};}
+\DoxyCodeLine{00050\ \ \ \ \ unordered\_map<int,\ vector<int>>\ \mbox{\hyperlink{classVertexST_ac96447b43d939b53794cc494fe9d3dac}{adjacency\_list\_out\_time}};}
+\DoxyCodeLine{00054\ \ \ \ \ unordered\_map<int,\ vector<int>>\ \mbox{\hyperlink{classVertexST_a2bfe7d7d07a81bf0d4e1032850e4fffa}{adjacency\_list\_in}};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVertexST_ab805e6418c86f895106e11132a7e64c3}{lastId}};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{classVertexST_aaceeef9c7344b02fc46ad214c69388b2}{VertexST}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classVertexST_aaceeef9c7344b02fc46ad214c69388b2}{VertexST}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \mbox{\hyperlink{classVertexST_a7e6a1de6591ad74ec2954f206bc6cdf1}{id\_in\_graph}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \mbox{\hyperlink{classVertexST_aada4d017ec27944854c98bfad025b5b1}{time}});}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classVertexST_aaceeef9c7344b02fc46ad214c69388b2}{VertexST}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVertexST}{VertexST}}\&\ vertex);}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classVertexST}{VertexST}}\&\ \mbox{\hyperlink{classVertexST_a9240c73413954da8dded07e1fbf50607}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVertexST}{VertexST}}\&\ vertex);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{classVertexST_a757868c5dc5fd252dc698a2f25008146}{\string~VertexST}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVertexST_a7efddd8e801a7754566b5361a6f42c6e}{add\_neighbour\_out}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ vId,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ arcId);}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_neighbour\_out\_time(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ vId,\ \textcolor{keyword}{const}\ vector<int>\&\ arcIds);}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_neighbour\_out\_cost(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ vId,\ \textcolor{keyword}{const}\ vector<int>\&\ arcIds);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVertexST_a4d03f2db1e57a769391b2913bec297a3}{add\_neighbour\_in}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ vId,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ arcId);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ restart\_id\_counter()\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVertexST_ab805e6418c86f895106e11132a7e64c3}{lastId}}\ =\ 0;}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_id()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_id\_in\_graph()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_time()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_topological\_position()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{const}\ unordered\_map<int,\ vector<int>>\&\ get\_adjacency\_list\_out()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keyword}{const}\ unordered\_map<int,\ vector<int>>\&\ get\_adjacency\_list\_out\_cost()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{const}\ unordered\_map<int,\ vector<int>>\&\ get\_adjacency\_list\_out\_time()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{const}\ unordered\_map<int,\ vector<int>>\&\ get\_adjacency\_list\_in()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_topological\_position(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ pos);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ toString()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !VERTEXTS\_H}}
+
+\end{DoxyCode}

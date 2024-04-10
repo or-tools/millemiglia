@@ -1,0 +1,60 @@
+\doxysection{Lorry.\+h}
+\hypertarget{Lorry_8h_source}{}\label{Lorry_8h_source}\index{Lorry.h@{Lorry.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LORRY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LORRY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Header_8h}{Header.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Utils_8h}{Utils.h}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLorry}{Lorry}}\ \{}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{string}\ name;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{const}\ operations\_research::lattle::Vehicle\&\ \mbox{\hyperlink{classLorry_acfe4521f67263f614b6298fbb5cf0f15}{vehicle}};}
+\DoxyCodeLine{00029\ \ \ \ \ vector<int>\ \mbox{\hyperlink{classLorry_aa8c053fa4bbdac0eca5406a3baf3f2f3}{path}};}
+\DoxyCodeLine{00033\ \ \ \ \ vector<int>\ \mbox{\hyperlink{classLorry_a438232d32f8753bd4f23e13feee84ea7}{capacities}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classLorry_a97d9b5ad1a3bfae693ed88d9b04f99cb}{current\_position}};}
+\DoxyCodeLine{00041\ \ \ \ \ unordered\_map<int,\ vector<int>>\ \mbox{\hyperlink{classLorry_aae540aba48a50b3f9046dc7d223d0728}{loaded\_commodities}};}
+\DoxyCodeLine{00045\ \ \ \ \ unordered\_map<int,\ vector<int>>\ \mbox{\hyperlink{classLorry_af3e1f81e5bfd535c0903f588ed998faf}{loads\_per\_arc}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classLorry_aa3407da2cbb7ac2ee4c2db5b73b35090}{lastId}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classLorry}{Lorry}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ name,\ \textcolor{keyword}{const}\ operations\_research::lattle::Vehicle\&\ \mbox{\hyperlink{classLorry_acfe4521f67263f614b6298fbb5cf0f15}{vehicle}});}
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{classLorry}{Lorry}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classLorry}{Lorry}}\&\ lorry);}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{classLorry}{Lorry}}\&\ \mbox{\hyperlink{classLorry_a760c9960fe6a9ccef8ffbc3452eac46b}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classLorry}{Lorry}}\&\ lorry);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{classLorry_adc8413326a13d0445e7f6196c92d2433}{\string~Lorry}}();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLorry_a2581d518e6f89c3e2968a508ca5cf0f2}{add\_commodity}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ commodity\_id,\ \textcolor{keyword}{const}\ vector<int>\&\ sizes,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ arc);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ restart\_id\_counter()\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLorry_aa3407da2cbb7ac2ee4c2db5b73b35090}{lastId}}\ =\ 0;}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_id()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ get\_name()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{const}\ operations\_research::lattle::Vehicle\&\ get\_proto\_vehicle()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{const}\ vector<int>\&\ get\_path()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{const}\ vector<int>\&\ get\_capacities()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ get\_current\_position()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{const}\ unordered\_map<int,\ vector<int>>\&\ get\_loaded\_commodities()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{const}\ unordered\_map<int,\ vector<int>>\&\ get\_loads\_per\_arc()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ set\_current\_position(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ pos);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ toString()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !LORRY\_H}}
+
+\end{DoxyCode}

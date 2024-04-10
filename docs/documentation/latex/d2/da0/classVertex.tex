@@ -1,0 +1,240 @@
+\doxysection{Vertex Class Reference}
+\hypertarget{classVertex}{}\label{classVertex}\index{Vertex@{Vertex}}
+
+
+This class represent a vertex in the graph.  
+
+
+
+
+{\ttfamily \#include $<$Vertex.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVertex_a97488994a2482d70da74e1b91d40e169}\label{classVertex_a97488994a2482d70da74e1b91d40e169} 
+{\bfseries Vertex} ()
+\begin{DoxyCompactList}\small\item\em Constructor by default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVertex_ad3bdd826285e8a2475c3adea63d1a4ea}{Vertex}} (const string \&\mbox{\hyperlink{classVertex_ac7798941755cd11208af3fb26eb8bc14}{name}})
+\begin{DoxyCompactList}\small\item\em Constructor by name. \end{DoxyCompactList}\item 
+\Hypertarget{classVertex_a86a01a9679eed567448b8165ba335ddf}\label{classVertex_a86a01a9679eed567448b8165ba335ddf} 
+{\bfseries Vertex} (const \mbox{\hyperlink{classVertex}{Vertex}} \&vertex)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classVertex_a8e5dcb94d237fa4963abf039e0e5184c}\label{classVertex_a8e5dcb94d237fa4963abf039e0e5184c} 
+\mbox{\hyperlink{classVertex}{Vertex}} \& {\bfseries operator=} (const \mbox{\hyperlink{classVertex}{Vertex}} \&vertex)
+\begin{DoxyCompactList}\small\item\em Operator assignment. \end{DoxyCompactList}\item 
+\Hypertarget{classVertex_ad7a0ce588b7f688dc4488a0f567d9155}\label{classVertex_ad7a0ce588b7f688dc4488a0f567d9155} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Vertex} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_a036132d4fa4142846e24d615f64980fa}{add\+\_\+neighbour\+\_\+in}} (const int \&\mbox{\hyperlink{classVertex_a2e69697726190f50c7fc040fb1ddac7a}{id}}, const string \&line)
+\begin{DoxyCompactList}\small\item\em Add ingoing arc (id,this) to the adjacency list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_ae51ba8031285ea219ab7016d3d3b09d4}{add\+\_\+neighbour\+\_\+out}} (const int \&\mbox{\hyperlink{classVertex_a2e69697726190f50c7fc040fb1ddac7a}{id}}, const string \&line)
+\begin{DoxyCompactList}\small\item\em Add outgoing arc (this,id) to the adjacency list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVertex_a66425e35dec813a400e703cc9e6e844e}{is\+\_\+neighbour\+\_\+out}} (const int \&\mbox{\hyperlink{classVertex_a2e69697726190f50c7fc040fb1ddac7a}{id}}) const
+\begin{DoxyCompactList}\small\item\em Test whether (this,id) exists. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVertex_a11f33e46f06052fa4265aa08bb9870c9}{is\+\_\+neighbour\+\_\+in}} (const int \&\mbox{\hyperlink{classVertex_a2e69697726190f50c7fc040fb1ddac7a}{id}}) const
+\begin{DoxyCompactList}\small\item\em Test whether (id,this) exists. \end{DoxyCompactList}\item 
+\Hypertarget{classVertex_a2b8cc09c55b14b9d0b2b87863e9aebe3}\label{classVertex_a2b8cc09c55b14b9d0b2b87863e9aebe3} 
+const int \& {\bfseries get\+\_\+id} () const
+\item 
+\Hypertarget{classVertex_a2d1997569fcfbbc18f84ecd1d9ce37ab}\label{classVertex_a2d1997569fcfbbc18f84ecd1d9ce37ab} 
+const string \& {\bfseries get\+\_\+name} () const
+\item 
+\Hypertarget{classVertex_a45e5caf1ae45f524f09acaa9c32dd55f}\label{classVertex_a45e5caf1ae45f524f09acaa9c32dd55f} 
+const unordered\+\_\+map$<$ int, vector$<$ string $>$ $>$ \& {\bfseries get\+\_\+adjacency\+\_\+list\+\_\+out} () const
+\item 
+\Hypertarget{classVertex_a78f3da4c8a8e2514f697f1ada25a5b24}\label{classVertex_a78f3da4c8a8e2514f697f1ada25a5b24} 
+const unordered\+\_\+map$<$ int, vector$<$ string $>$ $>$ \& {\bfseries get\+\_\+adjacency\+\_\+list\+\_\+in} () const
+\item 
+\Hypertarget{classVertex_a663c7edf3b8d353f5e414a91a5faf3ae}\label{classVertex_a663c7edf3b8d353f5e414a91a5faf3ae} 
+const int {\bfseries get\+\_\+out\+\_\+going\+\_\+by\+\_\+position} (const int \&pos) const
+\item 
+\Hypertarget{classVertex_a48aff4d4a48eb1f233e99a1e7db160d3}\label{classVertex_a48aff4d4a48eb1f233e99a1e7db160d3} 
+const int {\bfseries get\+\_\+neighbours\+\_\+number} () const
+\item 
+\Hypertarget{classVertex_a7eb092d24e9049c9b3c817395b31c3fd}\label{classVertex_a7eb092d24e9049c9b3c817395b31c3fd} 
+const vector$<$ string $>$ \& {\bfseries get\+\_\+lines\+\_\+out} (const int \&\mbox{\hyperlink{classVertex_a2e69697726190f50c7fc040fb1ddac7a}{id}}) const
+\item 
+\Hypertarget{classVertex_a4c73549c9f599ec2b84f8921e761971a}\label{classVertex_a4c73549c9f599ec2b84f8921e761971a} 
+const vector$<$ string $>$ \& {\bfseries get\+\_\+lines\+\_\+in} (const int \&\mbox{\hyperlink{classVertex_a2e69697726190f50c7fc040fb1ddac7a}{id}}) const
+\item 
+\Hypertarget{classVertex_a875acba6afaa03ccd7ca70f6c86f603a}\label{classVertex_a875acba6afaa03ccd7ca70f6c86f603a} 
+const int \& {\bfseries get\+\_\+latest\+\_\+time} () const
+\item 
+\Hypertarget{classVertex_a7d1dc3ce3033ea76b10270dd3aa51e9c}\label{classVertex_a7d1dc3ce3033ea76b10270dd3aa51e9c} 
+const int \& {\bfseries get\+\_\+earliest\+\_\+time} () const
+\item 
+\Hypertarget{classVertex_ae1e7906fb7c28c8b4f94f49c10711fb4}\label{classVertex_ae1e7906fb7c28c8b4f94f49c10711fb4} 
+const string {\bfseries to\+String} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVertex_a92dc4c1eab5b0b7e4244e2b202b412b0}\label{classVertex_a92dc4c1eab5b0b7e4244e2b202b412b0} 
+static void {\bfseries restart\+\_\+id\+\_\+counter} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classVertex_a2e69697726190f50c7fc040fb1ddac7a}{id}}
+\item 
+string \mbox{\hyperlink{classVertex_ac7798941755cd11208af3fb26eb8bc14}{name}}
+\item 
+unordered\+\_\+map$<$ int, vector$<$ string $>$ $>$ \mbox{\hyperlink{classVertex_ad344496fbca8e8ffbbf407c79c7db592}{adjacency\+\_\+list\+\_\+out}}
+\item 
+unordered\+\_\+map$<$ int, vector$<$ string $>$ $>$ \mbox{\hyperlink{classVertex_ae1d4644c7e6160c6ab0bb192a5f07c58}{adjacency\+\_\+list\+\_\+in}}
+\item 
+int \mbox{\hyperlink{classVertex_a6eac5cccf53e3d621164796b7032b3ca}{earliest\+\_\+time}}
+\item 
+int \mbox{\hyperlink{classVertex_a166c9da2ca098be13e866b6d61ffc87b}{latest\+\_\+time}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classVertex_ad09cb10d75c8f035d946c337ffa45a6d}{last\+Id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represent a vertex in the graph. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVertex_ad3bdd826285e8a2475c3adea63d1a4ea}\label{classVertex_ad3bdd826285e8a2475c3adea63d1a4ea} 
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{Vertex()}{Vertex()}}
+{\footnotesize\ttfamily Vertex\+::\+Vertex (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Constructor by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVertex_a036132d4fa4142846e24d615f64980fa}\label{classVertex_a036132d4fa4142846e24d615f64980fa} 
+\index{Vertex@{Vertex}!add\_neighbour\_in@{add\_neighbour\_in}}
+\index{add\_neighbour\_in@{add\_neighbour\_in}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{add\_neighbour\_in()}{add\_neighbour\_in()}}
+{\footnotesize\ttfamily void Vertex\+::add\+\_\+neighbour\+\_\+in (\begin{DoxyParamCaption}\item[{const int \&}]{id,  }\item[{const string \&}]{line }\end{DoxyParamCaption})}
+
+
+
+Add ingoing arc (id,this) to the adjacency list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em line} & of the network protocal buffer network file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classVertex_ae51ba8031285ea219ab7016d3d3b09d4}\label{classVertex_ae51ba8031285ea219ab7016d3d3b09d4} 
+\index{Vertex@{Vertex}!add\_neighbour\_out@{add\_neighbour\_out}}
+\index{add\_neighbour\_out@{add\_neighbour\_out}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{add\_neighbour\_out()}{add\_neighbour\_out()}}
+{\footnotesize\ttfamily void Vertex\+::add\+\_\+neighbour\+\_\+out (\begin{DoxyParamCaption}\item[{const int \&}]{id,  }\item[{const string \&}]{line }\end{DoxyParamCaption})}
+
+
+
+Add outgoing arc (this,id) to the adjacency list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em line} & of the network protocal buffer network file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classVertex_a11f33e46f06052fa4265aa08bb9870c9}\label{classVertex_a11f33e46f06052fa4265aa08bb9870c9} 
+\index{Vertex@{Vertex}!is\_neighbour\_in@{is\_neighbour\_in}}
+\index{is\_neighbour\_in@{is\_neighbour\_in}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{is\_neighbour\_in()}{is\_neighbour\_in()}}
+{\footnotesize\ttfamily bool Vertex\+::is\+\_\+neighbour\+\_\+in (\begin{DoxyParamCaption}\item[{const int \&}]{id }\end{DoxyParamCaption}) const}
+
+
+
+Test whether (id,this) exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if (id,this) exists, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{classVertex_a66425e35dec813a400e703cc9e6e844e}\label{classVertex_a66425e35dec813a400e703cc9e6e844e} 
+\index{Vertex@{Vertex}!is\_neighbour\_out@{is\_neighbour\_out}}
+\index{is\_neighbour\_out@{is\_neighbour\_out}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{is\_neighbour\_out()}{is\_neighbour\_out()}}
+{\footnotesize\ttfamily bool Vertex\+::is\+\_\+neighbour\+\_\+out (\begin{DoxyParamCaption}\item[{const int \&}]{id }\end{DoxyParamCaption}) const}
+
+
+
+Test whether (this,id) exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if (this,id) exists, false otherwise 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classVertex_ae1d4644c7e6160c6ab0bb192a5f07c58}\label{classVertex_ae1d4644c7e6160c6ab0bb192a5f07c58} 
+\index{Vertex@{Vertex}!adjacency\_list\_in@{adjacency\_list\_in}}
+\index{adjacency\_list\_in@{adjacency\_list\_in}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{adjacency\_list\_in}{adjacency\_list\_in}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$int, vector$<$string$>$ $>$ Vertex\+::adjacency\+\_\+list\+\_\+in\hspace{0.3cm}{\ttfamily [protected]}}
+
+ingoing arcs adjacency map\+: key = id of the vertex to reach, value = vector of "{}line"{} that use arc (key,this) \Hypertarget{classVertex_ad344496fbca8e8ffbbf407c79c7db592}\label{classVertex_ad344496fbca8e8ffbbf407c79c7db592} 
+\index{Vertex@{Vertex}!adjacency\_list\_out@{adjacency\_list\_out}}
+\index{adjacency\_list\_out@{adjacency\_list\_out}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{adjacency\_list\_out}{adjacency\_list\_out}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$int, vector$<$string$>$ $>$ Vertex\+::adjacency\+\_\+list\+\_\+out\hspace{0.3cm}{\ttfamily [protected]}}
+
+outgoing arcs adjacency map\+: key = id of the vertex to reach, value = vector of "{}line"{} that use arc (this,key) \Hypertarget{classVertex_a6eac5cccf53e3d621164796b7032b3ca}\label{classVertex_a6eac5cccf53e3d621164796b7032b3ca} 
+\index{Vertex@{Vertex}!earliest\_time@{earliest\_time}}
+\index{earliest\_time@{earliest\_time}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{earliest\_time}{earliest\_time}}
+{\footnotesize\ttfamily int Vertex\+::earliest\+\_\+time\hspace{0.3cm}{\ttfamily [protected]}}
+
+earliest working time of an hub \Hypertarget{classVertex_a2e69697726190f50c7fc040fb1ddac7a}\label{classVertex_a2e69697726190f50c7fc040fb1ddac7a} 
+\index{Vertex@{Vertex}!id@{id}}
+\index{id@{id}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily int Vertex\+::id\hspace{0.3cm}{\ttfamily [protected]}}
+
+vertex id from 1,...,hub\+\_\+number \Hypertarget{classVertex_ad09cb10d75c8f035d946c337ffa45a6d}\label{classVertex_ad09cb10d75c8f035d946c337ffa45a6d} 
+\index{Vertex@{Vertex}!lastId@{lastId}}
+\index{lastId@{lastId}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{lastId}{lastId}}
+{\footnotesize\ttfamily int Vertex\+::last\+Id\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+vertex counter to assign unique id \Hypertarget{classVertex_a166c9da2ca098be13e866b6d61ffc87b}\label{classVertex_a166c9da2ca098be13e866b6d61ffc87b} 
+\index{Vertex@{Vertex}!latest\_time@{latest\_time}}
+\index{latest\_time@{latest\_time}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{latest\_time}{latest\_time}}
+{\footnotesize\ttfamily int Vertex\+::latest\+\_\+time\hspace{0.3cm}{\ttfamily [protected]}}
+
+latest working time of an hub \Hypertarget{classVertex_ac7798941755cd11208af3fb26eb8bc14}\label{classVertex_ac7798941755cd11208af3fb26eb8bc14} 
+\index{Vertex@{Vertex}!name@{name}}
+\index{name@{name}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string Vertex\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+vertex name in the protocol buffer 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vertex.\+h\item 
+Vertex.\+cpp\end{DoxyCompactItemize}

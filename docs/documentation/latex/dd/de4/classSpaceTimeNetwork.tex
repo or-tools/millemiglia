@@ -1,0 +1,409 @@
+\doxysection{Space\+Time\+Network Class Reference}
+\hypertarget{classSpaceTimeNetwork}{}\label{classSpaceTimeNetwork}\index{SpaceTimeNetwork@{SpaceTimeNetwork}}
+
+
+This class represents the space-\/time network.  
+
+
+
+
+{\ttfamily \#include $<$Space\+Time\+Network.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSpaceTimeNetwork_a6a9cc4ddc1746d21c1f392ba59293a35}\label{classSpaceTimeNetwork_a6a9cc4ddc1746d21c1f392ba59293a35} 
+{\bfseries Space\+Time\+Network} ()
+\begin{DoxyCompactList}\small\item\em Constructor by default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSpaceTimeNetwork_acce5eb124bc34bfaaa83f02752776723}{Space\+Time\+Network}} (const string \&network\+\_\+file, const int \&time\+\_\+horizon)
+\begin{DoxyCompactList}\small\item\em Constructor by data\+: string path to Logistics\+Network protocol buffer and time horizon. \end{DoxyCompactList}\item 
+\Hypertarget{classSpaceTimeNetwork_a6058e0b1c0d5084b0c0dd130998db435}\label{classSpaceTimeNetwork_a6058e0b1c0d5084b0c0dd130998db435} 
+{\bfseries Space\+Time\+Network} (const \mbox{\hyperlink{classSpaceTimeNetwork}{Space\+Time\+Network}} \&space\+Time\+Network)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classSpaceTimeNetwork_a6e09b16e2262f0c910b613def421df14}\label{classSpaceTimeNetwork_a6e09b16e2262f0c910b613def421df14} 
+\mbox{\hyperlink{classSpaceTimeNetwork}{Space\+Time\+Network}} \& {\bfseries operator=} (const \mbox{\hyperlink{classSpaceTimeNetwork}{Space\+Time\+Network}} \&space\+Time\+Network)
+\begin{DoxyCompactList}\small\item\em Operator assignment. \end{DoxyCompactList}\item 
+\Hypertarget{classSpaceTimeNetwork_aa205a386a5fe7e5b3914099d70309b3c}\label{classSpaceTimeNetwork_aa205a386a5fe7e5b3914099d70309b3c} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Space\+Time\+Network} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_a7412a30a208b1c7ebd5740c84657a8b5}{parse\+\_\+logistic\+\_\+network}} (const string \&network\+\_\+file)
+\begin{DoxyCompactList}\small\item\em parse the network proto buffer and build the associated object. Build object space-\/time network \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_a43881b54c31d1cd35e681b907411521b}{build\+\_\+underlying\+\_\+graph}} (const operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&\mbox{\hyperlink{classSpaceTimeNetwork_abcb6c751dd58a566742c263a055ff949}{network}})
+\begin{DoxyCompactList}\small\item\em Build graph object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_aff4f6d33c59c57e0e721ab16ed74a08b}{build\+\_\+vertices}} (const int \&time\+\_\+horizon)
+\begin{DoxyCompactList}\small\item\em Build vector of vertices (i,t) for each hub i and each time t. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_aee72dbfb3401dc843c196da82facf2e2}{build\+\_\+arcs}} (const operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&\mbox{\hyperlink{classSpaceTimeNetwork_abcb6c751dd58a566742c263a055ff949}{network}}, const int \&time\+\_\+horizon)
+\begin{DoxyCompactList}\small\item\em Build vector of arcs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_a01738f0ada56cd66361019633fb7cae3}{build\+\_\+lorries}} (const operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&\mbox{\hyperlink{classSpaceTimeNetwork_abcb6c751dd58a566742c263a055ff949}{network}})
+\begin{DoxyCompactList}\small\item\em Build vector of vehicles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_a6898f73576a8bf427b9de60fce60086a}{add\+\_\+vertex\+ST}} (const string \&hub, const operations\+\_\+research\+::lattle\+::\+Date\+Time\+Range \&time, const int \&time\+\_\+horizon)
+\begin{DoxyCompactList}\small\item\em Build vector of vertices. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_aa864490894244135412044d4273ab38d}{add\+\_\+vertex\+ST}} (const int \&hub, const int \&time)
+\begin{DoxyCompactList}\small\item\em Build vector of vertices. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_a5f9d95ad7f0b75e24831f8e7b9546d42}{add\+\_\+to\+\_\+adjacency\+\_\+list\+\_\+out}} (const \mbox{\hyperlink{classArcST}{Arc\+ST}} \&arc)
+\begin{DoxyCompactList}\small\item\em Add outgoing arc to adjacency list of a vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_a4c507a731913dc1728c39eefbe37c64f}{add\+\_\+to\+\_\+adjacency\+\_\+list\+\_\+in}} (const \mbox{\hyperlink{classArcST}{Arc\+ST}} \&arc)
+\begin{DoxyCompactList}\small\item\em Add ingoing arc to adjacency list of a vertex. \end{DoxyCompactList}\item 
+\Hypertarget{classSpaceTimeNetwork_a553deac254df35228777207509a3fb21}\label{classSpaceTimeNetwork_a553deac254df35228777207509a3fb21} 
+void {\bfseries sort\+\_\+adjacency\+\_\+list\+\_\+out} ()
+\begin{DoxyCompactList}\small\item\em Sort arcs in adjacency lists by increasing cost, time. \end{DoxyCompactList}\item 
+const vector$<$ int $>$ \mbox{\hyperlink{classSpaceTimeNetwork_a81bdf84166f1bc158f595401849bbe27}{get\+\_\+hub\+\_\+time\+\_\+after\+\_\+t}} (const int \&hub, const int \&time) const
+\begin{DoxyCompactList}\small\item\em Get vertices (hub,t) where t \texorpdfstring{$>$}{>}= time. \end{DoxyCompactList}\item 
+const vector$<$ int $>$ \mbox{\hyperlink{classSpaceTimeNetwork_a86a9c27a781e527c2e694f923af28e65}{get\+\_\+hub\+\_\+time\+\_\+before\+\_\+t}} (const int \&hub, const int \&time) const
+\begin{DoxyCompactList}\small\item\em Get vertices (hub,t) where t \texorpdfstring{$<$}{<}= time. \end{DoxyCompactList}\item 
+\Hypertarget{classSpaceTimeNetwork_aba70e123a9b95b4e6782d185d93406f9}\label{classSpaceTimeNetwork_aba70e123a9b95b4e6782d185d93406f9} 
+void {\bfseries initialise\+\_\+adjacency\+\_\+lists\+\_\+arc\+\_\+position} ()
+\begin{DoxyCompactList}\small\item\em for each adjacency list the arc position is set to zero \end{DoxyCompactList}\item 
+\Hypertarget{classSpaceTimeNetwork_a912fc06a5c9aace8fe1216f2d0119b5f}\label{classSpaceTimeNetwork_a912fc06a5c9aace8fe1216f2d0119b5f} 
+void {\bfseries initialise\+\_\+adjacency\+\_\+lists\+\_\+graph\+\_\+algorithms} (const string \&type)
+\begin{DoxyCompactList}\small\item\em for each adjacency list graph algorithm \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_ad50eba5a894decb94fd3224f8396b439}{restore\+\_\+adjacency\+\_\+lists\+\_\+graph\+\_\+value}} (const string \&type, const int \&u, const int \&v)
+\begin{DoxyCompactList}\small\item\em restore value of arc (u,v) in adjacency list. If type is length set value to 1, otherwise set it to the best arc in the multi-\/graph \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSpaceTimeNetwork_ad91e97a42e73b188a93091229ee5b8ec}{modify\+\_\+adjacency\+\_\+lists\+\_\+graph\+\_\+value}} (const string \&type, const int \&u, const int \&v, const int \&position\+\_\+in\+\_\+adj\+\_\+list)
+\begin{DoxyCompactList}\small\item\em modify value of arc (u,v) in adjacency list. If type is length do nothing, otherwise if there is another arc between u and v fix the values to those of that arc update list arc position container as well. if there is no other arc, set the value to infinity \end{DoxyCompactList}\item 
+\Hypertarget{classSpaceTimeNetwork_a263fbd5bc3c876c2d5dfd006432209bb}\label{classSpaceTimeNetwork_a263fbd5bc3c876c2d5dfd006432209bb} 
+const operations\+\_\+research\+::lattle\+::\+Logistics\+Network \& {\bfseries get\+\_\+network} () const
+\item 
+\Hypertarget{classSpaceTimeNetwork_aaf942c5a3ad4740773c0947feeacf8a4}\label{classSpaceTimeNetwork_aaf942c5a3ad4740773c0947feeacf8a4} 
+const \mbox{\hyperlink{classGraph}{Graph}} \& {\bfseries get\+\_\+underlying\+\_\+graph} () const
+\item 
+\Hypertarget{classSpaceTimeNetwork_a30c6dd610d09693c3bed77456addb6d3}\label{classSpaceTimeNetwork_a30c6dd610d09693c3bed77456addb6d3} 
+const vector$<$ \mbox{\hyperlink{classVertexST}{Vertex\+ST}} $>$ \& {\bfseries get\+\_\+vertices} () const
+\item 
+\Hypertarget{classSpaceTimeNetwork_ae9d7840965d2716d40d33a497211c53e}\label{classSpaceTimeNetwork_ae9d7840965d2716d40d33a497211c53e} 
+const vector$<$ \mbox{\hyperlink{classArcST}{Arc\+ST}} $>$ \& {\bfseries get\+\_\+arcs} () const
+\item 
+\Hypertarget{classSpaceTimeNetwork_ac74778f6f2d11d517e38b7a6d548da4e}\label{classSpaceTimeNetwork_ac74778f6f2d11d517e38b7a6d548da4e} 
+const \mbox{\hyperlink{classVertexST}{Vertex\+ST}} \& {\bfseries get\+\_\+vertex} (const string \&hub, const operations\+\_\+research\+::lattle\+::\+Date\+Time\+Range \&time) const
+\item 
+\Hypertarget{classSpaceTimeNetwork_acee25b351dd94893c47d7bcddcdfeb47}\label{classSpaceTimeNetwork_acee25b351dd94893c47d7bcddcdfeb47} 
+const \mbox{\hyperlink{classVertexST}{Vertex\+ST}} \& {\bfseries get\+\_\+vertex} (const int \&hub, const int \&time) const
+\item 
+\Hypertarget{classSpaceTimeNetwork_af79757c738c72dec9b82917683f102c9}\label{classSpaceTimeNetwork_af79757c738c72dec9b82917683f102c9} 
+const vector$<$ unordered\+\_\+map$<$ int, double $>$ $>$ \& {\bfseries get\+\_\+adjacency\+\_\+lists\+\_\+graph\+\_\+algorithms} () const
+\item 
+\Hypertarget{classSpaceTimeNetwork_ab4ef683613bc25f0f56c1e0d0ba4b713}\label{classSpaceTimeNetwork_ab4ef683613bc25f0f56c1e0d0ba4b713} 
+const vector$<$ unordered\+\_\+map$<$ int, int $>$ $>$ \& {\bfseries get\+\_\+adjacency\+\_\+lists\+\_\+arc\+\_\+position} () const
+\item 
+\Hypertarget{classSpaceTimeNetwork_a3651b68acec5df05213ac59b6960cbe9}\label{classSpaceTimeNetwork_a3651b68acec5df05213ac59b6960cbe9} 
+const string {\bfseries to\+String} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+operations\+\_\+research\+::lattle\+::\+Logistics\+Network \mbox{\hyperlink{classSpaceTimeNetwork_abcb6c751dd58a566742c263a055ff949}{network}}
+\item 
+\mbox{\hyperlink{classGraph}{Graph}} \mbox{\hyperlink{classSpaceTimeNetwork_a1a120f7f8f4199594fe286ee11261327}{underlying\+\_\+graph}}
+\item 
+vector$<$ \mbox{\hyperlink{classVertexST}{Vertex\+ST}} $>$ \mbox{\hyperlink{classSpaceTimeNetwork_aaf34aaf5753c9d88de3555cbad074e8c}{vertices}}
+\item 
+vector$<$ \mbox{\hyperlink{classArcST}{Arc\+ST}} $>$ \mbox{\hyperlink{classSpaceTimeNetwork_ab872acbce9045461ef13a5f2bfdc8c83}{arcs}}
+\item 
+unordered\+\_\+map$<$ int, unordered\+\_\+map$<$ int, int $>$ $>$ \mbox{\hyperlink{classSpaceTimeNetwork_ad3ee035f71197d92316c49b6920f759d}{vertex\+\_\+dictionary}}
+\item 
+vector$<$ unordered\+\_\+map$<$ int, double $>$ $>$ \mbox{\hyperlink{classSpaceTimeNetwork_a2c622c046cf1ba99f08f91204fa19483}{adjacency\+\_\+lists\+\_\+graph\+\_\+algorithms}}
+\item 
+vector$<$ unordered\+\_\+map$<$ int, int $>$ $>$ \mbox{\hyperlink{classSpaceTimeNetwork_a7e1a25302d2b052bbf785d18981a2773}{adjacency\+\_\+lists\+\_\+arc\+\_\+position}}
+\item 
+vector$<$ \mbox{\hyperlink{classLorry}{Lorry}} $>$ \mbox{\hyperlink{classSpaceTimeNetwork_acc41101823caf0e04f211682d55b86a4}{lorries}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represents the space-\/time network. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSpaceTimeNetwork_acce5eb124bc34bfaaa83f02752776723}\label{classSpaceTimeNetwork_acce5eb124bc34bfaaa83f02752776723} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{SpaceTimeNetwork()}{SpaceTimeNetwork()}}
+{\footnotesize\ttfamily Space\+Time\+Network\+::\+Space\+Time\+Network (\begin{DoxyParamCaption}\item[{const string \&}]{network\+\_\+file,  }\item[{const int \&}]{time\+\_\+horizon }\end{DoxyParamCaption})}
+
+
+
+Constructor by data\+: string path to Logistics\+Network protocol buffer and time horizon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & protocal buffer object \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSpaceTimeNetwork_a4c507a731913dc1728c39eefbe37c64f}\label{classSpaceTimeNetwork_a4c507a731913dc1728c39eefbe37c64f} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!add\_to\_adjacency\_list\_in@{add\_to\_adjacency\_list\_in}}
+\index{add\_to\_adjacency\_list\_in@{add\_to\_adjacency\_list\_in}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{add\_to\_adjacency\_list\_in()}{add\_to\_adjacency\_list\_in()}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::add\+\_\+to\+\_\+adjacency\+\_\+list\+\_\+in (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classArcST}{Arc\+ST}} \&}]{arc }\end{DoxyParamCaption})}
+
+
+
+Add ingoing arc to adjacency list of a vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arc} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSpaceTimeNetwork_a5f9d95ad7f0b75e24831f8e7b9546d42}\label{classSpaceTimeNetwork_a5f9d95ad7f0b75e24831f8e7b9546d42} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!add\_to\_adjacency\_list\_out@{add\_to\_adjacency\_list\_out}}
+\index{add\_to\_adjacency\_list\_out@{add\_to\_adjacency\_list\_out}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{add\_to\_adjacency\_list\_out()}{add\_to\_adjacency\_list\_out()}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::add\+\_\+to\+\_\+adjacency\+\_\+list\+\_\+out (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classArcST}{Arc\+ST}} \&}]{arc }\end{DoxyParamCaption})}
+
+
+
+Add outgoing arc to adjacency list of a vertex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arc} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSpaceTimeNetwork_aa864490894244135412044d4273ab38d}\label{classSpaceTimeNetwork_aa864490894244135412044d4273ab38d} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!add\_vertexST@{add\_vertexST}}
+\index{add\_vertexST@{add\_vertexST}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{add\_vertexST()}{add\_vertexST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::add\+\_\+vertex\+ST (\begin{DoxyParamCaption}\item[{const int \&}]{hub,  }\item[{const int \&}]{time }\end{DoxyParamCaption})}
+
+
+
+Build vector of vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hub\+\_\+id} & \\
+\hline
+{\em time} & encoded time \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSpaceTimeNetwork_a6898f73576a8bf427b9de60fce60086a}\label{classSpaceTimeNetwork_a6898f73576a8bf427b9de60fce60086a} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!add\_vertexST@{add\_vertexST}}
+\index{add\_vertexST@{add\_vertexST}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{add\_vertexST()}{add\_vertexST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::add\+\_\+vertex\+ST (\begin{DoxyParamCaption}\item[{const string \&}]{hub,  }\item[{const operations\+\_\+research\+::lattle\+::\+Date\+Time\+Range \&}]{time,  }\item[{const int \&}]{time\+\_\+horizon }\end{DoxyParamCaption})}
+
+
+
+Build vector of vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hub} & name \\
+\hline
+{\em time} & object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSpaceTimeNetwork_aee72dbfb3401dc843c196da82facf2e2}\label{classSpaceTimeNetwork_aee72dbfb3401dc843c196da82facf2e2} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!build\_arcs@{build\_arcs}}
+\index{build\_arcs@{build\_arcs}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{build\_arcs()}{build\_arcs()}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::build\+\_\+arcs (\begin{DoxyParamCaption}\item[{const operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&}]{network,  }\item[{const int \&}]{time\+\_\+horizon }\end{DoxyParamCaption})}
+
+
+
+Build vector of arcs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & protocal buffer object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSpaceTimeNetwork_a01738f0ada56cd66361019633fb7cae3}\label{classSpaceTimeNetwork_a01738f0ada56cd66361019633fb7cae3} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!build\_lorries@{build\_lorries}}
+\index{build\_lorries@{build\_lorries}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{build\_lorries()}{build\_lorries()}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::build\+\_\+lorries (\begin{DoxyParamCaption}\item[{const operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&}]{network }\end{DoxyParamCaption})}
+
+
+
+Build vector of vehicles. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & protocal buffer object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSpaceTimeNetwork_a43881b54c31d1cd35e681b907411521b}\label{classSpaceTimeNetwork_a43881b54c31d1cd35e681b907411521b} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!build\_underlying\_graph@{build\_underlying\_graph}}
+\index{build\_underlying\_graph@{build\_underlying\_graph}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{build\_underlying\_graph()}{build\_underlying\_graph()}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::build\+\_\+underlying\+\_\+graph (\begin{DoxyParamCaption}\item[{const operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&}]{network }\end{DoxyParamCaption})}
+
+
+
+Build graph object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & protocal buffer object \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSpaceTimeNetwork_aff4f6d33c59c57e0e721ab16ed74a08b}\label{classSpaceTimeNetwork_aff4f6d33c59c57e0e721ab16ed74a08b} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!build\_vertices@{build\_vertices}}
+\index{build\_vertices@{build\_vertices}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{build\_vertices()}{build\_vertices()}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::build\+\_\+vertices (\begin{DoxyParamCaption}\item[{const int \&}]{time\+\_\+horizon }\end{DoxyParamCaption})}
+
+
+
+Build vector of vertices (i,t) for each hub i and each time t. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+\_\+horizon} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSpaceTimeNetwork_a81bdf84166f1bc158f595401849bbe27}\label{classSpaceTimeNetwork_a81bdf84166f1bc158f595401849bbe27} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!get\_hub\_time\_after\_t@{get\_hub\_time\_after\_t}}
+\index{get\_hub\_time\_after\_t@{get\_hub\_time\_after\_t}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{get\_hub\_time\_after\_t()}{get\_hub\_time\_after\_t()}}
+{\footnotesize\ttfamily const vector$<$ int $>$ Space\+Time\+Network\+::get\+\_\+hub\+\_\+time\+\_\+after\+\_\+t (\begin{DoxyParamCaption}\item[{const int \&}]{hub,  }\item[{const int \&}]{time }\end{DoxyParamCaption}) const}
+
+
+
+Get vertices (hub,t) where t \texorpdfstring{$>$}{>}= time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hub} & \+: int \\
+\hline
+{\em time} & \+: int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vertices ids\+: vector$<$int$>$ 
+\end{DoxyReturn}
+\Hypertarget{classSpaceTimeNetwork_a86a9c27a781e527c2e694f923af28e65}\label{classSpaceTimeNetwork_a86a9c27a781e527c2e694f923af28e65} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!get\_hub\_time\_before\_t@{get\_hub\_time\_before\_t}}
+\index{get\_hub\_time\_before\_t@{get\_hub\_time\_before\_t}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{get\_hub\_time\_before\_t()}{get\_hub\_time\_before\_t()}}
+{\footnotesize\ttfamily const vector$<$ int $>$ Space\+Time\+Network\+::get\+\_\+hub\+\_\+time\+\_\+before\+\_\+t (\begin{DoxyParamCaption}\item[{const int \&}]{hub,  }\item[{const int \&}]{time }\end{DoxyParamCaption}) const}
+
+
+
+Get vertices (hub,t) where t \texorpdfstring{$<$}{<}= time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hub} & \+: int \\
+\hline
+{\em time} & \+: int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vertices ids\+: vector$<$int$>$ 
+\end{DoxyReturn}
+\Hypertarget{classSpaceTimeNetwork_ad91e97a42e73b188a93091229ee5b8ec}\label{classSpaceTimeNetwork_ad91e97a42e73b188a93091229ee5b8ec} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!modify\_adjacency\_lists\_graph\_value@{modify\_adjacency\_lists\_graph\_value}}
+\index{modify\_adjacency\_lists\_graph\_value@{modify\_adjacency\_lists\_graph\_value}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{modify\_adjacency\_lists\_graph\_value()}{modify\_adjacency\_lists\_graph\_value()}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::modify\+\_\+adjacency\+\_\+lists\+\_\+graph\+\_\+value (\begin{DoxyParamCaption}\item[{const string \&}]{type,  }\item[{const int \&}]{u,  }\item[{const int \&}]{v,  }\item[{const int \&}]{position\+\_\+in\+\_\+adj\+\_\+list }\end{DoxyParamCaption})}
+
+
+
+modify value of arc (u,v) in adjacency list. If type is length do nothing, otherwise if there is another arc between u and v fix the values to those of that arc update list arc position container as well. if there is no other arc, set the value to infinity 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & of value (lenght,cost, travelling time) \\
+\hline
+{\em vertex} & id u \\
+\hline
+{\em vertex} & id v \\
+\hline
+{\em position} & of the arc to modify in the adjacency list \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSpaceTimeNetwork_a7412a30a208b1c7ebd5740c84657a8b5}\label{classSpaceTimeNetwork_a7412a30a208b1c7ebd5740c84657a8b5} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!parse\_logistic\_network@{parse\_logistic\_network}}
+\index{parse\_logistic\_network@{parse\_logistic\_network}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{parse\_logistic\_network()}{parse\_logistic\_network()}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::parse\+\_\+logistic\+\_\+network (\begin{DoxyParamCaption}\item[{const string \&}]{network\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+parse the network proto buffer and build the associated object. Build object space-\/time network 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & to the logistics network file \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSpaceTimeNetwork_ad50eba5a894decb94fd3224f8396b439}\label{classSpaceTimeNetwork_ad50eba5a894decb94fd3224f8396b439} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!restore\_adjacency\_lists\_graph\_value@{restore\_adjacency\_lists\_graph\_value}}
+\index{restore\_adjacency\_lists\_graph\_value@{restore\_adjacency\_lists\_graph\_value}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{restore\_adjacency\_lists\_graph\_value()}{restore\_adjacency\_lists\_graph\_value()}}
+{\footnotesize\ttfamily void Space\+Time\+Network\+::restore\+\_\+adjacency\+\_\+lists\+\_\+graph\+\_\+value (\begin{DoxyParamCaption}\item[{const string \&}]{type,  }\item[{const int \&}]{u,  }\item[{const int \&}]{v }\end{DoxyParamCaption})}
+
+
+
+restore value of arc (u,v) in adjacency list. If type is length set value to 1, otherwise set it to the best arc in the multi-\/graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & of value (lenght,cost, travelling time) \\
+\hline
+{\em vertex} & id u \\
+\hline
+{\em vertex} & id v \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classSpaceTimeNetwork_a7e1a25302d2b052bbf785d18981a2773}\label{classSpaceTimeNetwork_a7e1a25302d2b052bbf785d18981a2773} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!adjacency\_lists\_arc\_position@{adjacency\_lists\_arc\_position}}
+\index{adjacency\_lists\_arc\_position@{adjacency\_lists\_arc\_position}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{adjacency\_lists\_arc\_position}{adjacency\_lists\_arc\_position}}
+{\footnotesize\ttfamily vector$<$unordered\+\_\+map$<$int, int$>$ $>$ Space\+Time\+Network\+::adjacency\+\_\+lists\+\_\+arc\+\_\+position\hspace{0.3cm}{\ttfamily [protected]}}
+
+current arc processed in an adjacency list = the space-\/time network is a multi-\/graph used in the k-\/shortest path algorithm \Hypertarget{classSpaceTimeNetwork_a2c622c046cf1ba99f08f91204fa19483}\label{classSpaceTimeNetwork_a2c622c046cf1ba99f08f91204fa19483} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!adjacency\_lists\_graph\_algorithms@{adjacency\_lists\_graph\_algorithms}}
+\index{adjacency\_lists\_graph\_algorithms@{adjacency\_lists\_graph\_algorithms}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{adjacency\_lists\_graph\_algorithms}{adjacency\_lists\_graph\_algorithms}}
+{\footnotesize\ttfamily vector$<$unordered\+\_\+map$<$int,double$>$ $>$ Space\+Time\+Network\+::adjacency\+\_\+lists\+\_\+graph\+\_\+algorithms\hspace{0.3cm}{\ttfamily [protected]}}
+
+Adjacency lists used in the graph algorithms, e.\+g., dfs, Yen, spp the space-\/time network is a multigraph, instead adjacency\+\_\+lists\+\_\+graph\+\_\+algorithms contains only one arc between two vertices. adjacency\+\_\+lists\+\_\+graph\+\_\+algorithms\mbox{[}u\mbox{]} = adj list of vertex u = pairs (v,cost) where (u,v) is an arc in the network and cost is its associated cost This data structure is mutable \Hypertarget{classSpaceTimeNetwork_ab872acbce9045461ef13a5f2bfdc8c83}\label{classSpaceTimeNetwork_ab872acbce9045461ef13a5f2bfdc8c83} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!arcs@{arcs}}
+\index{arcs@{arcs}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{arcs}{arcs}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classArcST}{Arc\+ST}}$>$ Space\+Time\+Network\+::arcs\hspace{0.3cm}{\ttfamily [protected]}}
+
+each arc correspond to a movement in the space-\/time network \Hypertarget{classSpaceTimeNetwork_acc41101823caf0e04f211682d55b86a4}\label{classSpaceTimeNetwork_acc41101823caf0e04f211682d55b86a4} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!lorries@{lorries}}
+\index{lorries@{lorries}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{lorries}{lorries}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classLorry}{Lorry}}$>$ Space\+Time\+Network\+::lorries\hspace{0.3cm}{\ttfamily [protected]}}
+
+available lorries \Hypertarget{classSpaceTimeNetwork_abcb6c751dd58a566742c263a055ff949}\label{classSpaceTimeNetwork_abcb6c751dd58a566742c263a055ff949} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!network@{network}}
+\index{network@{network}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{network}{network}}
+{\footnotesize\ttfamily operations\+\_\+research\+::lattle\+::\+Logistics\+Network Space\+Time\+Network\+::network\hspace{0.3cm}{\ttfamily [protected]}}
+
+logistics network object \Hypertarget{classSpaceTimeNetwork_a1a120f7f8f4199594fe286ee11261327}\label{classSpaceTimeNetwork_a1a120f7f8f4199594fe286ee11261327} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!underlying\_graph@{underlying\_graph}}
+\index{underlying\_graph@{underlying\_graph}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{underlying\_graph}{underlying\_graph}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraph}{Graph}} Space\+Time\+Network\+::underlying\+\_\+graph\hspace{0.3cm}{\ttfamily [protected]}}
+
+underlying graph (only space dimension) \Hypertarget{classSpaceTimeNetwork_ad3ee035f71197d92316c49b6920f759d}\label{classSpaceTimeNetwork_ad3ee035f71197d92316c49b6920f759d} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!vertex\_dictionary@{vertex\_dictionary}}
+\index{vertex\_dictionary@{vertex\_dictionary}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{vertex\_dictionary}{vertex\_dictionary}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$int, unordered\+\_\+map$<$int, int$>$ $>$ Space\+Time\+Network\+::vertex\+\_\+dictionary\hspace{0.3cm}{\ttfamily [protected]}}
+
+key1 = hub id in graph, key2 = encoded time, value = vertex id in ST network \Hypertarget{classSpaceTimeNetwork_aaf34aaf5753c9d88de3555cbad074e8c}\label{classSpaceTimeNetwork_aaf34aaf5753c9d88de3555cbad074e8c} 
+\index{SpaceTimeNetwork@{SpaceTimeNetwork}!vertices@{vertices}}
+\index{vertices@{vertices}!SpaceTimeNetwork@{SpaceTimeNetwork}}
+\doxysubsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classVertexST}{Vertex\+ST}}$>$ Space\+Time\+Network\+::vertices\hspace{0.3cm}{\ttfamily [protected]}}
+
+each vertex correspond to a (hub,time) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Space\+Time\+Network.\+h\item 
+Space\+Time\+Network.\+cpp\end{DoxyCompactItemize}

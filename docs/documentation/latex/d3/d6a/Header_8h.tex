@@ -1,0 +1,60 @@
+\doxysection{Header.\+h File Reference}
+\hypertarget{Header_8h}{}\label{Header_8h}\index{Header.h@{Header.h}}
+
+
+Contains the common includes of all the files in this project.  
+
+
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$google/protobuf/text\+\_\+format.\+h$>$}\newline
+{\ttfamily \#include $<$google/protobuf/util/json\+\_\+util.\+h$>$}\newline
+{\ttfamily \#include "{}proto/lattle.\+pb.\+h"{}}\newline
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr auto \mbox{\hyperlink{Header_8h_a6f9399eaf2efb1b12e797b77909df9ac}{EPSILON}} = 1.\+0e-\/6
+\item 
+constexpr auto \mbox{\hyperlink{Header_8h_ae0f3914e8a89e81a42da2d7d2c05fa63}{OMEGA}} = 1.\+0e+6
+\item 
+constexpr auto \mbox{\hyperlink{Header_8h_aaec038dca57bb72ecd55a336c4ccf88a}{TIMESTEP}} = 15
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the common includes of all the files in this project. 
+
+\begin{DoxyAuthor}{Author}
+mpetris 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+October 2023 
+\end{DoxyDate}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{Header_8h_a6f9399eaf2efb1b12e797b77909df9ac}\label{Header_8h_a6f9399eaf2efb1b12e797b77909df9ac} 
+\index{Header.h@{Header.h}!EPSILON@{EPSILON}}
+\index{EPSILON@{EPSILON}!Header.h@{Header.h}}
+\doxysubsubsection{\texorpdfstring{EPSILON}{EPSILON}}
+{\footnotesize\ttfamily constexpr auto EPSILON = 1.\+0e-\/6\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+Precision variable. \Hypertarget{Header_8h_ae0f3914e8a89e81a42da2d7d2c05fa63}\label{Header_8h_ae0f3914e8a89e81a42da2d7d2c05fa63} 
+\index{Header.h@{Header.h}!OMEGA@{OMEGA}}
+\index{OMEGA@{OMEGA}!Header.h@{Header.h}}
+\doxysubsubsection{\texorpdfstring{OMEGA}{OMEGA}}
+{\footnotesize\ttfamily constexpr auto OMEGA = 1.\+0e+6\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+Precision variable. \Hypertarget{Header_8h_aaec038dca57bb72ecd55a336c4ccf88a}\label{Header_8h_aaec038dca57bb72ecd55a336c4ccf88a} 
+\index{Header.h@{Header.h}!TIMESTEP@{TIMESTEP}}
+\index{TIMESTEP@{TIMESTEP}!Header.h@{Header.h}}
+\doxysubsubsection{\texorpdfstring{TIMESTEP}{TIMESTEP}}
+{\footnotesize\ttfamily constexpr auto TIMESTEP = 15\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+Discretise the horizon (1day) with a step of 15min. 

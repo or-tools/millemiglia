@@ -23,15 +23,13 @@ SpaceTimeNetwork::SpaceTimeNetwork(const string& network_file, const int& time_h
 	cout << "\n\nCOMPUTE TOPOLOGICAL ORDER --- STARTING\n\n";
 }
 
+
 SpaceTimeNetwork::SpaceTimeNetwork(const operations_research::lattle::LogisticsNetwork& network, const int& time_horizon) {
 	VertexST::restart_id_counter();
 	ArcST::restart_id_counter();
 	build_underlying_graph(network);
-	cout << this->underlying_graph.toString() << endl;
 	build_vertices(time_horizon);
-	cout << "\n\nSORT ADJACENCY LISTS FOR GRAPH ALGORITHMS --- STARTING\n\n";
 	this->sort_adjacency_list_out();
-	cout << "\n\nSORT ADJACENCY LISTS FOR GRAPH ALGORITHMS --- COMPLETED\n\n";
 	build_arcs(network, time_horizon);
 }
 

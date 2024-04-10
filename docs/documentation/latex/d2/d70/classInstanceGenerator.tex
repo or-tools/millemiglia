@@ -1,0 +1,135 @@
+\doxysection{Instance\+Generator Class Reference}
+\hypertarget{classInstanceGenerator}{}\label{classInstanceGenerator}\index{InstanceGenerator@{InstanceGenerator}}
+
+
+This class generate .textproto for the logistics\+Network and logistics\+Network\+State.  
+
+
+
+
+{\ttfamily \#include $<$Instance\+Generator.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classInstanceGenerator_aa70d8393b4790e6b3fb2d9a287a54eb9}\label{classInstanceGenerator_aa70d8393b4790e6b3fb2d9a287a54eb9} 
+{\bfseries Instance\+Generator} ()
+\begin{DoxyCompactList}\small\item\em Constructor by default. \end{DoxyCompactList}\item 
+\Hypertarget{classInstanceGenerator_a872f4e21c3f4697ab5c431f048af1643}\label{classInstanceGenerator_a872f4e21c3f4697ab5c431f048af1643} 
+{\bfseries Instance\+Generator} (const string \&\mbox{\hyperlink{classInstanceGenerator_ab6da2aff700266c85027f548ca2753e3}{name}}, const string \&\mbox{\hyperlink{classInstanceGenerator_a7f035d5366b9c22e218f0f0c0b6a0a16}{description}}, const unsigned int \&\mbox{\hyperlink{classInstanceGenerator_aecfa153e9b36a36a64ff12d17c2a7d3b}{random\+\_\+seed}})
+\begin{DoxyCompactList}\small\item\em Constructor by data. The call to the constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classInstanceGenerator_a285810c27b802f27bd1f851bdb3aa35f}\label{classInstanceGenerator_a285810c27b802f27bd1f851bdb3aa35f} 
+{\bfseries Instance\+Generator} (const \mbox{\hyperlink{classInstanceGenerator}{Instance\+Generator}} \&instance\+Generator)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classInstanceGenerator_a1bd41a5f22eecf1838ef449e414b5465}\label{classInstanceGenerator_a1bd41a5f22eecf1838ef449e414b5465} 
+\mbox{\hyperlink{classInstanceGenerator}{Instance\+Generator}} \& {\bfseries operator=} (const \mbox{\hyperlink{classInstanceGenerator}{Instance\+Generator}} \&instance\+Generator)
+\begin{DoxyCompactList}\small\item\em Operator assignment. \end{DoxyCompactList}\item 
+\Hypertarget{classInstanceGenerator_ae75e822cbeddf63d43135615e0e16d34}\label{classInstanceGenerator_ae75e822cbeddf63d43135615e0e16d34} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Instance\+Generator} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classInstanceGenerator_a7a9f0efa5de536dc22122d356e1d77e5}{generate\+\_\+logistic\+\_\+network}} (const int \&hubs\+\_\+number, const int \&time\+\_\+horizon, const int \&dimension\+\_\+number, const int \&max\+\_\+length\+\_\+line, const int \&num\+\_\+vehicles\+\_\+per\+\_\+step, const int \&max\+\_\+vehicle\+\_\+duration, const double \&max\+\_\+vehicle\+\_\+capacity=100.\+0, const double \&vehicle\+\_\+sampling\+\_\+inv\+\_\+temp=0.\+01, const int \&new\+\_\+connections\+\_\+per\+\_\+node=2) const
+\begin{DoxyCompactList}\small\item\em build the logistic network and print the .textproto \end{DoxyCompactList}\item 
+\Hypertarget{classInstanceGenerator_a53675854c979d445815b2ccfe5dc1b1e}\label{classInstanceGenerator_a53675854c979d445815b2ccfe5dc1b1e} 
+\mbox{\hyperlink{classGraph}{Graph}} {\bfseries build\+\_\+random\+\_\+graph} (const int \&hubs\+\_\+number, const int \&new\+\_\+connections\+\_\+per\+\_\+node) const
+\item 
+\Hypertarget{classInstanceGenerator_a1076e1b43673ea655581d021f5c52f42}\label{classInstanceGenerator_a1076e1b43673ea655581d021f5c52f42} 
+vector$<$ double $>$ {\bfseries build\+\_\+arc\+\_\+weights} (const \mbox{\hyperlink{classGraph}{Graph}} \&graph, const double \&vehicle\+\_\+sampling\+\_\+inv\+\_\+temp) const
+\item 
+\Hypertarget{classInstanceGenerator_a767774d703d14facf8697c0eb0b84106}\label{classInstanceGenerator_a767774d703d14facf8697c0eb0b84106} 
+vector$<$ vector$<$ double $>$ $>$ {\bfseries build\+\_\+arc\+\_\+weights\+\_\+per\+\_\+adjacency\+\_\+lists} (const \mbox{\hyperlink{classGraph}{Graph}} \&graph, const vector$<$ double $>$ \&arc\+\_\+weights) const
+\item 
+\Hypertarget{classInstanceGenerator_a9a28eba0df14135cdce46bd00cc169fd}\label{classInstanceGenerator_a9a28eba0df14135cdce46bd00cc169fd} 
+void {\bfseries add\+\_\+dimensions} (operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&network, const int \&dimension\+\_\+number) const
+\item 
+\Hypertarget{classInstanceGenerator_a8de9cd9a4232ec5cd6f2cf325ea2789b}\label{classInstanceGenerator_a8de9cd9a4232ec5cd6f2cf325ea2789b} 
+void {\bfseries add\+\_\+hubs} (operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&network, const \mbox{\hyperlink{classGraph}{Graph}} \&graph) const
+\item 
+\Hypertarget{classInstanceGenerator_a4ff6ceda8125dc34ca8c1354c51514b4}\label{classInstanceGenerator_a4ff6ceda8125dc34ca8c1354c51514b4} 
+int {\bfseries add\+\_\+line\+\_\+rotations} (operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&network, const \mbox{\hyperlink{classGraph}{Graph}} \&graph, const int \&max\+\_\+length\+\_\+line, const int \&time\+\_\+horizon, const int \&num\+\_\+vehicles\+\_\+per\+\_\+step, const int \&max\+\_\+vehicle\+\_\+duration, const vector$<$ double $>$ \&arc\+\_\+weights, const vector$<$ vector$<$ double $>$ $>$ \&arc\+\_\+weights\+\_\+adj\+\_\+lists) const
+\item 
+\Hypertarget{classInstanceGenerator_a7b3c80f1bf7056f62cee5bd7b7127533}\label{classInstanceGenerator_a7b3c80f1bf7056f62cee5bd7b7127533} 
+void {\bfseries add\+\_\+line\+\_\+rotation} (operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&network, const \mbox{\hyperlink{classGraph}{Graph}} \&graph, const int \&line\+\_\+numb, const vector$<$ int $>$ \&line, const vector$<$ vector$<$ int $>$ $>$ \&rotations) const
+\item 
+\Hypertarget{classInstanceGenerator_a05190f2b57d5d9872e8a177e435f73d9}\label{classInstanceGenerator_a05190f2b57d5d9872e8a177e435f73d9} 
+void {\bfseries add\+\_\+distance\+\_\+matrix\+\_\+entry} (operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&network, const string \&x, const string \&y) const
+\item 
+\Hypertarget{classInstanceGenerator_a6f0185bdc7eca93bb86f6c4db214f840}\label{classInstanceGenerator_a6f0185bdc7eca93bb86f6c4db214f840} 
+void {\bfseries add\+\_\+time\+\_\+range} (operations\+\_\+research\+::lattle\+::\+Date\+Time\+Range \&range, const google\+::type\+::\+Date\+Time \&time) const
+\item 
+\Hypertarget{classInstanceGenerator_a7442204675df1402d9bc8757bae6348d}\label{classInstanceGenerator_a7442204675df1402d9bc8757bae6348d} 
+void {\bfseries add\+\_\+vehicles} (operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&network, const int \&vehicle\+\_\+number, const int \&max\+\_\+vehicle\+\_\+capacity) const
+\item 
+\Hypertarget{classInstanceGenerator_a794533a5e9491ec5220682ddd7607b28}\label{classInstanceGenerator_a794533a5e9491ec5220682ddd7607b28} 
+void {\bfseries generate\+\_\+shipments} (const operations\+\_\+research\+::lattle\+::\+Logistics\+Network \&network, const \mbox{\hyperlink{classSpaceTimeNetwork}{Space\+Time\+Network}} \&st\+\_\+network, const int \&shipment\+\_\+number, const int \&timesteps, const int \&mean\+\_\+path\+\_\+length, const int \&min\+\_\+shipment\+\_\+weight=1, const int \&max\+\_\+shipment\+\_\+weight=100, const double \&shipment\+\_\+weight\+\_\+shape=0.\+1, const bool \&unit\+\_\+weights=false, const double \&start\+\_\+inv\+\_\+temp=0.\+1, const double \&dist\+\_\+inv\+\_\+temp=0.\+1, const int \&max\+\_\+tries=50, const double \&cut\+\_\+capacities=0.\+0) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classInstanceGenerator_ab6da2aff700266c85027f548ca2753e3}{name}}
+\item 
+string \mbox{\hyperlink{classInstanceGenerator_a7f035d5366b9c22e218f0f0c0b6a0a16}{description}}
+\item 
+unsigned int \mbox{\hyperlink{classInstanceGenerator_aecfa153e9b36a36a64ff12d17c2a7d3b}{random\+\_\+seed}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class generate .textproto for the logistics\+Network and logistics\+Network\+State. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classInstanceGenerator_a7a9f0efa5de536dc22122d356e1d77e5}\label{classInstanceGenerator_a7a9f0efa5de536dc22122d356e1d77e5} 
+\index{InstanceGenerator@{InstanceGenerator}!generate\_logistic\_network@{generate\_logistic\_network}}
+\index{generate\_logistic\_network@{generate\_logistic\_network}!InstanceGenerator@{InstanceGenerator}}
+\doxysubsubsection{\texorpdfstring{generate\_logistic\_network()}{generate\_logistic\_network()}}
+{\footnotesize\ttfamily void Instance\+Generator\+::generate\+\_\+logistic\+\_\+network (\begin{DoxyParamCaption}\item[{const int \&}]{hubs\+\_\+number,  }\item[{const int \&}]{time\+\_\+horizon,  }\item[{const int \&}]{dimension\+\_\+number,  }\item[{const int \&}]{max\+\_\+length\+\_\+line,  }\item[{const int \&}]{num\+\_\+vehicles\+\_\+per\+\_\+step,  }\item[{const int \&}]{max\+\_\+vehicle\+\_\+duration,  }\item[{const double \&}]{max\+\_\+vehicle\+\_\+capacity = {\ttfamily 100.0},  }\item[{const double \&}]{vehicle\+\_\+sampling\+\_\+inv\+\_\+temp = {\ttfamily 0.01},  }\item[{const int \&}]{new\+\_\+connections\+\_\+per\+\_\+node = {\ttfamily 2} }\end{DoxyParamCaption}) const}
+
+
+
+build the logistic network and print the .textproto 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hubs\+\_\+number} & \\
+\hline
+{\em timesteps} & \\
+\hline
+{\em num\+\_\+vehicles\+\_\+per\+\_\+step} & number of vehicles leaving every time step (deterministic) \\
+\hline
+{\em max\+\_\+vehicle\+\_\+duration} & maximal number of time steps a vehicle takes to reach its destination. The actual number is sampled uniformly from \{1,...,{\ttfamily max\+\_\+vehicle\+\_\+duration}\} \\
+\hline
+{\em max\+\_\+vehicle\+\_\+capacity} & maximum scalar capacity of vehicles. The actual capacity is sampled uniformly from \mbox{[}0,{\ttfamily max\+\_\+vehicle\+\_\+capacity}) \\
+\hline
+{\em unit\+\_\+capacities} & if {\ttfamily True}, all vehicle capacities are set to 1. The argument {\ttfamily max\+\_\+vehicle\+\_\+capacity} is ignored in this case \\
+\hline
+{\em vehicle\+\_\+sampling\+\_\+inv\+\_\+temp} & when sampling the vehicles for a given time step, probabilities for the vehicles are given by {\ttfamily softmax(vehicle\+\_\+sampling\+\_\+inv\+\_\+temp\texorpdfstring{$\ast$}{*} (degree\+\_\+vehicle\+\_\+sender + degree\+\_\+vehicle\+\_\+receiver))}. This way, vehicles connecting two high-\/degree nodes are sampled more frequentlyl\\
+\hline
+\end{DoxyParams}
+First, generates a (space) graph of depots and connections between them according to the extended Barab{\ucr}si-\/\+Albert algorithm (\href{https://www.degruyter.com/document/doi/10.1515/9781400841356/html}{\texttt{ https\+://www.\+degruyter.\+com/document/doi/10.\+1515/9781400841356/html}}). The algorithm is found in \href{https://github.com/VictorSeven/CNetwork}{\texttt{ https\+://github.\+com/\+Victor\+Seven/\+CNetwork}} This results in a few highly connected (large degree), while most depots only have a few connections. The time-\/expanded representation is then generated from the original graph by sampling a pre-\/specified number of vehicles at each time step, each of which starts at the current time step and ends a random number of time steps later (taking care to not exceed the specified total number of time steps).
+
+In terms of lattle.\+proto objects. A line corresponds to paths . A rotation corresponds to a sampled vehicle. Remark that we MUST assign at least one vehicle to each rotation. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classInstanceGenerator_a7f035d5366b9c22e218f0f0c0b6a0a16}\label{classInstanceGenerator_a7f035d5366b9c22e218f0f0c0b6a0a16} 
+\index{InstanceGenerator@{InstanceGenerator}!description@{description}}
+\index{description@{description}!InstanceGenerator@{InstanceGenerator}}
+\doxysubsubsection{\texorpdfstring{description}{description}}
+{\footnotesize\ttfamily string Instance\+Generator\+::description\hspace{0.3cm}{\ttfamily [protected]}}
+
+description contains info regarding the instance file that is generated. Its content is print in a name\+\_\+info.\+txt file \Hypertarget{classInstanceGenerator_ab6da2aff700266c85027f548ca2753e3}\label{classInstanceGenerator_ab6da2aff700266c85027f548ca2753e3} 
+\index{InstanceGenerator@{InstanceGenerator}!name@{name}}
+\index{name@{name}!InstanceGenerator@{InstanceGenerator}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string Instance\+Generator\+::name\hspace{0.3cm}{\ttfamily [protected]}}
+
+name of the .textproto file \Hypertarget{classInstanceGenerator_aecfa153e9b36a36a64ff12d17c2a7d3b}\label{classInstanceGenerator_aecfa153e9b36a36a64ff12d17c2a7d3b} 
+\index{InstanceGenerator@{InstanceGenerator}!random\_seed@{random\_seed}}
+\index{random\_seed@{random\_seed}!InstanceGenerator@{InstanceGenerator}}
+\doxysubsubsection{\texorpdfstring{random\_seed}{random\_seed}}
+{\footnotesize\ttfamily unsigned int Instance\+Generator\+::random\+\_\+seed\hspace{0.3cm}{\ttfamily [protected]}}
+
+random\+\_\+seed to use in the randomized steps 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Instance\+Generator.\+h\item 
+Instance\+Generator.\+cpp\end{DoxyCompactItemize}

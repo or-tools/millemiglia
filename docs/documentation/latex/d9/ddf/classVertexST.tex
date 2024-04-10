@@ -1,0 +1,221 @@
+\doxysection{Vertex\+ST Class Reference}
+\hypertarget{classVertexST}{}\label{classVertexST}\index{VertexST@{VertexST}}
+
+
+This class represent a vertex in the space-\/time network, it is a pair (i,t), where i is the vertex id in the graph and t is a time.  
+
+
+
+
+{\ttfamily \#include $<$Vertex\+ST.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVertexST_aaceeef9c7344b02fc46ad214c69388b2}\label{classVertexST_aaceeef9c7344b02fc46ad214c69388b2} 
+{\bfseries Vertex\+ST} ()
+\begin{DoxyCompactList}\small\item\em Constructor by default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVertexST_acd42b42c39efb9d1fb82afd60b3f8511}{Vertex\+ST}} (const int \&\mbox{\hyperlink{classVertexST_a7e6a1de6591ad74ec2954f206bc6cdf1}{id\+\_\+in\+\_\+graph}}, const int \&\mbox{\hyperlink{classVertexST_aada4d017ec27944854c98bfad025b5b1}{time}})
+\begin{DoxyCompactList}\small\item\em Constructor by name. \end{DoxyCompactList}\item 
+\Hypertarget{classVertexST_a5a912d9edbf323e2038ea44920a52e8a}\label{classVertexST_a5a912d9edbf323e2038ea44920a52e8a} 
+{\bfseries Vertex\+ST} (const \mbox{\hyperlink{classVertexST}{Vertex\+ST}} \&vertex)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classVertexST_a9240c73413954da8dded07e1fbf50607}\label{classVertexST_a9240c73413954da8dded07e1fbf50607} 
+\mbox{\hyperlink{classVertexST}{Vertex\+ST}} \& {\bfseries operator=} (const \mbox{\hyperlink{classVertexST}{Vertex\+ST}} \&vertex)
+\begin{DoxyCompactList}\small\item\em Operator assignment. \end{DoxyCompactList}\item 
+\Hypertarget{classVertexST_a757868c5dc5fd252dc698a2f25008146}\label{classVertexST_a757868c5dc5fd252dc698a2f25008146} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Vertex\+ST} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertexST_a7efddd8e801a7754566b5361a6f42c6e}{add\+\_\+neighbour\+\_\+out}} (const int \&v\+Id, const int \&arc\+Id)
+\begin{DoxyCompactList}\small\item\em Add arc=(this,v\+Id) id to the adjacency list of the out going arcs. \end{DoxyCompactList}\item 
+\Hypertarget{classVertexST_a7b740fa705e6466a1a278f0c94ff4a51}\label{classVertexST_a7b740fa705e6466a1a278f0c94ff4a51} 
+void {\bfseries add\+\_\+neighbour\+\_\+out\+\_\+time} (const int \&v\+Id, const vector$<$ int $>$ \&arc\+Ids)
+\item 
+\Hypertarget{classVertexST_ae29f09d0764aef40aa7ca1838c648210}\label{classVertexST_ae29f09d0764aef40aa7ca1838c648210} 
+void {\bfseries add\+\_\+neighbour\+\_\+out\+\_\+cost} (const int \&v\+Id, const vector$<$ int $>$ \&arc\+Ids)
+\item 
+void \mbox{\hyperlink{classVertexST_a4d03f2db1e57a769391b2913bec297a3}{add\+\_\+neighbour\+\_\+in}} (const int \&v\+Id, const int \&arc\+Id)
+\begin{DoxyCompactList}\small\item\em Add arc=(v\+Id,this) id to the adjacency list of the out going arcs. \end{DoxyCompactList}\item 
+\Hypertarget{classVertexST_a2f49fda371f05080c260866f773dad1c}\label{classVertexST_a2f49fda371f05080c260866f773dad1c} 
+const int \& {\bfseries get\+\_\+id} () const
+\item 
+\Hypertarget{classVertexST_acd1616ee179788345fe8e482481c3884}\label{classVertexST_acd1616ee179788345fe8e482481c3884} 
+const int \& {\bfseries get\+\_\+id\+\_\+in\+\_\+graph} () const
+\item 
+\Hypertarget{classVertexST_a19168d290fda98eef493d8db44a5d256}\label{classVertexST_a19168d290fda98eef493d8db44a5d256} 
+const int \& {\bfseries get\+\_\+time} () const
+\item 
+\Hypertarget{classVertexST_ae99efd582be94cfaee0d7bda5f0508b1}\label{classVertexST_ae99efd582be94cfaee0d7bda5f0508b1} 
+const int \& {\bfseries get\+\_\+topological\+\_\+position} () const
+\item 
+\Hypertarget{classVertexST_a440af5d012b64434d874a8b8096369fd}\label{classVertexST_a440af5d012b64434d874a8b8096369fd} 
+const unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \& {\bfseries get\+\_\+adjacency\+\_\+list\+\_\+out} () const
+\item 
+\Hypertarget{classVertexST_ae3de6b6e727f0c9f1d7ccea81dfc37c3}\label{classVertexST_ae3de6b6e727f0c9f1d7ccea81dfc37c3} 
+const unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \& {\bfseries get\+\_\+adjacency\+\_\+list\+\_\+out\+\_\+cost} () const
+\item 
+\Hypertarget{classVertexST_a77189a4121a5adc05e49fa465a414197}\label{classVertexST_a77189a4121a5adc05e49fa465a414197} 
+const unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \& {\bfseries get\+\_\+adjacency\+\_\+list\+\_\+out\+\_\+time} () const
+\item 
+\Hypertarget{classVertexST_a716ad4ce40ee3d4b1026ce79dc0d7d19}\label{classVertexST_a716ad4ce40ee3d4b1026ce79dc0d7d19} 
+const unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \& {\bfseries get\+\_\+adjacency\+\_\+list\+\_\+in} () const
+\item 
+\Hypertarget{classVertexST_a36c1f7f209ca77a17fb5a82d003d7a11}\label{classVertexST_a36c1f7f209ca77a17fb5a82d003d7a11} 
+void {\bfseries set\+\_\+topological\+\_\+position} (const int \&pos)
+\item 
+\Hypertarget{classVertexST_a1ec040bfab3ca232dda2d8f9a785e263}\label{classVertexST_a1ec040bfab3ca232dda2d8f9a785e263} 
+const string {\bfseries to\+String} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVertexST_ab2f5c7a74569c4727d31d295def4d2b0}\label{classVertexST_ab2f5c7a74569c4727d31d295def4d2b0} 
+static void {\bfseries restart\+\_\+id\+\_\+counter} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classVertexST_af6b42c251fbca5c410d4ecf131be319f}{id}}
+\item 
+int \mbox{\hyperlink{classVertexST_a7e6a1de6591ad74ec2954f206bc6cdf1}{id\+\_\+in\+\_\+graph}}
+\item 
+int \mbox{\hyperlink{classVertexST_aada4d017ec27944854c98bfad025b5b1}{time}}
+\item 
+int \mbox{\hyperlink{classVertexST_ad31ad4c8a06ee540f17d0c58777e470d}{topological\+\_\+position}}
+\item 
+unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \mbox{\hyperlink{classVertexST_aa8a13f6e457172152b558f5a4b9670da}{adjacency\+\_\+list\+\_\+out}}
+\item 
+unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \mbox{\hyperlink{classVertexST_ac340bf7257f286dc9402935079d70ef7}{adjacency\+\_\+list\+\_\+out\+\_\+cost}}
+\item 
+unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \mbox{\hyperlink{classVertexST_ac96447b43d939b53794cc494fe9d3dac}{adjacency\+\_\+list\+\_\+out\+\_\+time}}
+\item 
+unordered\+\_\+map$<$ int, vector$<$ int $>$ $>$ \mbox{\hyperlink{classVertexST_a2bfe7d7d07a81bf0d4e1032850e4fffa}{adjacency\+\_\+list\+\_\+in}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classVertexST_ab805e6418c86f895106e11132a7e64c3}{last\+Id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represent a vertex in the space-\/time network, it is a pair (i,t), where i is the vertex id in the graph and t is a time. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVertexST_acd42b42c39efb9d1fb82afd60b3f8511}\label{classVertexST_acd42b42c39efb9d1fb82afd60b3f8511} 
+\index{VertexST@{VertexST}!VertexST@{VertexST}}
+\index{VertexST@{VertexST}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{VertexST()}{VertexST()}}
+{\footnotesize\ttfamily Vertex\+ST\+::\+Vertex\+ST (\begin{DoxyParamCaption}\item[{const int \&}]{id\+\_\+in\+\_\+graph,  }\item[{const int \&}]{time }\end{DoxyParamCaption})}
+
+
+
+Constructor by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+\_\+in\+\_\+graph} & \\
+\hline
+{\em time} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVertexST_a4d03f2db1e57a769391b2913bec297a3}\label{classVertexST_a4d03f2db1e57a769391b2913bec297a3} 
+\index{VertexST@{VertexST}!add\_neighbour\_in@{add\_neighbour\_in}}
+\index{add\_neighbour\_in@{add\_neighbour\_in}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{add\_neighbour\_in()}{add\_neighbour\_in()}}
+{\footnotesize\ttfamily void Vertex\+ST\+::add\+\_\+neighbour\+\_\+in (\begin{DoxyParamCaption}\item[{const int \&}]{v\+Id,  }\item[{const int \&}]{arc\+Id }\end{DoxyParamCaption})}
+
+
+
+Add arc=(v\+Id,this) id to the adjacency list of the out going arcs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v\+Id} & \\
+\hline
+{\em arc\+Id} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classVertexST_a7efddd8e801a7754566b5361a6f42c6e}\label{classVertexST_a7efddd8e801a7754566b5361a6f42c6e} 
+\index{VertexST@{VertexST}!add\_neighbour\_out@{add\_neighbour\_out}}
+\index{add\_neighbour\_out@{add\_neighbour\_out}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{add\_neighbour\_out()}{add\_neighbour\_out()}}
+{\footnotesize\ttfamily void Vertex\+ST\+::add\+\_\+neighbour\+\_\+out (\begin{DoxyParamCaption}\item[{const int \&}]{v\+Id,  }\item[{const int \&}]{arc\+Id }\end{DoxyParamCaption})}
+
+
+
+Add arc=(this,v\+Id) id to the adjacency list of the out going arcs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v\+Id} & \\
+\hline
+{\em arc\+Id} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classVertexST_a2bfe7d7d07a81bf0d4e1032850e4fffa}\label{classVertexST_a2bfe7d7d07a81bf0d4e1032850e4fffa} 
+\index{VertexST@{VertexST}!adjacency\_list\_in@{adjacency\_list\_in}}
+\index{adjacency\_list\_in@{adjacency\_list\_in}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{adjacency\_list\_in}{adjacency\_list\_in}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$int, vector$<$int$>$ $>$ Vertex\+ST\+::adjacency\+\_\+list\+\_\+in\hspace{0.3cm}{\ttfamily [protected]}}
+
+arc = (id,this) key = id, value = vector of arcs to go from id to this \Hypertarget{classVertexST_aa8a13f6e457172152b558f5a4b9670da}\label{classVertexST_aa8a13f6e457172152b558f5a4b9670da} 
+\index{VertexST@{VertexST}!adjacency\_list\_out@{adjacency\_list\_out}}
+\index{adjacency\_list\_out@{adjacency\_list\_out}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{adjacency\_list\_out}{adjacency\_list\_out}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$int, vector$<$int$>$ $>$ Vertex\+ST\+::adjacency\+\_\+list\+\_\+out\hspace{0.3cm}{\ttfamily [protected]}}
+
+arc = (this,id) key = id, value = vector of arcs to go from this to id \Hypertarget{classVertexST_ac340bf7257f286dc9402935079d70ef7}\label{classVertexST_ac340bf7257f286dc9402935079d70ef7} 
+\index{VertexST@{VertexST}!adjacency\_list\_out\_cost@{adjacency\_list\_out\_cost}}
+\index{adjacency\_list\_out\_cost@{adjacency\_list\_out\_cost}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{adjacency\_list\_out\_cost}{adjacency\_list\_out\_cost}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$int, vector$<$int$>$ $>$ Vertex\+ST\+::adjacency\+\_\+list\+\_\+out\+\_\+cost\hspace{0.3cm}{\ttfamily [protected]}}
+
+adjacency\+\_\+list\+\_\+out arcs are sorted by increasing cost \Hypertarget{classVertexST_ac96447b43d939b53794cc494fe9d3dac}\label{classVertexST_ac96447b43d939b53794cc494fe9d3dac} 
+\index{VertexST@{VertexST}!adjacency\_list\_out\_time@{adjacency\_list\_out\_time}}
+\index{adjacency\_list\_out\_time@{adjacency\_list\_out\_time}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{adjacency\_list\_out\_time}{adjacency\_list\_out\_time}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$int, vector$<$int$>$ $>$ Vertex\+ST\+::adjacency\+\_\+list\+\_\+out\+\_\+time\hspace{0.3cm}{\ttfamily [protected]}}
+
+adjacency\+\_\+list\+\_\+out arcs are sorted by increasing travelling time \Hypertarget{classVertexST_af6b42c251fbca5c410d4ecf131be319f}\label{classVertexST_af6b42c251fbca5c410d4ecf131be319f} 
+\index{VertexST@{VertexST}!id@{id}}
+\index{id@{id}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily int Vertex\+ST\+::id\hspace{0.3cm}{\ttfamily [protected]}}
+
+vertex id in the space-\/time network \Hypertarget{classVertexST_a7e6a1de6591ad74ec2954f206bc6cdf1}\label{classVertexST_a7e6a1de6591ad74ec2954f206bc6cdf1} 
+\index{VertexST@{VertexST}!id\_in\_graph@{id\_in\_graph}}
+\index{id\_in\_graph@{id\_in\_graph}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{id\_in\_graph}{id\_in\_graph}}
+{\footnotesize\ttfamily int Vertex\+ST\+::id\+\_\+in\+\_\+graph\hspace{0.3cm}{\ttfamily [protected]}}
+
+vertex id (hub) in the underlying graph \Hypertarget{classVertexST_ab805e6418c86f895106e11132a7e64c3}\label{classVertexST_ab805e6418c86f895106e11132a7e64c3} 
+\index{VertexST@{VertexST}!lastId@{lastId}}
+\index{lastId@{lastId}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{lastId}{lastId}}
+{\footnotesize\ttfamily int Vertex\+ST\+::last\+Id\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+vertex counter to assign unique id \Hypertarget{classVertexST_aada4d017ec27944854c98bfad025b5b1}\label{classVertexST_aada4d017ec27944854c98bfad025b5b1} 
+\index{VertexST@{VertexST}!time@{time}}
+\index{time@{time}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily int Vertex\+ST\+::time\hspace{0.3cm}{\ttfamily [protected]}}
+
+time the encoding of the discretised time \Hypertarget{classVertexST_ad31ad4c8a06ee540f17d0c58777e470d}\label{classVertexST_ad31ad4c8a06ee540f17d0c58777e470d} 
+\index{VertexST@{VertexST}!topological\_position@{topological\_position}}
+\index{topological\_position@{topological\_position}!VertexST@{VertexST}}
+\doxysubsubsection{\texorpdfstring{topological\_position}{topological\_position}}
+{\footnotesize\ttfamily int Vertex\+ST\+::topological\+\_\+position\hspace{0.3cm}{\ttfamily [protected]}}
+
+position in the topological order 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Vertex\+ST.\+h\item 
+Vertex\+ST.\+cpp\end{DoxyCompactItemize}

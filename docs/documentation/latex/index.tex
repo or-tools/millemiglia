@@ -1,0 +1,24 @@
+\chapter{Millemiglia}
+\hypertarget{index}{}\label{index}\index{Millemiglia@{Millemiglia}}
+\label{index_md__2home_2aymanelotfi_2Documents_2millemiglia_2README}%
+\Hypertarget{index_md__2home_2aymanelotfi_2Documents_2millemiglia_2README}%
+ Collaboration between ESSEC and Google OR about middle-\/mile logistics. This repository is supposed to contain only source code.\hypertarget{index_autotoc_md0}{}\doxysection{\texorpdfstring{Instance Generator for Middle Mile Logistics Optimization}{Instance Generator for Middle Mile Logistics Optimization}}\label{index_autotoc_md0}
+This repository provides a tool for generating diverse instances of logistics networks and parcels, aiming to facilitate research and development in the field of middle mile optimization.\hypertarget{index_autotoc_md1}{}\doxysubsection{\texorpdfstring{Objective}{Objective}}\label{index_autotoc_md1}
+This project seeks to create a rich dataset of instances (Logistic\+Network, Parcels) that can be utilized for\+:\hypertarget{index_autotoc_md2}{}\doxysubsubsection{\texorpdfstring{Benchmarking Optimization Approaches\+:}{Benchmarking Optimization Approaches:}}\label{index_autotoc_md2}
+Evaluating and comparing different methods for solving the middle mile optimization problem. \hypertarget{index_autotoc_md3}{}\doxysubsubsection{\texorpdfstring{Training Machine Learning Models\+:}{Training Machine Learning Models:}}\label{index_autotoc_md3}
+Training models to predict and optimize middle mile logistics operations.\hypertarget{index_autotoc_md4}{}\doxysubsection{\texorpdfstring{Design Overview}{Design Overview}}\label{index_autotoc_md4}
+The generated instances will represent a variety of real-\/world scenarios with diverse features like size and structure.\hypertarget{index_autotoc_md5}{}\doxysubsection{\texorpdfstring{Generation Details}{Generation Details}}\label{index_autotoc_md5}
+
+\begin{DoxyItemize}
+\item {\bfseries{Hub \doxylink{classGraph}{Graph}}}\+: A directed acyclic graph (DAG) representing hubs is generated using the Barabási-\/\+Albert model, mimicking real-\/world network properties.
+\item {\bfseries{Lines}}\+: Lines are constructed as contiguous paths within the hub graph, choosing random neighbors at each step with a length restriction.
+\item {\bfseries{Rotations}}\+: Each line has a randomly assigned duration between connected hubs. 
+\end{DoxyItemize}\hypertarget{index_autotoc_md6}{}\doxysubsection{\texorpdfstring{Using the library}{Using the library}}\label{index_autotoc_md6}
+\hypertarget{index_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{Build}{Build}}\label{index_autotoc_md7}
+\begin{DoxyVerb}$ cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release
+$ cmake --build build -j 8 -v
+\end{DoxyVerb}
+\hypertarget{index_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{Run}{Run}}\label{index_autotoc_md8}
+\begin{DoxyVerb}$ ./main number_of_nodes
+\end{DoxyVerb}
+ 

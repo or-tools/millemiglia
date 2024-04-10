@@ -1,0 +1,179 @@
+\doxysection{Arc\+ST Class Reference}
+\hypertarget{classArcST}{}\label{classArcST}\index{ArcST@{ArcST}}
+
+
+This class represent an arc in the space-\/time graph.  
+
+
+
+
+{\ttfamily \#include $<$Arc\+ST.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classArcST_a0a820096852697daf304a2e4d6414269}\label{classArcST_a0a820096852697daf304a2e4d6414269} 
+{\bfseries Arc\+ST} ()
+\begin{DoxyCompactList}\small\item\em Constructor by default. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classArcST_a3fed035ad0b836a3f681cc76b3b37e26}{Arc\+ST}} (const int \&\mbox{\hyperlink{classArcST_ae69a63220b29a69b23fa36c6a11e0f7b}{departure\+\_\+id}}, const int \&\mbox{\hyperlink{classArcST_ad858f2d5bf262c66c53d3a2916ebf151}{arrival\+\_\+id}}, const string \&\mbox{\hyperlink{classArcST_a35bcedc3e92c194a2cd925c0a4508ef2}{type}}, const string \&\mbox{\hyperlink{classArcST_a208461f3035574917e0ca1826f64364b}{line}}, const string \&\mbox{\hyperlink{classArcST_ae6dba7ae715f376f61c1fbb6472a56d8}{rotation}}, const int \&\mbox{\hyperlink{classArcST_a10712f7fe1810113de11b7207403bac0}{travelling\+\_\+time}}=0.\+0, const double \&\mbox{\hyperlink{classArcST_add54365f4ba7ba6404b18896ea6eb1cd}{cost}}=0.\+0)
+\begin{DoxyCompactList}\small\item\em Constructor by data. \end{DoxyCompactList}\item 
+\Hypertarget{classArcST_a179c3dc0daf61fba0c4db67b6117f54b}\label{classArcST_a179c3dc0daf61fba0c4db67b6117f54b} 
+{\bfseries Arc\+ST} (const \mbox{\hyperlink{classArcST}{Arc\+ST}} \&arc)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\Hypertarget{classArcST_a0ef594e919fbd0ea0759ebb8ec28634e}\label{classArcST_a0ef594e919fbd0ea0759ebb8ec28634e} 
+\mbox{\hyperlink{classArcST}{Arc\+ST}} \& {\bfseries operator=} (const \mbox{\hyperlink{classArcST}{Arc\+ST}} \&arc)
+\begin{DoxyCompactList}\small\item\em Operator assignment. \end{DoxyCompactList}\item 
+\Hypertarget{classArcST_a1537602ba8c4a7328832af05f2718735}\label{classArcST_a1537602ba8c4a7328832af05f2718735} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Arc\+ST} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\Hypertarget{classArcST_a322f7535c1e1bde4331ffa4890e44d5d}\label{classArcST_a322f7535c1e1bde4331ffa4890e44d5d} 
+const int \& {\bfseries get\+\_\+id} () const
+\item 
+\Hypertarget{classArcST_a29274ad4fa1057fa89ee92d8e3144692}\label{classArcST_a29274ad4fa1057fa89ee92d8e3144692} 
+const int \& {\bfseries get\+\_\+departure\+\_\+id} () const
+\item 
+\Hypertarget{classArcST_a0a542e567382b316b42b91458a3ab926}\label{classArcST_a0a542e567382b316b42b91458a3ab926} 
+const int \& {\bfseries get\+\_\+arrival\+\_\+id} () const
+\item 
+\Hypertarget{classArcST_ac12c484ef248f56831cae29061c2e39a}\label{classArcST_ac12c484ef248f56831cae29061c2e39a} 
+const string \& {\bfseries get\+\_\+type} () const
+\item 
+\Hypertarget{classArcST_a0e78174012caf31b906d64b8bcb3647e}\label{classArcST_a0e78174012caf31b906d64b8bcb3647e} 
+const string \& {\bfseries get\+\_\+line} () const
+\item 
+\Hypertarget{classArcST_a1e6a790aa831529a3a323b7917d84585}\label{classArcST_a1e6a790aa831529a3a323b7917d84585} 
+const string \& {\bfseries get\+\_\+rotation} () const
+\item 
+\Hypertarget{classArcST_a2b7b2669979329410485f390310648d3}\label{classArcST_a2b7b2669979329410485f390310648d3} 
+const int \& {\bfseries get\+\_\+travelling\+\_\+time} () const
+\item 
+\Hypertarget{classArcST_acf14c529dfa014023d582b355f61eda5}\label{classArcST_acf14c529dfa014023d582b355f61eda5} 
+const double \& {\bfseries get\+\_\+cost} () const
+\item 
+\Hypertarget{classArcST_a91c802b3db1bbe02e7f5a9bb653fc906}\label{classArcST_a91c802b3db1bbe02e7f5a9bb653fc906} 
+const string {\bfseries to\+String} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classArcST_a08f1220b290c76807c2beb8d132e1fc1}\label{classArcST_a08f1220b290c76807c2beb8d132e1fc1} 
+static void {\bfseries restart\+\_\+id\+\_\+counter} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classArcST_a6e7a6ee455c614ad2044bff0e9210567}{id}}
+\item 
+int \mbox{\hyperlink{classArcST_ae69a63220b29a69b23fa36c6a11e0f7b}{departure\+\_\+id}}
+\item 
+int \mbox{\hyperlink{classArcST_ad858f2d5bf262c66c53d3a2916ebf151}{arrival\+\_\+id}}
+\item 
+string \mbox{\hyperlink{classArcST_a35bcedc3e92c194a2cd925c0a4508ef2}{type}}
+\item 
+double \mbox{\hyperlink{classArcST_add54365f4ba7ba6404b18896ea6eb1cd}{cost}}
+\item 
+int \mbox{\hyperlink{classArcST_a10712f7fe1810113de11b7207403bac0}{travelling\+\_\+time}}
+\item 
+string \mbox{\hyperlink{classArcST_a208461f3035574917e0ca1826f64364b}{line}}
+\item 
+string \mbox{\hyperlink{classArcST_ae6dba7ae715f376f61c1fbb6472a56d8}{rotation}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classArcST_a52a89b24f947e6017f315bb849ca02d2}{last\+Id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represent an arc in the space-\/time graph. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classArcST_a3fed035ad0b836a3f681cc76b3b37e26}\label{classArcST_a3fed035ad0b836a3f681cc76b3b37e26} 
+\index{ArcST@{ArcST}!ArcST@{ArcST}}
+\index{ArcST@{ArcST}!ArcST@{ArcST}}
+\doxysubsubsection{\texorpdfstring{ArcST()}{ArcST()}}
+{\footnotesize\ttfamily Arc\+ST\+::\+Arc\+ST (\begin{DoxyParamCaption}\item[{const int \&}]{departure\+\_\+id,  }\item[{const int \&}]{arrival\+\_\+id,  }\item[{const string \&}]{type,  }\item[{const string \&}]{line,  }\item[{const string \&}]{rotation,  }\item[{const int \&}]{travelling\+\_\+time = {\ttfamily 0.0},  }\item[{const double \&}]{cost = {\ttfamily 0.0} }\end{DoxyParamCaption})}
+
+
+
+Constructor by data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em departure\+\_\+id} & \\
+\hline
+{\em arrival\+\_\+id} & \\
+\hline
+{\em line} & \\
+\hline
+{\em rotation} & \\
+\hline
+{\em travelling\+\_\+time} & \\
+\hline
+{\em cost} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classArcST_ad858f2d5bf262c66c53d3a2916ebf151}\label{classArcST_ad858f2d5bf262c66c53d3a2916ebf151} 
+\index{ArcST@{ArcST}!arrival\_id@{arrival\_id}}
+\index{arrival\_id@{arrival\_id}!ArcST@{ArcST}}
+\doxysubsubsection{\texorpdfstring{arrival\_id}{arrival\_id}}
+{\footnotesize\ttfamily int Arc\+ST\+::arrival\+\_\+id\hspace{0.3cm}{\ttfamily [protected]}}
+
+arrival id \Hypertarget{classArcST_add54365f4ba7ba6404b18896ea6eb1cd}\label{classArcST_add54365f4ba7ba6404b18896ea6eb1cd} 
+\index{ArcST@{ArcST}!cost@{cost}}
+\index{cost@{cost}!ArcST@{ArcST}}
+\doxysubsubsection{\texorpdfstring{cost}{cost}}
+{\footnotesize\ttfamily double Arc\+ST\+::cost\hspace{0.3cm}{\ttfamily [protected]}}
+
+cost = arc cost; if this is the first arc of a line-\/rotation, the cost is equal to the entire cost, otherwise it is zero \Hypertarget{classArcST_ae69a63220b29a69b23fa36c6a11e0f7b}\label{classArcST_ae69a63220b29a69b23fa36c6a11e0f7b} 
+\index{ArcST@{ArcST}!departure\_id@{departure\_id}}
+\index{departure\_id@{departure\_id}!ArcST@{ArcST}}
+\doxysubsubsection{\texorpdfstring{departure\_id}{departure\_id}}
+{\footnotesize\ttfamily int Arc\+ST\+::departure\+\_\+id\hspace{0.3cm}{\ttfamily [protected]}}
+
+departure id \Hypertarget{classArcST_a6e7a6ee455c614ad2044bff0e9210567}\label{classArcST_a6e7a6ee455c614ad2044bff0e9210567} 
+\index{ArcST@{ArcST}!id@{id}}
+\index{id@{id}!ArcST@{ArcST}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily int Arc\+ST\+::id\hspace{0.3cm}{\ttfamily [protected]}}
+
+arc id from 1,...,arc\+\_\+number \Hypertarget{classArcST_a52a89b24f947e6017f315bb849ca02d2}\label{classArcST_a52a89b24f947e6017f315bb849ca02d2} 
+\index{ArcST@{ArcST}!lastId@{lastId}}
+\index{lastId@{lastId}!ArcST@{ArcST}}
+\doxysubsubsection{\texorpdfstring{lastId}{lastId}}
+{\footnotesize\ttfamily int Arc\+ST\+::last\+Id\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+arc counter to assign unique id \Hypertarget{classArcST_a208461f3035574917e0ca1826f64364b}\label{classArcST_a208461f3035574917e0ca1826f64364b} 
+\index{ArcST@{ArcST}!line@{line}}
+\index{line@{line}!ArcST@{ArcST}}
+\doxysubsubsection{\texorpdfstring{line}{line}}
+{\footnotesize\ttfamily string Arc\+ST\+::line\hspace{0.3cm}{\ttfamily [protected]}}
+
+line associated with the arc \Hypertarget{classArcST_ae6dba7ae715f376f61c1fbb6472a56d8}\label{classArcST_ae6dba7ae715f376f61c1fbb6472a56d8} 
+\index{ArcST@{ArcST}!rotation@{rotation}}
+\index{rotation@{rotation}!ArcST@{ArcST}}
+\doxysubsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily string Arc\+ST\+::rotation\hspace{0.3cm}{\ttfamily [protected]}}
+
+rotation associated with the arc \Hypertarget{classArcST_a10712f7fe1810113de11b7207403bac0}\label{classArcST_a10712f7fe1810113de11b7207403bac0} 
+\index{ArcST@{ArcST}!travelling\_time@{travelling\_time}}
+\index{travelling\_time@{travelling\_time}!ArcST@{ArcST}}
+\doxysubsubsection{\texorpdfstring{travelling\_time}{travelling\_time}}
+{\footnotesize\ttfamily int Arc\+ST\+::travelling\+\_\+time\hspace{0.3cm}{\ttfamily [protected]}}
+
+travelling\+\_\+time = time to travel the arc, if type = "{}travelling"{}, otherwise it is zero \Hypertarget{classArcST_a35bcedc3e92c194a2cd925c0a4508ef2}\label{classArcST_a35bcedc3e92c194a2cd925c0a4508ef2} 
+\index{ArcST@{ArcST}!type@{type}}
+\index{type@{type}!ArcST@{ArcST}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily string Arc\+ST\+::type\hspace{0.3cm}{\ttfamily [protected]}}
+
+type = "{}travelling"{}, "{}waiting"{} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Arc\+ST.\+h\item 
+Arc\+ST.\+cpp\end{DoxyCompactItemize}

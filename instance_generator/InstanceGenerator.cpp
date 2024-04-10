@@ -320,7 +320,6 @@ void InstanceGenerator::add_line_rotation(operations_research::lattle::Logistics
 
 		}
 
-		//cout<<"\n";
 
 		//add cost + number of vehicles
 		int price = rotations.at(i).back() - rotations.at(i).front();
@@ -463,7 +462,6 @@ void InstanceGenerator::generate_shipments(operations_research::lattle::Instance
 				number++;
 				string destination_name = st_network.get_underlying_graph().get_vertex(destination_hub_id).get_name();
 				string source_name = st_network.get_underlying_graph().get_vertex(source_hub_id).get_name();
-				//cout<<source_name<<"\t"<<destination_name<<"\t"<<departure_time<<"\t"<<arrival_time<<"\t"<<shipment_weights.at(k)<<endl;
 				add_shipment(instance, number, source_name, destination_name, departure_time, arrival_time, shipment_weights.at(k));
 				break;
 			}

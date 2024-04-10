@@ -54,6 +54,15 @@ public:
       return d(GetInstance().g);
   }
 
+  /** Generates randomly true or false with probability p and 1-p respectively.
+   *   \param p
+    */
+  //template <typename T>
+  static int Bernoulli(const double& p) {
+      std::bernoulli_distribution d(p);
+      return d(GetInstance().g);
+  }
+
   /** Generates a random integer according to the binomial distribution according to probability of success p in the range [0,t]
   *     P(i|t,p) = (t i) p^i(1-p)^{t-i} 
    *   \param p

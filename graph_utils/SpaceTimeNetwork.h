@@ -75,6 +75,10 @@ public:
 	 * \param network protocal buffer object
 	 */
 	SpaceTimeNetwork(const string& network_file, const int& time_horizon);
+
+  
+	SpaceTimeNetwork(const operations_research::lattle::LogisticsNetwork& network, const int& time_horizon);
+
 	/**
 	 * \brief Copy constructor.
 	 *

@@ -23,6 +23,16 @@ SpaceTimeNetwork::SpaceTimeNetwork(const string& network_file, const int& time_h
 	cout << "\n\nCOMPUTE TOPOLOGICAL ORDER --- STARTING\n\n";
 }
 
+
+SpaceTimeNetwork::SpaceTimeNetwork(const operations_research::lattle::LogisticsNetwork& network, const int& time_horizon) {
+	VertexST::restart_id_counter();
+	ArcST::restart_id_counter();
+	build_underlying_graph(network);
+	build_vertices(time_horizon);
+	this->sort_adjacency_list_out();
+	build_arcs(network, time_horizon);
+}
+
 void SpaceTimeNetwork::parse_logistic_network(const string& network_file) {
 	const char* network_cc = network_file.c_str();
 	if (!std::filesystem::exists({ network_cc })) {

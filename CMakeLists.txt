@@ -43,6 +43,17 @@ FetchContent_MakeAvailable(Protobuf)
 list(POP_BACK CMAKE_MESSAGE_INDENT)
 message(CHECK_PASS "fetched")
 
+message(CHECK_START "Fetching GoogleTest")
+FetchContent_Declare(
+  googletest
+  # Specify the commit you depend on and update it regularly.
+  URL https://github.com/google/googletest/archive/5376968f6948923e2411081fd9372e71a59d8e77.zip
+)
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+list(POP_BACK CMAKE_MESSAGE_INDENT)
+message(CHECK_PASS "fetched")
+
 ##################
 ## Proto files  ##
 ##################
@@ -79,4 +90,9 @@ target_link_libraries(library PUBLIC
 
 add_executable(main main.cpp)
 target_link_libraries(main PRIVATE library)
+
+#Adding tests
+add_executable(Vertex_test tests/Vertex_test.cpp)
+target_link_libraries(Vertex_test gtest_main library)
+add_test(NAME Vertex_test COMMAND example)
 #set_property(TARGET main PROPERTY CXX_STANDARD 20)

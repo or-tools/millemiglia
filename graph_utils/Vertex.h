@@ -120,8 +120,8 @@ public:
 	const unordered_map<int, vector<string>>& get_adjacency_list_in() const;
 	const int get_out_going_by_position(const int& pos) const;
 	const int get_neighbours_number() const;
-	const vector<string>& get_lines_out(const int& id) const;
-	const vector<string>& get_lines_in(const int& id) const;
+	const vector<string> get_lines_out(const int& id) const;
+	const vector<string> get_lines_in(const int& id) const;
 	const int& get_latest_time() const;
 	const int& get_earliest_time() const;
 

@@ -3,8 +3,9 @@
 int Vertex::lastId;
 
 Vertex::Vertex() {
-	this->id = -1;
-	this->name = "";
+	this->id = this->lastId;
+	this->name = "Vertex_"+to_string(this->lastId);
+	this->lastId++;
 }
 
 Vertex::Vertex(const string& name) {
@@ -94,14 +95,14 @@ const int Vertex::get_neighbours_number() const {
 	return this->adjacency_list_in.size() + this->adjacency_list_out.size();
 }
 
-const vector<string>& Vertex::get_lines_out(const int& id) const {
+const vector<string> Vertex::get_lines_out(const int& id) const {
 	if (is_neighbour_out(id)) {
 		return this->adjacency_list_out.at(id);
 	}
 	return {};
 }
 
-const vector<string>& Vertex::get_lines_in(const int& id) const {
+const vector<string> Vertex::get_lines_in(const int& id) const {
 	if (is_neighbour_in(id)) {
 		return this->adjacency_list_in.at(id);
 	}

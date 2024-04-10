@@ -55,47 +55,52 @@ void InstanceGenerator::generate_logistic_network(operations_research::lattle::I
 
 }
 
-Graph InstanceGenerator::build_random_graph(const int& hubs_number, const double& rnd_graph_density) const {
-	vector<std::pair<int,int>> edges;
-	vector<int> repeated_nodes;
-	int new_connections_per_node = 2;
-	for(int i = 1; i <= new_connections_per_node ; i++){
-		edges.push_back({1,i+1});
-		repeated_nodes.push_back(1);
-		repeated_nodes.push_back(i+1);	
-	}
-    
-	double complete_graph = static_cast<double>(hubs_number*(hubs_number-1));
-    double current_density = static_cast<double>(2.0*edges.size())/complete_graph;
-	do{
-		int source = new_connections_per_node + 1;
-		while(source <= hubs_number && current_density < rnd_graph_density){
-			// random subset of repeated nodes.
-			vector<int> targets = random_subset(repeated_nodes, new_connections_per_node);
-			for(auto node: targets){
-				edges.push_back({node,source});
-				repeated_nodes.push_back(source);
-				repeated_nodes.push_back(node);
-			}
-			source++;
-			current_density = static_cast<double>(2.0*edges.size())/complete_graph;
-		}
-	} while(current_density < rnd_graph_density);
+Graph InstanceGenerator::build_random_graph(const int& hubs_number, const double& graph_density) const {
 
+    // Define variables to store graph elements
+    vector<std::pair<int, int>> edges;  // List of edges (source, target)
+    vector<int> repeated_nodes;        // Keeps track of nodes used for connections
+
+    // Calculate the number of connections per hub to achieve the graph density. 
+    int new_connections_per_node = graph_density * (hubs_number - 1);
+
+    // Create initial connections from the first hub to all other nodes
+    for (int i = 1; i <= new_connections_per_node; i++) {
+        edges.push_back({1, i + 1});
+        repeated_nodes.push_back(1);  // Add first hub to repeated nodes
+        repeated_nodes.push_back(i + 1); // Add connected node to repeated nodes
+    }
+
+    // Loop through remaining hubs
+    int source = new_connections_per_node + 1;
+    while (source <= hubs_number) {
+        // Get a random subset of previously used nodes for connections
+        vector<int> targets = random_subset(repeated_nodes, new_connections_per_node);
+
+        // Create connections from the current hub to the random subset
+        for (auto node : targets) {
+            edges.push_back({node, source});
+            repeated_nodes.push_back(source);  // Add current hub to repeated nodes
+            repeated_nodes.push_back(node);    // Add connected node to repeated nodes
+        }
+        source++;
+    }
+
+    // Create the graph object with specified number of hubs
     Graph random_graph(hubs_number);
-	for (int i = 1; i <= hubs_number; i++) {
-		string name = "h_" + to_string(i);
-		random_graph.add_vertex(name);
-	}
+    for (int i = 1; i <= hubs_number; i++) {
+        string name = "h_" + to_string(i);
+        random_graph.add_vertex(name);
+    }
 
-	for (auto edge:edges) {
-		string id1 = "h_" + to_string(edge.first);
-		string id2 = "h_" + to_string(edge.second);
-		random_graph.add_neighbour(id1, id2, "");
-	}
-	current_density = static_cast<double>(2.0*edges.size())/complete_graph;
+    // Add edges to the graph using vertex names
+    for (auto edge : edges) {
+        string id1 = "h_" + to_string(edge.first);
+        string id2 = "h_" + to_string(edge.second);
+        random_graph.add_neighbour(id1, id2, "");
+    }
 
-	return random_graph;
+    return random_graph;
 }
 
 vector<double> InstanceGenerator::build_arc_weights(const Graph& graph) const {

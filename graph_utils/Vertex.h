@@ -41,14 +41,14 @@ class Vertex {
    * Outgoing arcs adjacency map: key = id of the vertex to reach, value =
    *vector of "line" that use arc (this,key)
    */
-  unordered_map<int, vector<string>> adjacency_list_out;
+  std::unordered_map<int, std::vector<std::string>> adjacency_list_out;
 
   /** \brief 
    *
    *	ingoing arcs adjacency map: key = id of the vertex to reach, value =
    *vector of "line" that use arc (key,this)
    */
-  unordered_map<int, vector<string>> adjacency_list_in;
+  std::unordered_map<int, std::vector<std::string>> adjacency_list_in;
 
   /**
    *	vertex counter to assign unique id
@@ -117,12 +117,12 @@ class Vertex {
 
   const int& get_id() const;
   const std::string& get_name() const;
-  const unordered_map<int, vector<string>>& get_adjacency_list_out() const;
-  const unordered_map<int, vector<string>>& get_adjacency_list_in() const;
-  const int get_out_going_by_position(const int& pos) const;
+  const std::unordered_map<int, std::vector<std::string>>& get_adjacency_list_out() const;
+  const std::unordered_map<int, std::vector<std::string>>& get_adjacency_list_in() const;
+  const int get_out_going_by_position(int pos) const;
   const int get_neighbours_number() const;
-  const vector<string> get_lines_out(const int& id) const;
-  const vector<string> get_lines_in(const int& id) const;
+  const std::vector<std::string> get_lines_out(int id) const;
+  const std::vector<std::string> get_lines_in(int id) const;
 
   const std::string toString() const;
 };

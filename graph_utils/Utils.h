@@ -15,7 +15,6 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "Elrandom.h"
 #include "Header.h"
 
 // METHODS FOR FLOATING POINT NUMBERS
@@ -69,7 +68,7 @@ google::type::DateTime time_decoder(const int& time_encoded);
  * \param generator : mt19937
  * \return The random integer : int.
  */
-extern inline int randomIntBetween(int _min, int _max, mt19937& generator);
+extern inline int randomIntBetween(int _min, int _max, std::mt19937& generator);
 
 /**
  * \brief compute the softmax function of python. sigma(x)_j = e^(x_j)/ sum_k
@@ -78,7 +77,7 @@ extern inline int randomIntBetween(int _min, int _max, mt19937& generator);
  * \param x : vector of double
  * \return softmax of x : vector of double.
  */
-extern inline vector<double> softmax(const vector<double>& x);
+extern inline std::vector<double> softmax(const std::vector<double>& x);
 
 /**
  * \brief compute the "exponential" of the vector. sigma(x)_j = e^(x_j)
@@ -86,23 +85,23 @@ extern inline vector<double> softmax(const vector<double>& x);
  * \param x : vector of double
  * \return exponential of x : vector of double.
  */
-vector<double> exponential(const vector<double>& x);
+std::vector<double> exponential(const std::vector<double>& x);
 
-vector<int> random_subset(vector<int>& v, int n);
+std::vector<int> random_subset(std::vector<int>& v, int n);
 
 // OPERATIONS WITH VECTORS
 /**
  * \brief extract subvector from a vector
  *
  * \param v : vector
- * \param v : first_position
- * \param v : last_position
+ * \param first_position : first_position
+ * \param last_position : last_position
  * \return subvector of v from first_position to last_position.
  */
 template <typename T>
-static vector<T> extract_subvector(const vector<T> v, const int& first_position,
+static std::vector<T> extract_subvector(const std::vector<T> v, const int& first_position,
                                    const int& last_position) {
-  vector<T> subvector(v.begin() + first_position,
+  std::vector<T> subvector(v.begin() + first_position,
                       v.begin() + last_position + 1);
   return subvector;
 }
@@ -114,8 +113,8 @@ static vector<T> extract_subvector(const vector<T> v, const int& first_position,
  * \return (v1,v2)
  */
 template <typename T>
-static vector<T> concatenate_vectors(const vector<T> v1, const vector<T> v2) {
-  vector<T> concatenate;
+static std::vector<T> concatenate_vectors(const std::vector<T> v1, const std::vector<T> v2) {
+  std::vector<T> concatenate;
   concatenate.reserve(v1.size() + v2.size());
   concatenate.insert(concatenate.end(), v1.begin(), v1.end());
   concatenate.insert(concatenate.end(), v2.begin(), v2.end());
@@ -129,7 +128,7 @@ static vector<T> concatenate_vectors(const vector<T> v1, const vector<T> v2) {
  * \return true if v2=(v1)+..., false otherwise
  */
 template <typename T>
-static bool is_first_subvector(const vector<T> v1, const vector<T> v2) {
+static bool is_first_subvector(const std::vector<T> v1, const std::vector<T> v2) {
   if (v2.size() < v1.size()) {
     return false;
   }

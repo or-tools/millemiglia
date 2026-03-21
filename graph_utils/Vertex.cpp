@@ -16,18 +16,18 @@
 int Vertex::lastId;
 
 Vertex::Vertex() {
-  this->id = this->lastId;
-  this->name = "Vertex_" + to_string(this->lastId);
-  this->lastId++;
+  id = lastId;
+  name = "Vertex_" + std::to_string(lastId);
+  lastId++;
 }
 
 Vertex::Vertex(const std::string& name) {
-  this->id = this->lastId;
+  id = lastId;
   this->name = name;
-  this->lastId++;
+  lastId++;
 }
 
-Vertex::~Vertex() {}
+Vertex::~Vertex() = default;
 
 Vertex::Vertex(const Vertex& vertex) {
   this->id = vertex.id;
@@ -36,31 +36,23 @@ Vertex::Vertex(const Vertex& vertex) {
   this->adjacency_list_in = vertex.adjacency_list_in;
 }
 
-Vertex& Vertex::operator=(const Vertex& vertex) {
-  this->id = vertex.id;
-  this->name = vertex.name;
-  this->adjacency_list_out = vertex.adjacency_list_out;
-  this->adjacency_list_in = vertex.adjacency_list_in;
-  return *this;
-}
+Vertex& Vertex::operator=(const Vertex& vertex) = default;
 
 void Vertex::add_neighbour_out(const int& id, const std::string& line) {
-  unordered_map<int, vector<string>>::iterator finder =
-      this->adjacency_list_out.find(id);
-  if (finder == this->adjacency_list_out.end()) {
-    vector<string> aux = {line};
-    this->adjacency_list_out.insert(make_pair(id, aux));
+  auto finder = adjacency_list_out.find(id);
+  if (finder == adjacency_list_out.end()) {
+    std::vector aux = {line};
+    adjacency_list_out.insert(std::make_pair(id, aux));
   } else {
     finder->second.push_back(line);
   }
 }
 
 void Vertex::add_neighbour_in(const int& id, const std::string& line) {
-  unordered_map<int, vector<string>>::iterator finder =
-      this->adjacency_list_in.find(id);
-  if (finder == this->adjacency_list_in.end()) {
-    vector<string> aux = {line};
-    this->adjacency_list_in.insert(make_pair(id, aux));
+  auto finder = adjacency_list_in.find(id);
+  if (finder == adjacency_list_in.end()) {
+    std::vector aux = {line};
+    adjacency_list_in.insert(std::make_pair(id, aux));
   } else {
     finder->second.push_back(line);
   }
@@ -78,21 +70,21 @@ const int& Vertex::get_id() const { return this->id; }
 
 const std::string& Vertex::get_name() const { return this->name; }
 
-const unordered_map<int, vector<string>>& Vertex::get_adjacency_list_out()
+const std::unordered_map<int, std::vector<std::string>>& Vertex::get_adjacency_list_out()
     const {
   return this->adjacency_list_out;
 }
 
-const unordered_map<int, vector<string>>& Vertex::get_adjacency_list_in()
+const std::unordered_map<int, std::vector<std::string>>& Vertex::get_adjacency_list_in()
     const {
   return this->adjacency_list_in;
 }
 
-const int Vertex::get_out_going_by_position(const int& pos) const {
+const int Vertex::get_out_going_by_position(const int pos) const {
   assert(pos < (int)this->adjacency_list_out.size());
-  unordered_map<int, vector<string>>::const_iterator it =
+  std::unordered_map<int, std::vector<std::string>>::const_iterator it =
       this->adjacency_list_out.begin();
-  advance(it, pos);
+  std::advance(it, pos);
   return it->first;
 }
 
@@ -100,24 +92,24 @@ const int Vertex::get_neighbours_number() const {
   return (int)this->adjacency_list_in.size() + (int)this->adjacency_list_out.size();
 }
 
-const vector<string> Vertex::get_lines_out(const int& id) const {
+const std::vector<std::string> Vertex::get_lines_out(const int id) const {
   if (is_neighbour_out(id)) {
     return this->adjacency_list_out.at(id);
   }
   return {};
 }
 
-const vector<string> Vertex::get_lines_in(const int& id) const {
+const std::vector<std::string> Vertex::get_lines_in(const int id) const {
   if (is_neighbour_in(id)) {
-    return this->adjacency_list_in.at(id);
+    return adjacency_list_in.at(id);
   }
   return {};
 }
 
 const std::string Vertex::toString() const {
   std::string str;
-  str.append(to_string(this->id) + "\t" + this->name + "\t" +
-             to_string((int)this->adjacency_list_in.size()) + "\t" +
-             to_string((int)this->adjacency_list_out.size()) + "\n");
+  str.append(std::to_string(this->id) + "\t" + this->name + "\t" +
+             std::to_string((int)this->adjacency_list_in.size()) + "\t" +
+             std::to_string((int)this->adjacency_list_out.size()) + "\n");
   return str;
 }

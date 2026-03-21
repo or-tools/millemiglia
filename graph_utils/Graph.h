@@ -38,22 +38,22 @@ class Graph {
   /**
    *	each vertex correspond to a hub
    */
-  vector<Vertex> vertices;
+  std::vector<Vertex> vertices;
 
   /**
    *	key = name, value = id
    */
-  unordered_map<string, int> vertex_dictionary;
+  std::unordered_map<std::string, int> vertex_dictionary;
 
   /**
    *	number of arcs
    */
-  vector<pair<int, int>> arcs;
+  std::vector<std::pair<int, int>> arcs;
 
   /**
    *	key = name, value = id
    */
-  vector<unordered_map<int, int>> arcs_dictionary;
+  std::vector<std::unordered_map<int, int>> arcs_dictionary;
 
  public:
   /**
@@ -98,13 +98,13 @@ class Graph {
   void add_neighbour(const std::string& key, const std::string& neighbour,
                      const std::string& line);
 
-  const vector<Vertex>& get_vertices() const;
-  const int get_vertex_number() const;
-  const Vertex& get_vertex(const int& id) const;
+  const std::vector<Vertex>& get_vertices() const;
+  int get_vertex_number() const;
+  const Vertex& get_vertex(int id) const;
   const Vertex& get_vertex(const std::string& name) const;
-  const vector<pair<int, int>>& get_arcs() const;
-  const int get_number_of_arcs() const;
-  const int get_arc_position(const int& id1, const int& id2) const;
+  const std::vector<std::pair<int, int>>& get_arcs() const;
+  int get_number_of_arcs() const;
+  int get_arc_position(int id1, int id2) const;
 
   const std::string toString() const;
 };

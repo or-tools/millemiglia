@@ -63,7 +63,7 @@ void SpaceTimeNetwork::parse_logistic_network(const std::string& network_file) {
     exit(EXIT_FAILURE);
   }
 
-  fstream input_network(network_cc, ios::in);
+  std::fstream input_network(network_cc, std::ios::in);
   if (!input_network.is_open()) {
     std::cout << "Error while opening file " << network_cc
               << ", although the file exists!\n";
@@ -74,7 +74,7 @@ void SpaceTimeNetwork::parse_logistic_network(const std::string& network_file) {
   ss_network << input_network.rdbuf();
   if (!google::protobuf::TextFormat::ParseFromString(ss_network.str(),
                                                      &this->network)) {
-    cerr << "Failed to parse instance from file " << network_cc << "\n";
+    std::cerr << "Failed to parse instance from file " << network_cc << "\n";
     exit(EXIT_FAILURE);
   }
 }
@@ -217,17 +217,17 @@ const VertexST& SpaceTimeNetwork::get_vertex(const int& hub,
   return this->vertices.at(finder_time->second);
 }
 
-void SpaceTimeNetwork::add_vertexST(const int& hub, const int& time) {
-  auto dict1 = this->vertex_dictionary.find(hub);
+void SpaceTimeNetwork::add_vertexST(const int hub, const int time) {
+  auto dict1 = vertex_dictionary.find(hub);
   bool isToInsert = false;
-  if (dict1 == this->vertex_dictionary.end()) {
+  if (dict1 == vertex_dictionary.end()) {
     isToInsert = true;
-    unordered_map<int, int> aux;
-    aux.insert(make_pair(time, this->vertices.size()));
-    this->vertex_dictionary.insert(make_pair(hub, aux));
+    std::unordered_map<int, int> aux;
+    aux.insert(std::make_pair(time, vertices.size()));
+    vertex_dictionary.insert(std::make_pair(hub, aux));
   } else if (dict1->second.find(time) == dict1->second.end()) {
     isToInsert = true;
-    dict1->second.insert(make_pair(time, this->vertices.size()));
+    dict1->second.insert(std::make_pair(time, vertices.size()));
   }
   if (isToInsert) {
     VertexST vst = VertexST(hub, time);
@@ -253,22 +253,22 @@ const Graph& SpaceTimeNetwork::get_underlying_graph() const {
   return this->underlying_graph;
 }
 
-const vector<VertexST>& SpaceTimeNetwork::get_vertices() const {
+const std::vector<VertexST>& SpaceTimeNetwork::get_vertices() const {
   return this->vertices;
 }
 
-const vector<ArcST>& SpaceTimeNetwork::get_arcs() const { return this->arcs; }
+const std::vector<ArcST>& SpaceTimeNetwork::get_arcs() const { return this->arcs; }
 
-const std::string SpaceTimeNetwork::toString() const {
+std::string SpaceTimeNetwork::toString() const {
   std::string str = "VERTICES:\n";
   str.append("\tID\t(GRAPH_ID,TIME)\tTOP_POS\tIN_SIZE\tOUT_SIZE\n");
-  for (int i = 0; i < this->vertices.size(); i++) {
-    str.append("\t" + this->vertices.at(i).toString());
+  for (const auto & vertice : this->vertices) {
+    str.append("\t" + vertice.toString());
   }
   str.append("\nARCS:\n");
   str.append("\tID\t(DEP_ID,ARR_ID)\tTYPE\tTRAV_TIME\tCOST\t(LINE,ROT)\n");
-  for (int i = 0; i < (int)this->arcs.size(); i++) {
-    str.append("\t" + this->arcs.at(i).toString());
+  for (const auto & arc : this->arcs) {
+    str.append("\t" + arc.toString());
   }
   return str;
 }

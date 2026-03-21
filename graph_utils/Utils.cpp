@@ -12,34 +12,35 @@
 // limitations under the License.
 
 #include "Utils.h"
+#include "Elrandom.h"
 
 bool strictly_less(double x, double y) {
   bool result = false;
-  result = ((y - x) > EPSILON) ? true : false;
+  result = (y - x) > EPSILON;
   return result;
 };
 
 inline bool less(double x, double y) {
   bool result = false;
-  result = ((y - x) > -EPSILON) ? true : false;
+  result = (y - x) > -EPSILON;
   return result;
 };
 
 inline bool equal(double x, double y) {
   bool result = false;
-  result = (fabs(y - x) <= EPSILON) ? true : false;
+  result = fabs(y - x) <= EPSILON;
   return result;
 };
 
 bool strictly_greater(double x, double y) {
   bool result = false;
-  result = ((x - y) > EPSILON) ? true : false;
+  result = (x - y) > EPSILON;
   return result;
 };
 
 inline bool greater(double x, double y) {
   bool result = false;
-  result = ((x - y) > -EPSILON) ? true : false;
+  result = (x - y) > -EPSILON;
   return result;
 };
 
@@ -58,9 +59,9 @@ inline double maximum(double x, double y) {
 };
 
 inline double computeFractionalPart(double x) {
-  double toFloor = x + ::EPSILON;
-  double toCeil = x - ::EPSILON;
-  return min(x - floor(toFloor), ceil(toCeil) - x);
+  const double toFloor = x + EPSILON;
+  const double toCeil = x - EPSILON;
+  return std::min(x - floor(toFloor), ceil(toCeil) - x);
 };
 
 inline double rounder(double x) {
@@ -117,16 +118,16 @@ google::type::DateTime time_decoder(const int& time_encoded) {
   return time;
 }
 
-inline int randomIntBetween(int _min, int _max, mt19937& generator) {
-  int minimum = min(_min, _max);
-  int maximum = max(_min, _max);
-  uniform_int_distribution<int> distr(minimum, maximum);
+inline int randomIntBetween(int _min, int _max, std::mt19937& generator) {
+  int minimum = std::min(_min, _max);
+  int maximum = std::max(_min, _max);
+  std::uniform_int_distribution<int> distr(minimum, maximum);
 
   return minimum + (rand() % (int)(maximum - minimum + 1));
 }
 
-inline vector<double> softmax(const vector<double>& x) {
-  vector<double> sm(x.size(), -1.0);
+inline std::vector<double> softmax(const std::vector<double>& x) {
+  std::vector sm(x.size(), -1.0);
   double den = 0.0;
   for (int i = 0; i < x.size(); i++) {
     den += exp(x.at(i));
@@ -137,18 +138,18 @@ inline vector<double> softmax(const vector<double>& x) {
   return sm;
 }
 
-vector<double> exponential(const vector<double>& x) {
-  vector<double> expo(x.size(), -1.0);
+std::vector<double> exponential(const std::vector<double>& x) {
+  std::vector<double> expo(x.size(), -1.0);
   for (int i = 0; i < x.size(); i++) {
     expo.at(i) = exp(x.at(i));
   }
   return expo;
 }
-vector<int> random_subset(vector<int>& v, int n) {
-  set<int> targets;
+std::vector<int> random_subset(std::vector<int>& v, int n) {
+  std::set<int> targets;
   while ((int)targets.size() < n) {
     int index = ElRandom::Uniform(0, (int)v.size() - 1);
     targets.insert(v[index]);
   }
-  return vector<int>(targets.begin(), targets.end());
+  return std::vector<int>(targets.begin(), targets.end());
 }

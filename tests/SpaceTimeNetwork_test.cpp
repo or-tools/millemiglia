@@ -24,8 +24,8 @@ TEST(SpaceTimeNetworkTest, BuildVertices) {
   // Creating a network of 10 hubs.
   for (int i = 0; i < 10; i++) {
     Hub h;
-    h.set_name("node_" + to_string(i));
-    network.mutable_hubs()->Add(move(h));
+    h.set_name("node_" + std::to_string(i));
+    network.mutable_hubs()->Add(std::move(h));
   }
   // Check that the correct number of vertices were created.
   ASSERT_EQ(stn.get_vertices().size(),

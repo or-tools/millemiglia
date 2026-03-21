@@ -66,8 +66,8 @@ TEST(Graph, GetArcs) {
   graph.add_neighbour("B", "C", "");
 
   EXPECT_EQ(graph.get_arcs().size(), 2);
-  EXPECT_EQ(graph.get_arcs()[0], make_pair(0, 1));
-  EXPECT_EQ(graph.get_arcs()[1], make_pair(1, 2));
+  EXPECT_EQ(graph.get_arcs()[0], std::make_pair(0, 1));
+  EXPECT_EQ(graph.get_arcs()[1], std::make_pair(1, 2));
 }
 
 TEST(Graph, GetArcPosition) {

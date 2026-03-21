@@ -20,6 +20,7 @@
 #include <iostream>
 #include <string>
 
+#include "graph_utils/Elrandom.h"
 #include "instance_generator/InstanceGenerator.h"
 #include "proto/millemiglia.pb.h"
 

@@ -54,63 +54,63 @@ VertexST& VertexST::operator=(const VertexST& vertex) {
 void VertexST::add_neighbour_out(const int& vId, const int& arcId) {
   auto finder = this->adjacency_list_out.find(vId);
   if (finder == this->adjacency_list_out.end()) {
-    vector<int> adj = {arcId};
-    this->adjacency_list_out.insert(make_pair(vId, adj));
+    std::vector adj = {arcId};
+    this->adjacency_list_out.insert(std::make_pair(vId, adj));
   } else {
     finder->second.push_back(arcId);
   }
 }
 
 void VertexST::add_neighbour_out_time(const int& vId,
-                                      const vector<int>& arcIds) {
-  this->adjacency_list_out_time.insert(make_pair(vId, arcIds));
+                                      const std::vector<int>& arcIds) {
+  this->adjacency_list_out_time.insert(std::make_pair(vId, arcIds));
 }
 
 void VertexST::add_neighbour_out_cost(const int& vId,
-                                      const vector<int>& arcIds) {
-  this->adjacency_list_out_cost.insert(make_pair(vId, arcIds));
+                                      const std::vector<int>& arcIds) {
+  this->adjacency_list_out_cost.insert(std::make_pair(vId, arcIds));
 }
 
 void VertexST::add_neighbour_in(const int& vId, const int& arcId) {
   auto finder = this->adjacency_list_in.find(vId);
   if (finder == this->adjacency_list_in.end()) {
-    vector<int> adj = {arcId};
-    this->adjacency_list_in.insert(make_pair(vId, adj));
+    std::vector adj = {arcId};
+    this->adjacency_list_in.insert(std::make_pair(vId, adj));
   } else {
     finder->second.push_back(arcId);
   }
 }
 
-const int& VertexST::get_id() const { return this->id; }
+int VertexST::get_id() const { return id; }
 
-const int& VertexST::get_id_in_graph() const { return this->id_in_graph; }
+int VertexST::get_id_in_graph() const { return id_in_graph; }
 
-const int& VertexST::get_time() const { return this->time; }
+int VertexST::get_time() const { return time; }
 
-const unordered_map<int, vector<int>>& VertexST::get_adjacency_list_out()
+const std::unordered_map<int, std::vector<int>>& VertexST::get_adjacency_list_out()
     const {
   return this->adjacency_list_out;
 }
 
-const unordered_map<int, vector<int>>& VertexST::get_adjacency_list_out_cost()
+const std::unordered_map<int, std::vector<int>>& VertexST::get_adjacency_list_out_cost()
     const {
   return this->adjacency_list_out_cost;
 }
 
-const unordered_map<int, vector<int>>& VertexST::get_adjacency_list_out_time()
+const std::unordered_map<int, std::vector<int>>& VertexST::get_adjacency_list_out_time()
     const {
   return this->adjacency_list_out_time;
 }
 
-const unordered_map<int, vector<int>>& VertexST::get_adjacency_list_in() const {
+const std::unordered_map<int, std::vector<int>>& VertexST::get_adjacency_list_in() const {
   return this->adjacency_list_in;
 }
 
-const std::string VertexST::toString() const {
+std::string VertexST::toString() const {
   std::string str;
-  str.append(to_string(this->id) + "\t(" + to_string(this->id_in_graph) + "," +
-             to_string(this->time) + ")\t" + "\t\t" +
-             to_string((int)this->adjacency_list_in.size()) + "\t" +
-             to_string((int)this->adjacency_list_out.size()) + "\n");
+  str.append(std::to_string(this->id) + "\t(" + std::to_string(this->id_in_graph) + "," +
+             std::to_string(this->time) + ")\t" + "\t\t" +
+             std::to_string((int)this->adjacency_list_in.size()) + "\t" +
+             std::to_string((int)this->adjacency_list_out.size()) + "\n");
   return str;
 }

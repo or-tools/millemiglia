@@ -50,7 +50,7 @@ TEST(InstanceGeneratorTest, BuildArcWeights) {
   graph.add_neighbour("v2", "v3", "");
   graph.add_neighbour("v3", "v4", "");
   InstanceGenerator generator("test_instance", "test description", 100);
-  vector<double> arc_weights = generator.build_arc_weights(graph);
+  std::vector<double> arc_weights = generator.build_arc_weights(graph);
 
   EXPECT_EQ(arc_weights.size(), 4);
   EXPECT_EQ(arc_weights[0], 4);
@@ -63,29 +63,29 @@ TEST(InstanceGeneratorTest, GenerateLine) {
   // Test with a simple graph
   int hubs_number = 10;
   Graph graph(10);
-  for (int k = 1; k <= hubs_number; k++) graph.add_vertex("v_" + to_string(k));
+  for (int k = 1; k <= hubs_number; k++) graph.add_vertex("v_" + std::to_string(k));
   for (int k = 1; k <= hubs_number; k++) {
     for (int e = k + 1; e <= hubs_number; e++) {
-      graph.add_neighbour("v_" + to_string(k), "v_" + to_string(e), "");
+      graph.add_neighbour("v_" + std::to_string(k), "v_" + std::to_string(e), "");
     }
   }
 
   InstanceGenerator generator("test_instance", "test description", 100);
   int max_length_line = 5;
-  vector<vector<double>> arc_weights_adj_lists =
+  std::vector<std::vector<double>> arc_weights_adj_lists =
       generator.build_arc_weights_per_adjacency_lists(
           graph, generator.build_arc_weights(graph));
-  vector<double> arc_weights = generator.build_arc_weights(graph);
+  std::vector<double> arc_weights = generator.build_arc_weights(graph);
 
-  vector<int> line = generator.generate_line(
+  std::vector<int> line = generator.generate_line(
       graph, max_length_line, arc_weights_adj_lists, arc_weights);
 
   EXPECT_GE(line.size(), 1);
   EXPECT_LE(line.size(), max_length_line);
 
-  vector<pair<int, int>> edges = graph.get_arcs();
+  std::vector<std::pair<int, int>> edges = graph.get_arcs();
   auto has_edge = [&edges](int u, int v) {
-    return find(edges.begin(), edges.end(), make_pair(u, v)) != edges.end();
+    return std::find(edges.begin(), edges.end(), std::make_pair(u, v)) != edges.end();
   };
 
   // Check that all nodes in the line are connected in the graph
@@ -118,11 +118,11 @@ TEST(GraphInstanceGeneratorTest, GenerateLineRotations_MultipleLinesRotations) {
   Graph graph(5);
 
   for (int i = 1; i <= 5; i++) {
-    graph.add_vertex("h_" + to_string(i));
+    graph.add_vertex("h_" + std::to_string(i));
   }
   // Add edges.
   for (int i = 1; i < 5; i++) {
-    graph.add_neighbour("h_" + to_string(i), "h_" + to_string(i + 1), "");
+    graph.add_neighbour("h_" + std::to_string(i), "h_" + std::to_string(i + 1), "");
   }
   InstanceGenerator generator;
 
@@ -132,8 +132,8 @@ TEST(GraphInstanceGeneratorTest, GenerateLineRotations_MultipleLinesRotations) {
   int max_rotations = 2;
   int time_horizon = 20;
   millemiglia::LogisticsNetwork network;
-  vector<double> arc_weights = generator.build_arc_weights(graph);
-  vector<vector<double>> arc_weights_adj_lists =
+  std::vector<double> arc_weights = generator.build_arc_weights(graph);
+  std::vector<std::vector<double>> arc_weights_adj_lists =
       generator.build_arc_weights_per_adjacency_lists(graph, arc_weights);
 
   int num_vehicles = generator.generate_line_rotations(

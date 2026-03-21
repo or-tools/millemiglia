@@ -20,7 +20,6 @@
 #include "Graph.h"
 #include "Header.h"
 #include "Lorry.h"
-#include "Utils.h"
 #include "VertexST.h"
 
 /**
@@ -43,29 +42,29 @@ class SpaceTimeNetwork {
   /**
    *	each vertex correspond to a (hub,time)
    */
-  vector<VertexST> vertices;
+  std::vector<VertexST> vertices;
 
   /**
    *	each arc correspond to a movement in the space-time network
    */
-  vector<ArcST> arcs;
+  std::vector<ArcST> arcs;
 
   /**
    *	key1 = hub id in graph, key2 = encoded time, value = vertex id in ST
    *network
    */
-  unordered_map<int, unordered_map<int, int>> vertex_dictionary;
+  std::unordered_map<int, std::unordered_map<int, int>> vertex_dictionary;
 
   /**
    *	current arc processed in an adjacency list = the space-time network is a
    *multi-graph used in the k-shortest path algorithm
    */
-  vector<unordered_map<int, int>> adjacency_lists_arc_position;
+  std::vector<std::unordered_map<int, int>> adjacency_lists_arc_position;
 
   /**
    *	available lorries
    */
-  vector<Lorry> lorries;
+  std::vector<Lorry> lorries;
 
  public:
   /**
@@ -153,7 +152,7 @@ class SpaceTimeNetwork {
    *	\param hub_id
    *	\param time encoded time
    */
-  void add_vertexST(const int& hub, const int& time);
+  void add_vertexST(int hub, int time);
 
   /**
    *	\brief Add outgoing arc to adjacency list of a vertex
@@ -168,17 +167,16 @@ class SpaceTimeNetwork {
    */
   void add_to_adjacency_list_in(const ArcST& arc);
 
-
   const millemiglia::LogisticsNetwork& get_network() const;
   const Graph& get_underlying_graph() const;
-  const vector<VertexST>& get_vertices() const;
-  const vector<ArcST>& get_arcs() const;
+  const std::vector<VertexST>& get_vertices() const;
+  const std::vector<ArcST>& get_arcs() const;
   const VertexST& get_vertex(
       const std::string& hub,
       const millemiglia::DateTimeRange& time) const;
   const VertexST& get_vertex(const int& hub, const int& time) const;
 
-  const std::string toString() const;
+  std::string toString() const;
 };
 
 #endif  // !SpaceTimeNetwork_H

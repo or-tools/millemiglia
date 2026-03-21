@@ -30,9 +30,6 @@
 
 #include "proto/millemiglia.pb.h"
 
-using namespace std;
-using namespace millemiglia;
-
 constexpr auto EPSILON = 1.0e-6; /**< Precision variable.*/
 constexpr auto OMEGA = 1.0e+6;   /**< Precision variable.*/
 constexpr auto TIMESTEP =

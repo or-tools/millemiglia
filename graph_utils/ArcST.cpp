@@ -16,15 +16,15 @@
 int ArcST::lastId;
 
 ArcST::ArcST() {
-  this->id = -1;
-  this->departure_id = -1;
-  this->arrival_id = -1;
+  id = -1;
+  departure_id = -1;
+  arrival_id = -1;
 }
 
-ArcST::ArcST(const int& departure_id, const int& arrival_id, const std::string& type,
+ArcST::ArcST(const int departure_id, const int arrival_id, const std::string& type,
              const std::string& line, const std::string& rotation,
-             const int& travelling_time, const double& cost) {
-  this->id = this->lastId;
+             const int travelling_time, const double& cost) {
+  id = lastId;
   this->departure_id = departure_id;
   this->arrival_id = arrival_id;
   this->type = type;
@@ -32,10 +32,10 @@ ArcST::ArcST(const int& departure_id, const int& arrival_id, const std::string& 
   this->rotation = rotation;
   this->travelling_time = travelling_time;
   this->cost = cost;
-  this->lastId++;
+  lastId++;
 }
 
-ArcST::~ArcST() {}
+ArcST::~ArcST() = default;
 
 ArcST::ArcST(const ArcST& arcST) {
   this->id = arcST.id;
@@ -48,39 +48,29 @@ ArcST::ArcST(const ArcST& arcST) {
   this->cost = arcST.cost;
 }
 
-ArcST& ArcST::operator=(const ArcST& arcST) {
-  this->id = arcST.id;
-  this->departure_id = arcST.departure_id;
-  this->arrival_id = arcST.arrival_id;
-  this->type = arcST.type;
-  this->line = arcST.line;
-  this->rotation = arcST.rotation;
-  this->travelling_time = arcST.travelling_time;
-  this->cost = arcST.cost;
-  return *this;
-}
+ArcST& ArcST::operator=(const ArcST& arcST) = default;
 
-const int& ArcST::get_id() const { return this->id; }
+int ArcST::get_id() const { return id; }
 
-const int& ArcST::get_departure_id() const { return this->departure_id; }
+int ArcST::get_departure_id() const { return departure_id; }
 
-const int& ArcST::get_arrival_id() const { return this->arrival_id; }
+int ArcST::get_arrival_id() const { return arrival_id; }
 
-const std::string& ArcST::get_type() const { return this->type; }
+const std::string& ArcST::get_type() const { return type; }
 
-const std::string& ArcST::get_line() const { return this->line; }
+const std::string& ArcST::get_line() const { return line; }
 
-const std::string& ArcST::get_rotation() const { return this->rotation; }
+const std::string& ArcST::get_rotation() const { return rotation; }
 
-const int& ArcST::get_travelling_time() const { return this->travelling_time; }
+int ArcST::get_travelling_time() const { return travelling_time; }
 
-const double& ArcST::get_cost() const { return this->cost; }
+const double& ArcST::get_cost() const { return cost; }
 
-const std::string ArcST::toString() const {
+std::string ArcST::toString() const {
   std::string str;
-  str.append(to_string(this->id) + "\t(" + to_string(this->departure_id) + "," +
-             to_string(this->arrival_id) + ")\t" + this->type + "\t" +
-             to_string(this->travelling_time) + "\t" + to_string(this->cost) +
-             "\t(" + this->line + "," + this->rotation + ")" + "\n");
+  str.append(std::to_string(id) + "\t(" + std::to_string(departure_id) + "," +
+             std::to_string(arrival_id) + ")\t" + type + "\t" +
+             std::to_string(travelling_time) + "\t" + std::to_string(cost) +
+             "\t(" + line + "," + rotation + ")" + "\n");
   return str;
 }

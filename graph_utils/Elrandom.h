@@ -65,7 +65,7 @@ class ElRandom {
    *   \param weights
    */
   template <typename T>
-  static int Discrete(const vector<T>& weights) {
+  static int Discrete(const std::vector<T>& weights) {
     std::discrete_distribution<int> d(weights.begin(), weights.end());
     return d(GetInstance().g);
   }

@@ -14,10 +14,11 @@
 #ifndef INSTANCEGENERATOR_H
 #define INSTANCEGENERATOR_H
 
-#include "../graph_utils/Header.h"
-#include "../graph_utils/SpaceTimeNetwork.h"
-#include "../graph_utils/Utils.h"
+#include <string>
+#include <vector>
 
+#include "../graph_utils/Header.h"
+#include "../graph_utils/Graph.h"
 
 /**
  * InstanceGenerator
@@ -40,7 +41,7 @@ class InstanceGenerator {
   /**
    * random_seed to use in the randomized steps
    */
-  unsigned int random_seed;
+  unsigned int random_seed{};
 
  public:
   /**
@@ -137,9 +138,9 @@ class InstanceGenerator {
    * \param random graph
    * \return weights
    */
-  vector<double> build_arc_weights(const Graph& graph) const;
-  vector<vector<double>> build_arc_weights_per_adjacency_lists(
-      const Graph& graph, const vector<double>& arc_weights) const;
+  std::vector<double> build_arc_weights(const Graph& graph) const;
+  std::vector<std::vector<double>> build_arc_weights_per_adjacency_lists(
+      const Graph& graph, const std::vector<double>& arc_weights) const;
 
   /*
    * \brief add the hubs to the network
@@ -167,8 +168,8 @@ class InstanceGenerator {
    */
   int generate_line_rotations(
       millemiglia::LogisticsNetwork& network,
-      const Graph& graph, const vector<double>& arc_weights,
-      const vector<vector<double>>& arc_weights_adj_lists,
+      const Graph& graph, const std::vector<double>& arc_weights,
+      const std::vector<std::vector<double>>& arc_weights_adj_lists,
       const int& time_horizon, const int& nbr_lines, const int& max_length_line,
       const int& max_numb_rotations_per_line) const;
   /*
@@ -180,9 +181,9 @@ class InstanceGenerator {
    * \param arc_weights_adj_lists
    * \return vehicle number
    */
-  vector<int> generate_line(const Graph& graph, const int& max_length_line,
-                            const vector<vector<double>>& arc_weights_adj_lists,
-                            const vector<double>& arc_weights) const;
+  std::vector<int> generate_line(const Graph& graph, const int& max_length_line,
+                            const std::vector<std::vector<double>>& arc_weights_adj_lists,
+                            const std::vector<double>& arc_weights) const;
   /*
    * add the line rotations to the logistic network object
    *
@@ -195,19 +196,8 @@ class InstanceGenerator {
    */
   void add_line_rotation(millemiglia::LogisticsNetwork& network,
                          const Graph& graph, const int& line_nbr,
-                         const vector<int>& line,
-                         const vector<vector<int>>& rotations) const;
-  /*
-   * add the entry (x,y) in the distance matrix: NOT USED AS PER NOW
-   *
-   * \param network
-   * \param x
-   * \param y
-   *
-   */
-  void add_distance_matrix_entry(
-      millemiglia::LogisticsNetwork& network, const std::string& x,
-      const std::string& y) const;
+                         const std::vector<int>& line,
+                         const std::vector<std::vector<int>>& rotations) const;
   /*
    * fill object millemiglia::DateTimeRange given
    * google::type::DateTime

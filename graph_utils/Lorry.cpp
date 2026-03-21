@@ -15,7 +15,7 @@
 
 int Lorry::lastId;
 
-Lorry::Lorry(string name, const millemiglia::Vehicle& vehicle)
+Lorry::Lorry(std::string name, const millemiglia::Vehicle& vehicle)
     : vehicle(vehicle) {
   this->id = this->lastId;
   this->name = name;
@@ -51,13 +51,13 @@ Lorry& Lorry::operator=(const Lorry& lorry) {
   return *this;
 }
 
-void Lorry::add_commodity(const int& commodity_id, const vector<int>& sizes,
+void Lorry::add_commodity(const int& commodity_id, const std::vector<int>& sizes,
                           const int& arc) {
   const auto finder = this->loaded_commodities.find(arc);
   if (finder == this->loaded_commodities.end()) {
-    vector<int> aux = {commodity_id};
-    this->loaded_commodities.insert(make_pair(arc, aux));
-    this->loads_per_arc.insert(make_pair(arc, sizes));
+    std::vector aux = {commodity_id};
+    this->loaded_commodities.insert(std::make_pair(arc, aux));
+    this->loads_per_arc.insert(std::make_pair(arc, sizes));
   } else {
     finder->second.push_back(commodity_id);
     for (int i = 0; i < sizes.size(); i++) {
@@ -66,7 +66,7 @@ void Lorry::add_commodity(const int& commodity_id, const vector<int>& sizes,
   }
 }
 
-const int& Lorry::get_id() const { return this->id; }
+int Lorry::get_id() const { return this->id; }
 
 const std::string& Lorry::get_name() const { return this->name; }
 
@@ -74,28 +74,28 @@ const millemiglia::Vehicle& Lorry::get_proto_vehicle() const {
   return this->vehicle;
 }
 
-const vector<int>& Lorry::get_path() const { return this->path; }
+const std::vector<int>& Lorry::get_path() const { return this->path; }
 
-const vector<int>& Lorry::get_capacities() const { return this->capacities; }
+const std::vector<int>& Lorry::get_capacities() const { return this->capacities; }
 
-const unordered_map<int, vector<int>>& Lorry::get_loaded_commodities() const {
+const std::unordered_map<int, std::vector<int>>& Lorry::get_loaded_commodities() const {
   return this->loaded_commodities;
 }
 
-const unordered_map<int, vector<int>>& Lorry::get_loads_per_arc() const {
-  return this->loads_per_arc;
+const std::unordered_map<int, std::vector<int>>& Lorry::get_loads_per_arc() const {
+  return loads_per_arc;
 }
 
-const std::string Lorry::toString() const {
+std::string Lorry::toString() const {
   std::string str;
-  str.append("LORRY: " + this->name + "\n");
+  str.append("LORRY: " + name + "\n");
   str.append("\tCAPACITIES:\t");
-  for (const auto& cap : this->capacities) {
-    str.append(to_string(cap) + " ");
+  for (const auto& cap : capacities) {
+    str.append(std::to_string(cap) + " ");
   }
   str.append("\n\tPATH:\t");
-  for (int i = 0; i < this->path.size(); i++) {
-    str.append(to_string(this->path.at(i)) + " ");
+  for (int i : path) {
+    str.append(std::to_string(i) + " ");
   }
   str.append("\n");
   return str;

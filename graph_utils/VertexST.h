@@ -45,19 +45,19 @@ class VertexST {
   /**
    *	arc = (this,id)  key = id, value = vector of arcs to go from this to id
    */
-  unordered_map<int, vector<int>> adjacency_list_out;
+  std::unordered_map<int, std::vector<int>> adjacency_list_out;
   /**
    *	adjacency_list_out arcs are sorted by increasing cost
    */
-  unordered_map<int, vector<int>> adjacency_list_out_cost;
+  std::unordered_map<int, std::vector<int>> adjacency_list_out_cost;
   /**
    *	adjacency_list_out arcs are sorted by increasing travelling time
    */
-  unordered_map<int, vector<int>> adjacency_list_out_time;
+  std::unordered_map<int, std::vector<int>> adjacency_list_out_time;
   /**
    *	arc = (id,this)   key = id, value = vector of arcs to go from id to this
    */
-  unordered_map<int, vector<int>> adjacency_list_in;
+  std::unordered_map<int, std::vector<int>> adjacency_list_in;
 
   /**
    *	vertex counter to assign unique id
@@ -99,8 +99,8 @@ class VertexST {
    * \param arcId
    */
   void add_neighbour_out(const int& vId, const int& arcId);
-  void add_neighbour_out_time(const int& vId, const vector<int>& arcIds);
-  void add_neighbour_out_cost(const int& vId, const vector<int>& arcIds);
+  void add_neighbour_out_time(const int& vId, const std::vector<int>& arcIds);
+  void add_neighbour_out_cost(const int& vId, const std::vector<int>& arcIds);
 
   /**
    * \brief Add arc=(vId,this) id to the adjacency list of the out going arcs
@@ -112,15 +112,15 @@ class VertexST {
 
   static void restart_id_counter() { lastId = 0; }
 
-  const int& get_id() const;
-  const int& get_id_in_graph() const;
-  const int& get_time() const;
-  const unordered_map<int, vector<int>>& get_adjacency_list_out() const;
-  const unordered_map<int, vector<int>>& get_adjacency_list_out_cost() const;
-  const unordered_map<int, vector<int>>& get_adjacency_list_out_time() const;
-  const unordered_map<int, vector<int>>& get_adjacency_list_in() const;
+  int get_id() const;
+  int get_id_in_graph() const;
+  int get_time() const;
+  const std::unordered_map<int, std::vector<int>>& get_adjacency_list_out() const;
+  const std::unordered_map<int, std::vector<int>>& get_adjacency_list_out_cost() const;
+  const std::unordered_map<int, std::vector<int>>& get_adjacency_list_out_time() const;
+  const std::unordered_map<int, std::vector<int>>& get_adjacency_list_in() const;
 
-  const std::string toString() const;
+  std::string toString() const;
 };
 
 #endif  // !VERTEXTS_H

@@ -17,7 +17,6 @@
 #pragma once
 
 #include "Header.h"
-#include "Utils.h"
 
 /**
  *	\class ArcST.
@@ -88,9 +87,9 @@ class ArcST {
    * \param travelling_time
    * \param cost
    */
-  ArcST(const int& departure_id, const int& arrival_id, const std::string& type,
+  ArcST(int departure_id, int arrival_id, const std::string& type,
         const std::string& line, const std::string& rotation,
-        const int& travelling_time = 0.0, const double& cost = 0.0);
+        int travelling_time = 0.0, const double& cost = 0.0);
   /**
    * \brief Copy constructor.
    *
@@ -109,16 +108,16 @@ class ArcST {
 
   static void restart_id_counter() { lastId = 0; }
 
-  const int& get_id() const;
-  const int& get_departure_id() const;
-  const int& get_arrival_id() const;
+  int get_id() const;
+  int get_departure_id() const;
+  int get_arrival_id() const;
   const std::string& get_type() const;
   const std::string& get_line() const;
   const std::string& get_rotation() const;
-  const int& get_travelling_time() const;
+  int get_travelling_time() const;
   const double& get_cost() const;
 
-  const std::string toString() const;
+  std::string toString() const;
 };
 
 #endif  // !GRAPH_H

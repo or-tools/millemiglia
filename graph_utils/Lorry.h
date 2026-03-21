@@ -36,20 +36,20 @@ class Lorry {
   /**
    *	path: arcs in the st_network traversed by the vehicle
    */
-  vector<int> path;
+  std::vector<int> path;
   /**
    *	capacities
    */
-  vector<int> capacities;
+  std::vector<int> capacities;
   /**
    *	loaded_commodities: for each arc in path, the commodities on that arc
    */
-  unordered_map<int, vector<int>> loaded_commodities;
+  std::unordered_map<int, std::vector<int>> loaded_commodities;
   /**
    *	residual capacity: for each arc in path, the residual capacities of the
    *vehicle on that arc
    */
-  unordered_map<int, vector<int>> loads_per_arc;
+  std::unordered_map<int, std::vector<int>> loads_per_arc;
 
   /**
    *	vertex counter to assign unique id
@@ -59,10 +59,8 @@ class Lorry {
  public:
   /**
    * \brief Constructor by data.
-   *
-   * \param number of hubs
    */
-  Lorry(string name, const millemiglia::Vehicle& vehicle);
+  Lorry(std::string name, const millemiglia::Vehicle& vehicle);
   /**
    * \brief Copy constructor.
    *
@@ -85,20 +83,20 @@ class Lorry {
    *	\param commodity : Commodity
    *	\param arc : int
    */
-  void add_commodity(const int& commodity_id, const vector<int>& sizes,
+  void add_commodity(const int& commodity_id, const std::vector<int>& sizes,
                      const int& arc);
 
   static void restart_id_counter() { lastId = 0; }
 
-  const int& get_id() const;
+  int get_id() const;
   const std::string& get_name() const;
   const millemiglia::Vehicle& get_proto_vehicle() const;
-  const vector<int>& get_path() const;
-  const vector<int>& get_capacities() const;
-  const unordered_map<int, vector<int>>& get_loaded_commodities() const;
-  const unordered_map<int, vector<int>>& get_loads_per_arc() const;
+  const std::vector<int>& get_path() const;
+  const std::vector<int>& get_capacities() const;
+  const std::unordered_map<int, std::vector<int>>& get_loaded_commodities() const;
+  const std::unordered_map<int, std::vector<int>>& get_loads_per_arc() const;
 
-  const std::string toString() const;
+  std::string toString() const;
 };
 
 #endif  // !LORRY_H

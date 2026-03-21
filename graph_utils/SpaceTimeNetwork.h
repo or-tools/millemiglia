@@ -73,12 +73,12 @@ class SpaceTimeNetwork {
    */
   SpaceTimeNetwork();
   /**
-   * \brief Constructor by data: string path to LogisticsNetwork protocol buffer
+   * \brief Constructor by data: std::string path to LogisticsNetwork protocol buffer
    * and time horizon
    *
    * \param network protocal buffer object
    */
-  SpaceTimeNetwork(const string& network_file, const int& time_horizon);
+  SpaceTimeNetwork(const std::string& network_file, const int& time_horizon);
 
   SpaceTimeNetwork(const millemiglia::LogisticsNetwork& network,
                    const int& time_horizon);
@@ -105,7 +105,7 @@ class SpaceTimeNetwork {
    *
    *	\param path to the logistics network file
    */
-  void parse_logistic_network(const string& network_file);
+  void parse_logistic_network(const std::string& network_file);
 
   /**
    *	\brief Build graph object
@@ -144,7 +144,7 @@ class SpaceTimeNetwork {
    *	\param hub name
    *	\param time object
    */
-  void add_vertexST(const string& hub,
+  void add_vertexST(const std::string& hub,
                     const millemiglia::DateTimeRange& time,
                     const int& time_horizon);
   /**
@@ -174,11 +174,11 @@ class SpaceTimeNetwork {
   const vector<VertexST>& get_vertices() const;
   const vector<ArcST>& get_arcs() const;
   const VertexST& get_vertex(
-      const string& hub,
+      const std::string& hub,
       const millemiglia::DateTimeRange& time) const;
   const VertexST& get_vertex(const int& hub, const int& time) const;
 
-  const string toString() const;
+  const std::string toString() const;
 };
 
 #endif  // !SpaceTimeNetwork_H

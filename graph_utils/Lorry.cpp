@@ -68,7 +68,7 @@ void Lorry::add_commodity(const int& commodity_id, const vector<int>& sizes,
 
 const int& Lorry::get_id() const { return this->id; }
 
-const string& Lorry::get_name() const { return this->name; }
+const std::string& Lorry::get_name() const { return this->name; }
 
 const millemiglia::Vehicle& Lorry::get_proto_vehicle() const {
   return this->vehicle;
@@ -86,8 +86,8 @@ const unordered_map<int, vector<int>>& Lorry::get_loads_per_arc() const {
   return this->loads_per_arc;
 }
 
-const string Lorry::toString() const {
-  string str;
+const std::string Lorry::toString() const {
+  std::string str;
   str.append("LORRY: " + this->name + "\n");
   str.append("\tCAPACITIES:\t");
   for (const auto& cap : this->capacities) {

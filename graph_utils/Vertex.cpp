@@ -21,7 +21,7 @@ Vertex::Vertex() {
   this->lastId++;
 }
 
-Vertex::Vertex(const string& name) {
+Vertex::Vertex(const std::string& name) {
   this->id = this->lastId;
   this->name = name;
   this->lastId++;
@@ -44,7 +44,7 @@ Vertex& Vertex::operator=(const Vertex& vertex) {
   return *this;
 }
 
-void Vertex::add_neighbour_out(const int& id, const string& line) {
+void Vertex::add_neighbour_out(const int& id, const std::string& line) {
   unordered_map<int, vector<string>>::iterator finder =
       this->adjacency_list_out.find(id);
   if (finder == this->adjacency_list_out.end()) {
@@ -55,7 +55,7 @@ void Vertex::add_neighbour_out(const int& id, const string& line) {
   }
 }
 
-void Vertex::add_neighbour_in(const int& id, const string& line) {
+void Vertex::add_neighbour_in(const int& id, const std::string& line) {
   unordered_map<int, vector<string>>::iterator finder =
       this->adjacency_list_in.find(id);
   if (finder == this->adjacency_list_in.end()) {
@@ -76,7 +76,7 @@ bool Vertex::is_neighbour_in(const int& id) const {
 
 const int& Vertex::get_id() const { return this->id; }
 
-const string& Vertex::get_name() const { return this->name; }
+const std::string& Vertex::get_name() const { return this->name; }
 
 const unordered_map<int, vector<string>>& Vertex::get_adjacency_list_out()
     const {
@@ -114,8 +114,8 @@ const vector<string> Vertex::get_lines_in(const int& id) const {
   return {};
 }
 
-const string Vertex::toString() const {
-  string str;
+const std::string Vertex::toString() const {
+  std::string str;
   str.append(to_string(this->id) + "\t" + this->name + "\t" +
              to_string((int)this->adjacency_list_in.size()) + "\t" +
              to_string((int)this->adjacency_list_out.size()) + "\n");

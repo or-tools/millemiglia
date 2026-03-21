@@ -34,7 +34,7 @@ class Vertex {
   /**
    *	vertex name in the protocol buffer
    */
-  string name;
+  std::string name;
 
   /**
    * @brief  
@@ -65,7 +65,7 @@ class Vertex {
    *
    * \param name
    */
-  Vertex(const string& name);
+  Vertex(const std::string& name);
   /**
    * \brief Copy constructor.
    *
@@ -87,7 +87,7 @@ class Vertex {
    *	\param id
    *	\param line of the network protocal buffer network file
    */
-  void add_neighbour_in(const int& id, const string& line);
+  void add_neighbour_in(const int& id, const std::string& line);
 
   /**
    * \brief Add outgoing arc (this,id) to the adjacency list.
@@ -95,7 +95,7 @@ class Vertex {
    *	\param id
    *	\param line of the network protocal buffer network file
    */
-  void add_neighbour_out(const int& id, const string& line);
+  void add_neighbour_out(const int& id, const std::string& line);
 
   /**
    * \brief Test whether (this,id) exists
@@ -116,7 +116,7 @@ class Vertex {
   static void restart_id_counter() { lastId = 0; }
 
   const int& get_id() const;
-  const string& get_name() const;
+  const std::string& get_name() const;
   const unordered_map<int, vector<string>>& get_adjacency_list_out() const;
   const unordered_map<int, vector<string>>& get_adjacency_list_in() const;
   const int get_out_going_by_position(const int& pos) const;
@@ -124,7 +124,7 @@ class Vertex {
   const vector<string> get_lines_out(const int& id) const;
   const vector<string> get_lines_in(const int& id) const;
 
-  const string toString() const;
+  const std::string toString() const;
 };
 
 #endif  // !GRAPH_H

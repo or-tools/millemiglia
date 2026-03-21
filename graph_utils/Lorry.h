@@ -27,7 +27,7 @@
 class Lorry {
  protected:
   int id;
-  string name;
+  std::string name;
 
   /**
    *	vehicle object
@@ -91,14 +91,14 @@ class Lorry {
   static void restart_id_counter() { lastId = 0; }
 
   const int& get_id() const;
-  const string& get_name() const;
+  const std::string& get_name() const;
   const millemiglia::Vehicle& get_proto_vehicle() const;
   const vector<int>& get_path() const;
   const vector<int>& get_capacities() const;
   const unordered_map<int, vector<int>>& get_loaded_commodities() const;
   const unordered_map<int, vector<int>>& get_loads_per_arc() const;
 
-  const string toString() const;
+  const std::string toString() const;
 };
 
 #endif  // !LORRY_H

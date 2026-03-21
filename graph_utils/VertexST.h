@@ -120,7 +120,7 @@ class VertexST {
   const unordered_map<int, vector<int>>& get_adjacency_list_out_time() const;
   const unordered_map<int, vector<int>>& get_adjacency_list_in() const;
 
-  const string toString() const;
+  const std::string toString() const;
 };
 
 #endif  // !VERTEXTS_H

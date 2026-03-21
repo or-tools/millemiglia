@@ -45,15 +45,15 @@ Graph& Graph::operator=(const Graph& graph) {
   return *this;
 }
 
-void Graph::add_vertex(const string& name) {
+void Graph::add_vertex(const std::string& name) {
   Vertex v = Vertex(name);
   assert((int)this->vertices.size() > v.get_id());
   this->vertices.at(v.get_id()) = v;
   this->vertex_dictionary.insert(make_pair(name, v.get_id()));
 }
 
-void Graph::add_neighbour(const string& key, const string& neighbour,
-                          const string& line) {
+void Graph::add_neighbour(const std::string& key, const std::string& neighbour,
+                          const std::string& line) {
   assert(this->vertex_dictionary.count(key) > 0);  // Assert key exists
   int key_id = this->vertex_dictionary.at(key);
 
@@ -81,7 +81,7 @@ const Vertex& Graph::get_vertex(const int& id) const {
   return this->vertices.at(id);
 }
 
-const Vertex& Graph::get_vertex(const string& name) const {
+const Vertex& Graph::get_vertex(const std::string& name) const {
   unordered_map<string, int>::const_iterator finder =
       this->vertex_dictionary.find(name);
   assert(finder != this->vertex_dictionary.end());
@@ -99,8 +99,8 @@ const int Graph::get_arc_position(const int& id1, const int& id2) const {
   return finder->second;
 }
 
-const string Graph::toString() const {
-  string str = "VERTICES:\n";
+const std::string Graph::toString() const {
+  std::string str = "VERTICES:\n";
   str.append("\tID\tNAME\tIN_SIZE\tOUT_SIZE\n");
   for (int i = 0; i < (int)this->vertices.size(); i++) {
     str.append("\t" + this->vertices.at(i).toString());

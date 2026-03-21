@@ -44,7 +44,7 @@ class ArcST {
   /**
    *	type = "travelling", "waiting"
    */
-  string type;
+  std::string type;
 
   /**
    *	cost = arc cost; if this is the first arc of a line-rotation, the cost
@@ -61,12 +61,12 @@ class ArcST {
   /**
    *	line associated with the arc
    */
-  string line;
+  std::string line;
 
   /**
    *	rotation associated with the arc
    */
-  string rotation;
+  std::string rotation;
 
   /**
    *	arc counter to assign unique id
@@ -88,8 +88,8 @@ class ArcST {
    * \param travelling_time
    * \param cost
    */
-  ArcST(const int& departure_id, const int& arrival_id, const string& type,
-        const string& line, const string& rotation,
+  ArcST(const int& departure_id, const int& arrival_id, const std::string& type,
+        const std::string& line, const std::string& rotation,
         const int& travelling_time = 0.0, const double& cost = 0.0);
   /**
    * \brief Copy constructor.
@@ -112,13 +112,13 @@ class ArcST {
   const int& get_id() const;
   const int& get_departure_id() const;
   const int& get_arrival_id() const;
-  const string& get_type() const;
-  const string& get_line() const;
-  const string& get_rotation() const;
+  const std::string& get_type() const;
+  const std::string& get_line() const;
+  const std::string& get_rotation() const;
   const int& get_travelling_time() const;
   const double& get_cost() const;
 
-  const string toString() const;
+  const std::string toString() const;
 };
 
 #endif  // !GRAPH_H

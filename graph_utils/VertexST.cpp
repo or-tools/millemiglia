@@ -106,8 +106,8 @@ const unordered_map<int, vector<int>>& VertexST::get_adjacency_list_in() const {
   return this->adjacency_list_in;
 }
 
-const string VertexST::toString() const {
-  string str;
+const std::string VertexST::toString() const {
+  std::string str;
   str.append(to_string(this->id) + "\t(" + to_string(this->id_in_graph) + "," +
              to_string(this->time) + ")\t" + "\t\t" +
              to_string((int)this->adjacency_list_in.size()) + "\t" +

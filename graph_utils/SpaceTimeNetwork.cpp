@@ -35,7 +35,7 @@ SpaceTimeNetwork::SpaceTimeNetwork() {
   ArcST::restart_id_counter();
 }
 
-SpaceTimeNetwork::SpaceTimeNetwork(const string& network_file,
+SpaceTimeNetwork::SpaceTimeNetwork(const std::string& network_file,
                                    const int& time_horizon) {
   VertexST::restart_id_counter();
   ArcST::restart_id_counter();
@@ -56,7 +56,7 @@ SpaceTimeNetwork::SpaceTimeNetwork(
   build_arcs(network, time_horizon);
 }
 
-void SpaceTimeNetwork::parse_logistic_network(const string& network_file) {
+void SpaceTimeNetwork::parse_logistic_network(const std::string& network_file) {
   const char* network_cc = network_file.c_str();
   if (!std::filesystem::exists({network_cc})) {
     std::cout << "File " << network_cc << " does not exist!\n";
@@ -116,8 +116,8 @@ void SpaceTimeNetwork::build_underlying_graph(
   for (auto hub : network.hubs()) {
     for (auto line : network.lines()) {
       for (int i = 0; i < line.hub_ids().size() - 1; i++) {
-        string start = line.hub_ids().at(i);
-        string end = line.hub_ids().at(i + 1);
+        std::string start = line.hub_ids().at(i);
+        std::string end = line.hub_ids().at(i + 1);
         if (start == hub.name()) {
           this->underlying_graph.add_neighbour(start, end, line.name());
         }
@@ -140,8 +140,8 @@ void SpaceTimeNetwork::build_arcs(
   // Travelling arcs
   for (const auto& line : network.lines()) {
     for (int i = 0; i < line.hub_ids().size() - 1; i++) {
-      string departure_hub = line.hub_ids().at(i);
-      string arrival_hub = line.hub_ids().at(i + 1);
+      std::string departure_hub = line.hub_ids().at(i);
+      std::string arrival_hub = line.hub_ids().at(i + 1);
       double cost = 0.0;
       for (const auto& rotations : line.next_rotations()) {
         millemiglia::DateTimeRange dt =
@@ -194,7 +194,7 @@ void SpaceTimeNetwork::add_to_adjacency_list_in(const ArcST& arc) {
 }
 
 const VertexST& SpaceTimeNetwork::get_vertex(
-    const string& hub,
+    const std::string& hub,
     const millemiglia::DateTimeRange& time) const {
   int graph_id = this->underlying_graph.get_vertex(hub).get_id();
   int encTime = ::time_encoder(time.first_date());
@@ -236,7 +236,7 @@ void SpaceTimeNetwork::add_vertexST(const int& hub, const int& time) {
 }
 
 void SpaceTimeNetwork::add_vertexST(
-    const string& hub, const millemiglia::DateTimeRange& time,
+    const std::string& hub, const millemiglia::DateTimeRange& time,
     const int& time_horizon) {
   const Vertex& v = this->underlying_graph.get_vertex(hub);
   int encTime = ::time_encoder(time.first_date());
@@ -259,8 +259,8 @@ const vector<VertexST>& SpaceTimeNetwork::get_vertices() const {
 
 const vector<ArcST>& SpaceTimeNetwork::get_arcs() const { return this->arcs; }
 
-const string SpaceTimeNetwork::toString() const {
-  string str = "VERTICES:\n";
+const std::string SpaceTimeNetwork::toString() const {
+  std::string str = "VERTICES:\n";
   str.append("\tID\t(GRAPH_ID,TIME)\tTOP_POS\tIN_SIZE\tOUT_SIZE\n");
   for (int i = 0; i < this->vertices.size(); i++) {
     str.append("\t" + this->vertices.at(i).toString());

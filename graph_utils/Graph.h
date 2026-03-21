@@ -86,7 +86,7 @@ class Graph {
    *
    *	\param hub name
    */
-  void add_vertex(const string& name);
+  void add_vertex(const std::string& name);
   /**
    *	\brief add a neighbour to key both (key,neighbour) and (neighbour,key)
    *
@@ -95,18 +95,18 @@ class Graph {
    *	\param line in the network protocol buffer that uses arc (key,
    *neighbour)
    */
-  void add_neighbour(const string& key, const string& neighbour,
-                     const string& line);
+  void add_neighbour(const std::string& key, const std::string& neighbour,
+                     const std::string& line);
 
   const vector<Vertex>& get_vertices() const;
   const int get_vertex_number() const;
   const Vertex& get_vertex(const int& id) const;
-  const Vertex& get_vertex(const string& name) const;
+  const Vertex& get_vertex(const std::string& name) const;
   const vector<pair<int, int>>& get_arcs() const;
   const int get_number_of_arcs() const;
   const int get_arc_position(const int& id1, const int& id2) const;
 
-  const string toString() const;
+  const std::string toString() const;
 };
 
 #endif  // !GRAPH_H

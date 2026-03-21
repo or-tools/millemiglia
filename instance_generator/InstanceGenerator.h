@@ -30,12 +30,12 @@ class InstanceGenerator {
   /**
    *	name of the .textproto file
    */
-  string name;
+  std::string name;
   /**
    * description contains info regarding the instance file that is generated.
    * Its content is print in a name_info.txt file
    */
-  string description;
+  std::string description;
 
   /**
    * random_seed to use in the randomized steps
@@ -50,7 +50,7 @@ class InstanceGenerator {
   /**
    * \brief Constructor by data. The call to the constructor
    */
-  InstanceGenerator(const string& name, const string& description,
+  InstanceGenerator(const std::string& name, const std::string& description,
                     const unsigned int& random_seed);
   /**
    * \brief Copy constructor.
@@ -206,8 +206,8 @@ class InstanceGenerator {
    *
    */
   void add_distance_matrix_entry(
-      millemiglia::LogisticsNetwork& network, const string& x,
-      const string& y) const;
+      millemiglia::LogisticsNetwork& network, const std::string& x,
+      const std::string& y) const;
   /*
    * fill object millemiglia::DateTimeRange given
    * google::type::DateTime
@@ -279,8 +279,8 @@ class InstanceGenerator {
    *
    */
   void add_shipment(millemiglia::Instance& instance,
-                    const int& shipment_number, const string& source_hub,
-                    const string& destination_hub, const int& departure_time,
+                    const int& shipment_number, const std::string& source_hub,
+                    const std::string& destination_hub, const int& departure_time,
                     const int& arrival_time, const int& weight) const;
   /*
    * fill the departure time (google::type::DateTime) of the shipment

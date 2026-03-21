@@ -15,8 +15,8 @@
 
 InstanceGenerator::InstanceGenerator() {}
 
-InstanceGenerator::InstanceGenerator(const string& name,
-                                     const string& description,
+InstanceGenerator::InstanceGenerator(const std::string& name,
+                                     const std::string& description,
                                      const unsigned int& random_seed) {
   this->name = name;
   this->description = description;
@@ -45,7 +45,7 @@ void InstanceGenerator::generate_logistic_network(
     const double& graph_density, const int& time_horizon, const int& nbr_lines,
     const int& max_length_line, const int& max_numb_rotations_per_line,
     const double& max_vehicle_capacity) const {
-  string network_name = "network_" + to_string(hubs_number);
+  std::string network_name = "network_" + to_string(hubs_number);
   instance.mutable_network()->set_name(network_name);
 
   // generate the transportation graph by means of the Barabasi-Albert
@@ -104,14 +104,14 @@ Graph InstanceGenerator::build_random_graph(const int& hubs_number,
   // Create the graph object with specified number of hubs
   Graph random_graph(hubs_number);
   for (int i = 1; i <= hubs_number; i++) {
-    string name = "h_" + to_string(i);
+    std::string name = "h_" + to_string(i);
     random_graph.add_vertex(name);
   }
 
   // Add edges to the graph using vertex names
   for (auto edge : edges) {
-    string id1 = "h_" + to_string(edge.first);
-    string id2 = "h_" + to_string(edge.second);
+    std::string id1 = "h_" + to_string(edge.first);
+    std::string id2 = "h_" + to_string(edge.second);
     random_graph.add_neighbour(id1, id2, "");
   }
 
@@ -227,7 +227,7 @@ int InstanceGenerator::generate_line_rotations(
     int nbr_hubs = (int)line.size();
     for (int j = 0; j < max_rotations; j++) {
       millemiglia::LineRotation rotation;
-      string rotation_name = "l" + to_string(i + 1) + "_lr" + to_string(j + 1);
+      std::string rotation_name = "l" + to_string(i + 1) + "_lr" + to_string(j + 1);
       vector<int> time_info;
       // sample the start time of the rotation
       int start_time = ElRandom::Uniform(1, time_horizon - nbr_hubs + 1);
@@ -258,18 +258,18 @@ void InstanceGenerator::add_line_rotation(
   // build line
   millemiglia::Line line_proto;
   for (int i = 0; i < (int)line.size(); i++) {
-    string name = graph.get_vertex(line.at(i)).get_name();
+    std::string name = graph.get_vertex(line.at(i)).get_name();
     line_proto.add_hub_ids(name);
   }
 
   // add rotations to line
   for (int i = 0; i < (int)rotations.size(); i++) {
     millemiglia::LineRotation rotation;
-    string name = "l" + to_string(line_nbr) + "_lr" + to_string(i + 1);
+    std::string name = "l" + to_string(line_nbr) + "_lr" + to_string(i + 1);
 
     for (int j = 0; j + 1 < (int)rotations.at(i).size(); j++) {
-      string start_hub = graph.get_vertex(line.at(j)).get_name();
-      string end_hub = graph.get_vertex(line.at(j + 1)).get_name();
+      std::string start_hub = graph.get_vertex(line.at(j)).get_name();
+      std::string end_hub = graph.get_vertex(line.at(j + 1)).get_name();
       int start_time = rotations.at(i).at(j);
       int end_time = rotations.at(i).at(j + 1);
       assert(start_time < end_time);
@@ -303,8 +303,8 @@ void InstanceGenerator::add_line_rotation(
 }
 
 void InstanceGenerator::add_distance_matrix_entry(
-    millemiglia::LogisticsNetwork& network, const string& x,
-    const string& y) const {
+    millemiglia::LogisticsNetwork& network, const std::string& x,
+    const std::string& y) const {
   millemiglia::DistanceMatrixEntry entry;
   entry.set_source_hub(x);
   entry.set_destination_hub(y);
@@ -459,10 +459,10 @@ void InstanceGenerator::generate_shipments(
     }
     number++;
     assert(source_hub_id!=destination_hub_id);
-    string destination_name = st_network.get_underlying_graph()
+    std::string destination_name = st_network.get_underlying_graph()
                                   .get_vertex(destination_hub_id)
                                   .get_name();
-    string source_name =
+    std::string source_name =
         st_network.get_underlying_graph().get_vertex(source_hub_id).get_name();
     assert(destination_name != source_name);
     add_shipment(instance, number, source_name, destination_name,
@@ -472,8 +472,8 @@ void InstanceGenerator::generate_shipments(
 
 void InstanceGenerator::add_shipment(millemiglia::Instance& instance,
                                      const int& shipment_number,
-                                     const string& source_hub,
-                                     const string& destination_hub,
+                                     const std::string& source_hub,
+                                     const std::string& destination_hub,
                                      const int& departure_time,
                                      const int& arrival_time,
                                      const int& weight) const {

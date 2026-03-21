@@ -27,7 +27,7 @@ using namespace std;
 using namespace millemiglia;
 
 struct Parameters {
-  string instance_name;  // Name of the instance
+  std::string instance_name;  // Name of the instance
   
   int random_seed;       // Random seed
   
@@ -196,7 +196,7 @@ int main(int argc, char const* argv[]) {
                                 p.max_path_length);
 
   google::protobuf::TextFormat::Printer printer;
-  string out;
+  std::string out;
 
   if (!printer.PrintToString(instance, &out)) {
     cerr << "Failed to write the instance file " << p.instance_name << "\n";

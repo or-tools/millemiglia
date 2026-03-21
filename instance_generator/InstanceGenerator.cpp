@@ -364,8 +364,10 @@ void InstanceGenerator::generate_shipments(
   for (int j = 0; j < shipment_number; j++) {
     while (::strictly_less(shipment_weights.at(j), min_shipment_weight) ||
            ::strictly_greater(shipment_weights.at(j), max_shipment_weight)) {
-      double lomax_draw = ElRandom::Lomax(
-          static_cast<double>(min_shipment_weight), shipment_weight_shape);
+      const double lomax_draw = std::min<double>(
+	      ElRandom::Lomax(
+              static_cast<double>(min_shipment_weight), shipment_weight_shape),
+		  std::numeric_limits<int>::max());
       shipment_weights.at(j) = max(1, static_cast<int>(floor(lomax_draw)));
     }
   }
